@@ -1,28 +1,34 @@
-Senior Project Proposal (Replace with Project Name)
+Senior Project Proposal 
+SwiftEdge Security & Optimizer  
 ===================================================
 
-**Student Name**: Ada Lovelace (put your name here followed by two spaces)  
-**Degree and Major**: B.S. in Cybersecurity (put your name here followed by two spaces)  
-**Project Advisor Name**: Dr. Faulkner (put your name here followed by two spaces)  
-**Expected Graduation Date**: May 2040 (put the correct month and day here)
+**Student Names**: Noah Huber & Daniel Howard  
+**Degree and Major**: B.A. Applied Computing: Cybersecurity Concentration & B.S. in Cybersecurity
+**Project Advisor Name**: Dr. Hayes
+**Expected Graduation Date**: May 2026
 
 
 Problem Statement
 -----------------
 
-The problem statement goes here.
+Have you ever opened up your PC and been hit with the dreaded loading circle that seems to spin and spin forever?
+You probably need to clean and optimize your PC. Deleteing uneccessary files and updating to the newest applications versions
+can speed up and give your PC that needed boost.
 
 
 Project Description
 -------------------
 
-The project description goes here.
+SwiftEdge will be an amazing free way to get rid of those unnecesary temp files the unused applications you downloded
+years ago. Edge will check your applications versions and make sure they are vulnerability free and make sure
 
 
 Proposed Implementation Language(s) 
 -----------------------------------
 
-Languages go here.
+Python
+C++
+Bash
 
 
 Libraries, Packages, Development Kits, etc. to be used in the proposed implementation languages(s)
@@ -34,12 +40,18 @@ The supporting libraries go here.
 Additional Software/Equipment Needed
 ------------------------------------
 
-List any hardware needed and software (e.g., your IDE).
+Hardware:
+Windows PC 10/11
+Software:
+VSCode
+Terminal/Powershell
 
 Personal Motivation
 -------------------
 
-Personal motivation goes here.
+We aspired for a faster, more efficient, and elegant windows experience. 
+We desired a standalone application to make windows faster through a userfriendly simple and elegant interface.
+Ultimately, an application that can have both personal and commercial implications.
 
 Outline of Future Research Efforts
 ----------------------------------
@@ -49,20 +61,22 @@ Outline of Future Research Efforts
 Schedule
 --------
 
-(Update the dates and add your tasks by replacing the examples. Remove this note.)
+*   Spring 2025 - CSCI 497
+    -   January 26 - Brainstormed original preface
+    -   February 12 - Begin work on documentation and draft proposal
+    -   February 19 - Meet with advisor for first look and feedback
+    -   February 24 - Draft Proposal Submission Due
+    -   March 3  - Major work and research on UserInterface
+    -   March 12 - Discord call catch up on RnD
+    -   March 19 - Meet with advisor and look over progress
+	-   April 7 - Final week for work and polishing proposal
+    -   April 14 - Final meeting with advisor before final submission
+    -   April 15 - Final proposal submission due
 
-*   Spring 2039 - CSCI 497
-    -   January 26 - 
-    -   February 9 - 
-    -   February 23 - 
-    -   March 8 - 
-    -   March 22 - Send First-Draft of the Requirements Document to advisor for feedback
-    -   April 5 - 
+*   Summer 2025 - Independent/Optional Project Work
+    -   June 2 - June 6 - Meet up for preparation of project construction (Generic)
 
-*   Summer 2040 - Independent/Optional Project Work
-    -   June 1 - 
-
-*   Fall 2039 - CSCI 498
+*   Fall 2025 - CSCI 498
     -   October 20 - 
     -   October 27 - 
     -   November 3 - 
@@ -70,7 +84,7 @@ Schedule
     -   November 17 - 
     -   November 20 - 
 
-*   Spring 2040 - CSCI 499 (more detail will be added here once you are closer)
+*   Spring 2026 - CSCI 499 (more detail will be added here once you are closer)
     -   Weeks 1-4 - Implement test plan
     -   Week 5 - Evaluate test results
     -   Week 6-10 - Apply updates and bug fixes based on the results
