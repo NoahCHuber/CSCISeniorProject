@@ -30,9 +30,9 @@ SwiftEdge is developed for a wide range of users, from students and professional
 Proposed Implementation Language(s) 
 -----------------------------------
 
-Python
-C++
-Bash
+Python \
+C++ \
+Bash \
 
 
 Libraries, Packages, Development Kits, etc. to be used in the proposed implementation languages(s)
@@ -44,11 +44,11 @@ The supporting libraries go here.
 Additional Software/Equipment Needed
 ------------------------------------
 
-Hardware:
-Windows PC 10/11
-Software:
-VSCode
-Terminal/Powershell
+Hardware: \
+Windows PC 10/11 \
+Software: \
+VSCode \
+Terminal/Powershell \
 
 Personal Motivation
 -------------------
