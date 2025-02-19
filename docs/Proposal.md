@@ -12,7 +12,7 @@ Problem Statement
 
 Slow computer performance and security threats are common frustrations for users. Cluttered files, outdated applications, and inadequate system protection often lead to sluggish systems and increased vulnerability. While cleaning up your system and keeping software updated can help, managing multiple tools for performance optimization and security is a hassle. 
 
-Most users rely on separate antivirus programs and performance boosters, but these often conflict, drain system resources, or leave security gaps. This inefficiency leads to wasted time, reduced productivity, and increased vulnerability to cyberattacks, which cost individuals and businesses millions every year. 
+Most users rely on separate antivirus programs and performance boosters, but these often conflict, drain system resources, or leave gaps in overall security. This inefficiency leads to wasted time, reduced productivity, and increased vulnerability to cyberattacks, which cost individuals and businesses millions every year. 
 
 SwiftEdge Security & Optimizer solves this by combining system cleanup, performance boosts, and enhanced cybersecurity into a single, easy-to-use application. It removes junk files, optimizes settings, and alerts for threats-all in one app.
 
