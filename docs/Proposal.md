@@ -35,7 +35,7 @@ C++ \
 Bash 
 
 
-Libraries, Packages, Development Kits, etc. to be used in the proposed implementation languages(s)
+Libraries, Packages, Development Kit(s)
 --------------------------------------------------------------------------------------------------
 
 The supporting libraries go here.
@@ -46,6 +46,7 @@ Additional Software/Equipment Needed
 
 Hardware: \
 Windows PC 10/11 \
+Amd64 (Not Arm64 or aarch) \
 Software: \
 VSCode \
 Terminal/Powershell 
@@ -68,12 +69,12 @@ Schedule
 *   Spring 2025 - CSCI 497
     -   January 26 - Brainstormed original preface
     -   February 12 - Begin work on documentation and draft proposal
-    -   February 19 - Meet with advisor for first look and feedback
+    -   February 19 - Complete work on rough draft proposal
     -   February 24 - Draft Proposal Submission Due
     -   March 3  - Major work and research on UserInterface
     -   March 12 - Discord call catch up on RnD
     -   March 19 - Meet with advisor and look over progress
-	-   April 7 - Final week for work and polishing proposal
+    -   April 7 - Final week for work and polishing proposal
     -   April 14 - Final meeting with advisor before final submission
     -   April 15 - Final proposal submission due
 
