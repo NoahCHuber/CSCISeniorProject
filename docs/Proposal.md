@@ -4,6 +4,7 @@ SwiftEdge Security & Optimizer
 
 **Student Names**: Noah Huber & Daniel Howard  
 **Degree and Major**: B.A. Applied Computing: Cybersecurity Concentration & B.S. in Cybersecurity
+
 **Project Advisor Name**: Dr. Hayes
 **Expected Graduation Date**: May 2026
 
