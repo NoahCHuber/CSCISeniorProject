@@ -32,7 +32,7 @@ Proposed Implementation Language(s)
 
 Python \
 C++ \
-Bash \
+Bash 
 
 
 Libraries, Packages, Development Kits, etc. to be used in the proposed implementation languages(s)
@@ -48,7 +48,7 @@ Hardware: \
 Windows PC 10/11 \
 Software: \
 VSCode \
-Terminal/Powershell \
+Terminal/Powershell 
 
 Personal Motivation
 -------------------
