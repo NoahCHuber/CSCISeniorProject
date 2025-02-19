@@ -2,19 +2,21 @@ Senior Project Proposal \
 SwiftEdge Security & Optimizer  
 ===================================================
 
-**Student Names**: Noah Huber & Daniel Howard  
-**Degree and Major**: B.A. Applied Computing: Cybersecurity Concentration & B.S. in Cybersecurity\
-**Project Advisor Name**: Dr. Hayes\
-**Expected Graduation Date**: May 2026
-
+**Student Names**: Noah Huber & Daniel Howard \
+**Degree and Major**: B.A. Applied Computing: Cybersecurity Concentration & B.S. in Cybersecurity \
+**Project Advisor Name**: Dr. Hayes \
+**Expected Graduation Date**: May 2026 \
 
 Problem Statement
 -----------------
 
-Have you ever opened up your PC and been hit with the dreaded loading circle that seems to spin and spin forever?
-You probably need to clean and optimize your PC. Deleteing uneccessary files and updating to the newest applications versions
-can speed up and give your PC that needed boost.
+Slow computer performance and security threats are common frustrations for users. Cluttered files, outdated applications, and inadequate system protection often lead to sluggish systems and increased vulnerability. While cleaning up your system and keeping software updated can help, managing multiple tools for performance optimization and security is a hassle. \
 
+Most users rely on separate antivirus programs and performance boosters, but these often conflict, drain system resources, or leave security gaps. This inefficiency leads to wasted time, reduced productivity, and increased vulnerability to cyberattacks, which cost individuals and businesses millions every year. \
+
+SwiftEdge Security & Optimizer solves this by combining system cleanup, performance boosts, and enhanced cybersecurity into a single, easy-to-use application. It removes junk files, optimizes settings, and alerts for threats-all in one app.
+
+With SwiftEdge, your PC stays fast, clean, and secure without the hassle of juggling multiple programs. Whether you’re a student, professional, or casual user, SwiftEdge ensures your device runs at peak performance while keeping your data safe.
 
 Project Description
 -------------------
