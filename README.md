@@ -6,16 +6,25 @@ SwiftEdge Security & Optimizer is a lightweight software application designed to
 
 The application offers features such as junk file removal, system optimization, high-risk software version numbers, and real-time security checking. By leveraging automation and smart search algorithms, SwiftEdge enhances device speed, prevents slowdowns, and safeguards against cyber threats without requiring constant user intervention.
 
-SwiftEdge is developed for a wide range of users, from students and professionals to everyday PC users, ensuring their devices remain efficient, responsive, and secure. The project’s goal is to provide a user-friendly, all-in-one solution that optimizes performance while maintaining lightweight cybersecurity measures, making digital experiences smoother and safer for everyone.
-
 ## Compile/Deploy
 
+Application will be developed to run in either an exe format or a python script executable. 
+Code written will be pre-compiled and no tweaking needs to be performed unless the application is running incorrectly.
+Application will either be run as an administrator in exe format or run through the terminal ./script.py
+
 ## Usage
-Clean up
-Vulnerability checker
-Power Optimizer
-Efficiency Handler
+
+Clean Up (Unused System Files)
+Defragmentation (Hardware)
+Vulnerability Checker (Checks for Generic Vulnerabilities)
+Power Optimizer (Power Optimization Tweaks)
+Software Version Checker (Checks Software Version Numbers for Vulnerabilities)
+
 ## Options
 
+
+
 ## Testing
+
+
 
