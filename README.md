@@ -14,10 +14,10 @@ Application will either be run as an administrator in exe format or run through 
 
 ## Usage
 
-Clean Up (Unused System Files)
-Defragmentation (Hardware)
-Vulnerability Checker (Checks for Generic Vulnerabilities)
-Power Optimizer (Power Optimization Tweaks)
+Clean Up (Unused System Files) \
+Defragmentation (Hardware) \
+Vulnerability Checker (Checks for Generic Vulnerabilities) \
+Power Optimizer (Power Optimization Tweaks) \
 Software Version Checker (Checks Software Version Numbers for Vulnerabilities)
 
 ## Options
