@@ -1,4 +1,4 @@
-Senior Project Proposal \
+Senior Project Proposal: \
 SwiftEdge Security & Optimizer  
 ===================================================
 
