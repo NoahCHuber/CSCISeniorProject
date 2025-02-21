@@ -32,7 +32,7 @@ Proposed Implementation Language(s)
 
 Python \
 C++ \
-Bash 
+Powershell 
 
 
 Libraries, Packages, Development Kit(s)
@@ -45,7 +45,7 @@ Additional Software/Equipment Needed
 ------------------------------------
 
 Hardware: \
-Windows PC 10/11 \
+Windows PC 11 \
 Amd64 (Not Arm64 or aarch) \
 Software: \
 VSCode \
@@ -54,9 +54,9 @@ Terminal/Powershell
 Personal Motivation
 -------------------
 
-We aspire for a faster, more efficient, and secure Windows experience. 
-We desire an innovative standalone application to make Windows faster, more efficient, and more secure through a user-friendly, simple, and elegant user interface.
-We strive to develop an application that can have both personal and commercial implications.
+We aspire for a faster, more efficient, and secure Windows experience. \
+We desire an innovative standalone application to make Windows faster, more efficient, and more secure through a user-friendly, simple, and elegant user interface. \
+We strive to develop an application that can have real-world applications for both personal use when setting up a Windows machine for the first time or commercial use for helping small businesses with their technology. This application would allow us to help small businesses and give them a generic but secure way to make their computers faster, more efficient, and more secure in just a few clicks. This not only makes the business owner happy but also makes us happy seeing small businesses succeed. 
 
 Outline of Future Research Efforts
 ----------------------------------
@@ -71,9 +71,11 @@ Schedule
     -   February 12 - Begin work on documentation and draft proposal
     -   February 19 - Complete work on rough draft proposal
     -   February 24 - Draft Proposal Submission Due
+    -   March 1 - Begin work on the requirements document
     -   March 3  - Major work and research on UserInterface
     -   March 12 - Discord call catch up on RnD
     -   March 19 - Meet with advisor and look over progress
+    -   April 1 - Discuss test plan and implementation processes
     -   April 7 - Final week for work and polishing proposal
     -   April 14 - Final meeting with advisor before final submission
     -   April 15 - Final proposal submission due
