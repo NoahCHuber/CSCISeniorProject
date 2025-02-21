@@ -54,8 +54,7 @@ Terminal/Powershell
 Personal Motivation
 -------------------
 
-We aspire for a faster, more efficient, and secure Windows experience. \
-We desire an innovative standalone application to make Windows faster, more efficient, and more secure through a user-friendly, simple, and elegant user interface. \
+We aspire for a faster, more efficient, and secure Windows experience through an innovative standalone application with a simple, elegant, and easy-to-use, interface. \
 We strive to develop an application that can have real-world applications for both personal use when setting up a Windows machine for the first time or commercial use for helping small businesses with their technology. This application would allow us to help small businesses and give them a generic but secure way to make their computers faster, more efficient, and more secure in just a few clicks. This not only makes the business owner happy but also makes us happy seeing small businesses succeed. 
 
 Outline of Future Research Efforts
