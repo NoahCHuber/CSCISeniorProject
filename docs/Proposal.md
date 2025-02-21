@@ -1,5 +1,4 @@
-Senior Project Proposal: \
-SwiftEdge Security & Optimizer  
+Senior Project Proposal: SwiftEdge Security & Optimizer  
 ===================================================
 
 **Student Names**: Noah Huber & Daniel Howard \
