@@ -46,11 +46,12 @@ Any supporting libraries, packages, or other development kits will be listed her
 Additional Software/Equipment Needed
 ------------------------------------
 
-Hardware: \
- - Windows PC 11 \
- - Amd64 (Not Arm64 or aarch) \
-Software: \
- - VSCode \
+Hardware: 
+ - Windows PC 11 
+ - Amd64 (Not Arm64 or aarch) 
+
+Software: 
+ - VSCode 
  - Terminal/Powershell 
 
 Personal Motivation
