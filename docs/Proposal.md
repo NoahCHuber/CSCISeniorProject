@@ -30,9 +30,9 @@ SwiftEdge is developed for a wide range of users, from students and professional
 Proposed Implementation Language(s) 
 -----------------------------------
 
-Python \
-C++ \
-Powershell 
+ - Python \
+ - C++ \
+ - Powershell 
 
 
 Libraries, Packages, Development Kit(s)
@@ -47,11 +47,11 @@ Additional Software/Equipment Needed
 ------------------------------------
 
 Hardware: \
-Windows PC 11 \
-Amd64 (Not Arm64 or aarch) \
+ - Windows PC 11 \
+ - Amd64 (Not Arm64 or aarch) \
 Software: \
-VSCode \
-Terminal/Powershell 
+ - VSCode \
+ - Terminal/Powershell 
 
 Personal Motivation
 -------------------
@@ -66,36 +66,37 @@ Outline of Future Research Efforts
 To complete this project successfully, several research areas need to be explored:
 
 ## Performance Optimization Techniques:
-Investigate efficient algorithms for junk file removal and system optimization. \
-Look into utilizing Python as a script to run junk file removal and other system optimizations. \
-Evaluate memory management strategies to ensure minimal resource consumption. \
-Deeply evaluate which services can be disabled in Windows that will not affect system stability. 
+ - Investigate efficient algorithms for junk file removal and system optimization. \
+ - Look into utilizing Python as a script to run junk file removal and other system optimizations. \
+ - Evaluate memory management strategies to ensure minimal resource consumption. \
+ - Deeply evaluate which services can be disabled in Windows that will not affect system stability. 
 
 ## Cybersecurity Enhancements:
-Research methods for detecting version numbers, very generic vulnerabilities, and possibly malware. \
-Identify best practices for integrating security updates without system slowdowns. \
-Research is Python scripts can be used to initialize an application updater without user interaction.
+ - Research methods for detecting version numbers, very generic vulnerabilities, and possibly malware. \
+ - Identify best practices for integrating security updates without system slowdowns. \
+ - Research is Python scripts can be used to initialize an application updater without user interaction.
 
 ## User Experience and Interface Design:
-Study user preferences for an intuitive, minimalistic interface. \
-Interfaces that may be easy to construct, simple, and elegant. \
-Test different UI/UX frameworks for ease of navigation and accessibility. \
-Research open-source methods for developing our very own interface specific to our application.
+ - Study user preferences for an intuitive, minimalistic interface. \
+ - Interfaces that may be easy to construct, simple, and elegant. \
+ - Test different UI/UX frameworks for ease of navigation and accessibility. \
+ - Research open-source methods for developing our very own interface specific to our application.
 
 ## Software Integration and Compatibility:
-Ensure seamless compatibility with Windows systems (specifically Windows 11), including different application versions. \
-Research potential conflicts with existing antivirus and optimization software (including Windows Defender workarounds). \
-Look into future possibilities of software conflicts and application updater conflicts (including Microsoft Store). \
-Other generic software integration and compatibility for cybersecurity software. (Possibly look for open-source cyber software).
+ - Ensure seamless compatibility with Windows systems (specifically Windows 11), including different application versions. \
+ - Research potential conflicts with existing antivirus and optimization software (including Windows Defender workarounds). \
+ - Look into future possibilities of software conflicts and application updater conflicts (including Microsoft Store). \
+ - Other generic software integration and compatibility for cybersecurity software. (Possibly look for open-source cyber software).
 
 ## Automation Implementation:
-Explore ways to implement automated performance tuning. One click that's it mentality. \
-Research open-source methods of automating software version checking and updating similar to Norton 360.
+ - Explore ways to implement automated performance tuning. One click that's it mentality. \
+ - Research open-source methods of automating software version checking and updating similar to Norton 360. \
+ - More automation methods here using Python scripts.
 
 ## Scalability and Future Development:
-Develop a roadmap for expanding features in future iterations. (Post basic functionality). \
-Possibly research to develop a website for background and details on software functionality with a download link online. \
-Research automation methods if deploying from a USB stick. (Not best security practice as malware can hop through usb).
+ - Develop a roadmap for expanding features in future iterations. (Post basic functionality). \
+ - Possibly research to develop a website for background and details on software functionality with a download link online. \
+ - Research automation methods if deploying from a USB stick. (Not best security practice as malware can hop through usb).
 
 ## By focusing on these research areas, SwiftEdge Security & Optimizer can achieve its goal of providing a robust, efficient, and user-friendly solution for PC performance and security.
 
