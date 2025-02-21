@@ -38,8 +38,10 @@ Powershell
 Libraries, Packages, Development Kit(s)
 --------------------------------------------------------------------------------------------------
 
-The supporting libraries go here.
-
+While we may not use third-party libraries directly, we will be using programs like RavenDevTeam/TALON to see the implementation of Python scripts in Powershell to run commands to alter system settings. \
+We will also be using Hellzerg/Optimizer as a reference to a similar optimizer but with different outcomes. \
+The UI and software version number functionality would like to be similar to Norton 360. \
+Any supporting libraries, packages, or other development kits will be listed here at a later date. 
 
 Additional Software/Equipment Needed
 ------------------------------------
@@ -60,7 +62,42 @@ We strive to develop an application that can have real-world applications for bo
 Outline of Future Research Efforts
 ----------------------------------
 
-(What do you need to learn or figure out to complete this project? What tasks are you going to do the do that?)
+(PLEASE! Keep in mind that this is a very generic outline for future research efforts that will be subject to change)
+To complete this project successfully, several research areas need to be explored:
+
+## Performance Optimization Techniques:
+Investigate efficient algorithms for junk file removal and system optimization. \
+Look into utilizing Python as a script to run junk file removal and other system optimizations. \
+Evaluate memory management strategies to ensure minimal resource consumption. \
+Deeply evaluate which services can be disabled in Windows that will not affect system stability. 
+
+## Cybersecurity Enhancements:
+Research methods for detecting version numbers, very generic vulnerabilities, and possibly malware. \
+Identify best practices for integrating security updates without system slowdowns. \
+Research is Python scripts can be used to initialize an application updater without user interaction.
+
+## User Experience and Interface Design:
+Study user preferences for an intuitive, minimalistic interface. \
+Interfaces that may be easy to construct, simple, and elegant. \
+Test different UI/UX frameworks for ease of navigation and accessibility. \
+Research open-source methods for developing our very own interface specific to our application.
+
+## Software Integration and Compatibility:
+Ensure seamless compatibility with Windows systems (specifically Windows 11), including different application versions. \
+Research potential conflicts with existing antivirus and optimization software (including Windows Defender workarounds). \
+Look into future possibilities of software conflicts and application updater conflicts (including Microsoft Store). \
+Other generic software integration and compatibility for cybersecurity software. (Possibly look for open-source cyber software).
+
+## Automation Implementation:
+Explore ways to implement automated performance tuning. One click that's it mentality. \
+Research open-source methods of automating software version checking and updating similar to Norton 360.
+
+## Scalability and Future Development:
+Develop a roadmap for expanding features in future iterations. (Post basic functionality). \
+Possibly research to develop a website for background and details on software functionality with a download link online. \
+Research automation methods if deploying from a USB stick. (Not best security practice as malware can hop through usb).
+
+## By focusing on these research areas, SwiftEdge Security & Optimizer can achieve its goal of providing a robust, efficient, and user-friendly solution for PC performance and security.
 
 Schedule
 --------
