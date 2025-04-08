@@ -1,10 +1,10 @@
-# Software Requirements Specification
-## For <project name>
+# Software Requirements Document
 
-Version 0.1  
-Prepared by <author>  
-<organization>  
-<date created>  
+## SwiftEdge Security & Optimizer
+Version: 1.0 (Pre-release) 
+Prepared by: Noah Huber and Daniel Howard
+Organization: SwiftEdge Security 
+Date Created: April 8th, 2025
 
 Table of Contents
 =================
@@ -47,20 +47,24 @@ Table of Contents
 * 5 [Appendixes](#5-appendixes)
 
 ## Revision History
-| Name | Date    | Reason For Changes  | Version   |
-| ---- | ------- | ------------------- | --------- |
-|      |         |                     |           |
-|      |         |                     |           |
-|      |         |                     |           |
+|  Name(s)  |    Date    |    Reason For Changes   |   Version   |
+| --------- | ---------- | ----------------------- | ----------- |
+|   Swift   | 2025-08-04 | Intiial Requirments Doc |     1.0     |
+|           |            |                         |             |
+|           |            |                         |             |
 
 ## 1. Introduction
-> This section should provide an overview of the entire document
+This document defines the system requirements for SwiftEdge Security, a modular, GUI-based Windows utility designed to improve system performance, enhance security, perform cleanup operations, and check for known vulnerabilities. Developed entirely in PowerShell with a Windows Forms front end, this tool provides users with a streamlined interface and powerful functionality—all packaged as a standalone executable.
+
+The purpose of this Software Requirements Document (SRD) is to outline both the functional and non-functional requirements of SwiftEdge Security, including performance targets, security expectations, user characteristics, system interfaces, and architectural constraints. It serves as a single point of reference for stakeholders, developers, and testers to ensure a consistent understanding of the system’s scope, behavior, and expected outcomes.
+
+This document is intended for software developers, academic advisors, and IT professionals who are interested in the design, implementation, and validation of the application. This document includes references to any external APIs, packaging tools, and third-party components used during development.
 
 ### 1.1 Document Purpose
-Describe the purpose of the SRS and its intended audience.
+This document aims to define the software requirements for SwiftEdge Security & Optimizer, a performance and security utility for Windows systems. The application is developed using PowerShell and utilizes Windows Forms to deliver a sleek, modern, and minimal GUI. SwiftEdge Security is designed to improve performance, enhance system security, perform system cleanups, and provide vulnerability scanning by interfacing with open-source CVE APIs. It is built to be a one-stop solution for IT professionals, cybersecurity students, and system administrators who need a lightweight yet powerful tool without external frameworks.
 
 ### 1.2 Product Scope
-Identify the product whose software requirements are specified in this document, including the revision or release number. Explain what the product that is covered by this SRS will do, particularly if this SRS describes only part of the system or a single subsystem. Provide a short description of the software being specified and its purpose, including relevant benefits, objectives, and goals. Relate the software to corporate goals or business strategies. If a separate vision and scope document is available, refer to it rather than duplicating its contents here.
+Identify the product whose software requirements are specified in this document, including the revision or release number. Explain what the product that is covered by this SRS will do, particularly if this SRS describes only part of the system or a single subsystem. Provide a short description of the software being specified and its purpose, including relevant benefits, objectives, and goals. Relate the software to corporate goals or business strategies. If a separate vision and scope document is available, refer to it rather than duplicate its contents here.
 
 ### 1.3 Definitions, Acronyms and Abbreviations
 
