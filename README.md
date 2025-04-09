@@ -86,7 +86,7 @@ Elevated permissions are requested when needed | UAC prompt appears for operatio
 Log files are generated when enabled	         | Logs record operation timestamps and success/failure   
 
 **Performance Module Checklist:**
-Test Case	                                    | Expected Result
+*Test Case*	                                  | *Expected Result*
 A high-performance power plan is applied	    | Power plan changes are confirmed via powercfg
 SysMain and WSearch services are disabled	    | Services are stopped and set to Disabled
 Background apps disabled in registry	        | Registry key reflects the correct setting
@@ -96,7 +96,7 @@ Indexing is turned off on C: drive	          | Indexing checkbox is cleared unde
 Explorer restart button functions	            | Explorer restarts without crashing   
 
 **Security Hardening Checklist:**
-Test Case	                                    | Expected Result
+*Test Case*	                                  | *Expected Result*
 SMBv1 is disabled	                            | Feature is not listed in Windows Features
 Remote assistance and registry are disabled	  | Services are stopped and the registry reflects the disabled state
 Windows Defender settings are updated	        | Tamper protection and cloud protection are enabled
@@ -104,7 +104,7 @@ A system restore point is created	            | Restore point is visible in the 
 Telemetry and tracking features are off	      | Data collection registry keys are set correctly   
 
 **Cleanup Module Checklist:**
-Test Case	                                | Expected Result
+*Test Case*	                              | *Expected Result*
 Temporary folders are emptied	            | %TEMP% and C:\Windows\Temp show a reduced file count
 Event Viewer logs are cleared	            | Application/System/Security logs show no recent entries
 Windows Update cache is cleared	          | SoftwareDistribution\Download folder is empty
@@ -112,8 +112,8 @@ Preinstalled apps removed	                | App list no longer includes OneDrive
 RecycleBin is emptied	                    | Bin is confirmed to be empty   
 
 **Vulnerability Scanning Checklist:**
-Test Case	                                 | Expected Result
-The installed software list is retrieved	 | List shows app names and version numbers
+*Test Case*	                               | *Expected Result*
+The installed software list is retrieved	 | The List shows app names and version numbers
 NVD API is queried successfully	           | CVEs with IDs, summaries, and CVSS scores appear
 Optional Vulners API returns valid         | JSON	Results that match expected software versions
 Export to TXT or CSV works                 | File is created with scan results
