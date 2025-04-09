@@ -44,6 +44,7 @@ Table of Contents
     * 3.5.7 [Deadline](#357-deadline)
     * 3.5.8 [Proof of Concept](#358-proof-of-concept)
 * 4 [Verification](#4-verification)
+  * 4.1 [Product Testing and Verification](#41-Product-Testing-and-Verification)
 * 5 [References](#5-references)
 
 ## Revision History
@@ -224,7 +225,7 @@ Specify schedule for delivery of the software product.
 ## 4. Verification
 > This section outlines the key validation and testing criteria for SwiftEdge Security. Each feature module must function independently and correctly, without requiring external runtimes or manual configuration. The following checklist ensures that all performance, security, cleanup, and vulnerability scan operations perform as expected in the final executable version.
 
-### 4.1 Product Testing and Verification
+#### 4.1 Product Testing and Verification
 
 **General Application Behavior:**
 | *Test Case*	                                   | *Expected Result*                                         |
