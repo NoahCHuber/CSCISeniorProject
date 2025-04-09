@@ -184,7 +184,7 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 ### 2.4 User Characteristics
 > SwiftEdge Security is designed with usability in mind, targeting a range of user classes with varying levels of technical expertise. The software’s simple, tab-based interface and modular structure allow it to serve both professional and non-professional users, with most functionality accessible in a few clicks. User groups are distinguished based on how frequently they use the tool, their level of system access, and their understanding of Windows system administration.
 
-**Primary User Classes:**
+**Primary User Classes:**   
 **1. IT Professionals / System Administrators**   
 **Role:** Maintain Windows systems in school districts, small businesses, or tech support environments.   
 **Technical Skill Level:** Intermediate to advanced.   
