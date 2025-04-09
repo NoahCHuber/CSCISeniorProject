@@ -122,7 +122,7 @@ This product is designed to consolidate multiple commonly used administrative an
 ### 2.2 Product Functions
 > SwiftEdge Security provides a modular interface that enables users to perform common system maintenance, optimization, and security tasks on Windows 11 systems. Each function is encapsulated within its own script and is accessible via a centralized GUI.
 
-**At a high level, the product must allow users to:**
+**At a high level, the product must allow users to:**   
 *Performance Optimization*
 - Enable the High Performance or Ultimate Performance power plan. 
 - Disable non-essential services such as SysMain and Windows Search.
