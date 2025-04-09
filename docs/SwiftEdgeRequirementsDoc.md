@@ -186,37 +186,37 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 
 **Primary User Classes:**   
 **1. IT Professionals / System Administrators**   
-**Role:** Maintain Windows systems in school districts, small businesses, or tech support environments.   
-**Technical Skill Level:** Intermediate to advanced.   
-**Frequency of Use:** Moderate to frequent.   
-**Privileges:** Full administrative access.   
-**Modules Used:** All (Performance, Security, Cleanup, Vulnerability Scan).   
-**Priority Level:** High — this group is most critical to satisfy, as they will benefit the most from the tool’s full range of features.   
+**Role:** *Maintain Windows systems in school districts, small businesses, or tech support environments.*   
+**Technical Skill Level:**  *Intermediate to advanced.*   
+**Frequency of Use:** *Moderate to frequent.*   
+**Privileges:** *Full administrative access.*   
+**Modules Used:** *All (Performance, Security, Cleanup, Vulnerability Scan).*   
+**Priority Level:** *High — this group is most critical to satisfy, as they will benefit the most from the tool’s full range of features.*   
 
 **2. Cybersecurity Students / Technical Interns**   
-**Role:** Use SwiftEdge Security for learning, testing, or auditing basic vulnerabilities and configurations.   
-**Technical Skill Level:** Moderate.   
-**Frequency of Use:** Occasional or course-dependent.   
-**Privileges:** May have admin access depending on system policy.   
-**Modules Used:** Primarily Security and Vulnerability Scan.   
-**Priority Level:** High — aligns with the educational purpose of the tool.   
+**Role:** *Use SwiftEdge Security for learning, testing, or auditing basic vulnerabilities and configurations.*   
+**Technical Skill Level:** *Moderate.*   
+**Frequency of Use:** *Occasional or course-dependent.*   
+**Privileges:** *May have admin access depending on system policy.*   
+**Modules Used:** *Primarily Security and Vulnerability Scan.*   
+**Priority Level:** *High — aligns with the educational purpose of the tool.*   
 
 **Secondary User Classes:**   
 **3. Power Users / Tech Enthusiasts**   
-**Role:** Use the tool to maintain personal machines or optimize performance.   
-**Technical Skill Level:** Moderate (comfortable with system settings, but not scripting).   
-**Frequency of Use:** Infrequent or as-needed basis.   
-**Privileges:** Typically have admin rights on personal machines.   
-**Modules Used:** Performance and Cleanup.   
-**Priority Level:** Medium — important for usability and adoption but not the core focus.   
+**Role:** *Use the tool to maintain personal machines or optimize performance.*   
+**Technical Skill Level:** *Moderate (comfortable with system settings, but not scripting).*   
+**Frequency of Use:** *Infrequent or as-needed basis.*   
+**Privileges:** *Typically have admin rights on personal machines.*   
+**Modules Used:** *Performance and Cleanup.*   
+**Priority Level:** *Medium — important for usability and adoption but not the core focus.*   
 
 **4. Casual Users (Non-Technical):**   
-**Role:** End users seeking a "one-click" cleanup or performance boost.   
-**Technical Skill Level:** Basic.   
-**Frequency of Use:** Rare.   
-**Privileges:** May lack admin access.   
-**Modules Used:** Mostly Cleanup; limited use of other tabs.   
-**Priority Level:** Low — tool will still function for this group, but with limited results or without admin-required features.   
+**Role:** *End users seeking a "one-click" cleanup or performance boost.*   
+**Technical Skill Level:** *Basic.*   
+**Frequency of Use:** *Rare.*   
+**Privileges:** *May lack admin access.*   
+**Modules Used:** *Mostly Cleanup; limited use of other tabs.*   
+**Priority Level:** *Low — tool will still function for this group, but with limited results or without admin-required features.*   
 
 ### 2.5 Assumptions and Dependencies
 >The development and functionality of SwiftEdge Security rely on several assumptions and external dependencies. These are not guaranteed conditions but are considered true for the successful design, testing, and use of the software. If any of these assumptions prove to be invalid or these dependencies change, they may impact the final requirements or functionality of the system.
