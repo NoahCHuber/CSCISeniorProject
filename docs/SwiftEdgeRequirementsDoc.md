@@ -391,7 +391,7 @@ Specify schedule for delivery of the software product.
 *Fail:* Application crashes do not apply expected system changes or do not retrieve vulnerability data when online.
 
 ## 5. References
-> References listed below are split between documentation and GitHub repositories for inspired projects.
+> References listed below are split between documentation, GitHub repositories, and bad examples of software for inspired projects.
 
 ### 5.1 Documentation
 Style Guide for SRD: [SRS-Template - Jam01](https://github.com/jam01/SRS-Template/tree/master)   
