@@ -78,7 +78,7 @@ Software Version Checker (Checks Software Version Numbers for Vulnerabilities us
 > This section outlines the key validation and testing criteria for SwiftEdge Security. Each feature module must function independently and correctly, without requiring external runtimes or manual configuration. The following checklist ensures that all performance, security, cleanup, and vulnerability scan operations perform as expected in the final executable version.
 
 **General Application Behavior:**
-Test Case	                                      Expected Result
+*Test Case*	                         &nbsp;     *Expected Result*
 Application launches without errors	            Main GUI loads with all tabs and buttons functional
 GUI layout renders properly              	      All text is visible and no elements are clipped
 Runs without requiring external dependencies	  No errors related to ps1, .NET Core, or external database
