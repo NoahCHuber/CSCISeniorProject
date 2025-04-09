@@ -201,7 +201,7 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 **Modules Used:** Primarily Security and Vulnerability Scan.   
 **Priority Level:** High — aligns with the educational purpose of the tool.   
 
-**Secondary User Classes:**
+**Secondary User Classes:**   
 **3. Power Users / Tech Enthusiasts**   
 **Role:** Use the tool to maintain personal machines or optimize performance.   
 **Technical Skill Level:** Moderate (comfortable with system settings, but not scripting).   
