@@ -13,10 +13,10 @@ This application must be run using administrator privileges when opening the .ex
 
 ## Usage
 
-System Clean Up (Unused System Files) \
-Performance Optimizations (Changes Registry for performance booster)  \    
-Security Check and Hardening (Checks for Generic Vulnerabilities and Optional System Hardening) \   
-Software Version Checker (Checks Software Version Numbers for Vulnerabilities using external NVD CVE)   
+System Clean Up (Unused System Files)   
+Performance Optimizations (Changes Registry for performance booster)       
+Security Check and Hardening (Checks for Generic Vulnerabilities and Optional System Hardening)      
+Software Version Checker (Checks Software Version Numbers for Vulnerabilities using external NVD CVE)      
 
 ## Suggested Options 
 
