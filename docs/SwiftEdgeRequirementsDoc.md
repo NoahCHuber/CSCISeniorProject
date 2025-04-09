@@ -1,10 +1,10 @@
 # Software Requirements Document
 
 ## SwiftEdge Security & Optimizer
-Version: 1.0 (Pre-release) 
-Prepared by: Noah Huber and Daniel Howard
-Organization: SwiftEdge Security 
-Date Created: April 8th, 2025
+Version: 1.0 (Pre-release)  
+Prepared by: Noah Huber and Daniel Howard  
+Organization: SwiftEdge Security   
+Date Created: April 8th, 2025  
 
 Table of Contents
 =================
