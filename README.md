@@ -8,17 +8,15 @@ The application offers features such as junk file removal, system optimization, 
 
 ## Compile/Deploy
 
-Application will be developed to run in either an exe format or a python script executable. 
-Code written will be pre-compiled and no tweaking needs to be performed unless the application is running incorrectly.
-Application will either be run as an administrator in exe format or run through the terminal ./script.py
+This application is developed using PowerShell scripts and will be compiled into a single executable using PS2EXE. 
+This application must be run using administrator privileges when opening the .exe. A Windows Form should open and the user can select the options they would like before running the script for each section. The GUI is modular and each section will have its own interface and button to execute the script. To learn more details please see the user interface section in the requirements document. 
 
 ## Usage
 
-Clean Up (Unused System Files) \
-Defragmentation (Hardware) \
-Vulnerability Checker (Checks for Generic Vulnerabilities) \
-Power Optimizer (Power Optimization Tweaks) \
-Software Version Checker (Checks Software Version Numbers for Vulnerabilities)
+System Clean Up (Unused System Files) \
+Performance Optimizations (Changes Registry for performance booster) \ 
+Security Check and Hardening (Checks for Generic Vulnerabilities and Optional System Hardening) \
+Software Version Checker (Checks Software Version Numbers for Vulnerabilities using external NVD CVE)   
 
 ## Options
 
