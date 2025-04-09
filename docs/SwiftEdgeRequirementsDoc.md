@@ -77,17 +77,17 @@ SwiftEdge Security aligns with broader educational and practical goals by offeri
 
 ### 1.3 Definitions, Acronyms and Abbreviations
 
-GUI: Graphical User Interface  
-SRD: Software Requirements Document  
-IT: Information Technology  
-API: Application Programming Interface  
-CVE: Common Vulnerabilities and Exposures  
-NVD: National Vulnerability Database  
-Powershell: 	A command-line shell and scripting language designed for system admin tasks in Windows.  
-PS2EXE: 	A third-party PowerShell module used to compile .ps1 scripts into standalone Windows executable (.exe) files.  
-Windows Forms: A GUI framework in the .NET platform used for building desktop interfaces, accessible through PowerShell.  
-Module: A specific functional unit within SwiftEdge Security (e.g., Performance, Security, Cleanup, or Vulnerability Scan).  
-Standalone Executable: A self-contained application that does not require the installation of external frameworks to run.  
+**GUI:** Graphical User Interface  
+**SRD:** Software Requirements Document  
+**IT:** Information Technology  
+**API:** Application Programming Interface  
+**CVE:** Common Vulnerabilities and Exposures  
+**NVD:** National Vulnerability Database  
+**Powershell:** 	A command-line shell and scripting language designed for system admin tasks in Windows.  
+**PS2EXE:** 	A third-party PowerShell module used to compile .ps1 scripts into standalone Windows executable (.exe) files.  
+**Windows Forms:** A GUI framework in the .NET platform used for building desktop interfaces, accessible through PowerShell.  
+**Module:** A specific functional unit within SwiftEdge Security (e.g., Performance, Security, Cleanup, or Vulnerability Scan).  
+**Standalone Executable:** A self-contained application that does not require the installation of external frameworks to run.  
 
 ### 1.4 References
 This Software Requirements Document (SRD) does not rely on any previously established vision or scope document. All project-related references, including external tools, APIs, and third-party components, are included in Section 5 – References.
