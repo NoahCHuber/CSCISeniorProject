@@ -76,6 +76,7 @@ Key deliverables for this version (v1.0) include:
 SwiftEdge Security aligns with broader educational and practical goals by offering a real-world cybersecurity solution that demonstrates scripting, GUI design, API integration, and system administration techniques, all while addressing key points in day-to-day Windows system management.
 
 ### 1.3 Definitions, Acronyms and Abbreviations
+> Below are definitions, acronyms, or abbreviations used through the SRD.
 
 **GUI:** Graphical User Interface  
 **SRD:** Software Requirements Document  
@@ -90,7 +91,7 @@ SwiftEdge Security aligns with broader educational and practical goals by offeri
 **Standalone Executable:** A self-contained application that does not require the installation of external frameworks to run.  
 
 ### 1.4 References
-This Software Requirements Document (SRD) does not rely on any previously established vision or scope document. All project-related references, including external tools, APIs, and third-party components, are included in Section 5 – References.
+> This Software Requirements Document (SRD) does not rely on any previously established vision or scope document. All project-related references, including external tools, APIs, and third-party components, are included in Section 5 – References.
 
 ### 1.5 Document Overview
 This document is structured to comprehensively define the requirements for the SwiftEdge Security software. It is organized to follow industry-standard software engineering practices to ensure clarity, traceability, and completeness throughout the software development lifecycle. Below are the sections of this document with a brief overview of what each section contains. 
@@ -108,18 +109,70 @@ This document is structured to comprehensively define the requirements for the S
 > This section should describe the general factors that affect the product and its requirements. This section does not state specific requirements. Instead, it provides a background for those requirements, which are defined in detail in Section 3, and makes them easier to understand.
 
 ### 2.1 Product Perspective
-Describe the context and origin of the product being specified in this SRS. For example, state whether this product is a follow-on member of a product family, a replacement for certain existing systems, or a new, self-contained product. If the SRS defines a component of a larger system, relate the requirements of the larger system to the functionality of this software and identify interfaces between the two. A simple diagram that shows the major components of the overall system, subsystem interconnections, and external interfaces can be helpful.
+SwiftEdge Security is a new, self-contained system developed as a standalone utility for Windows 11 environments. It is not part of an existing software family and does not serve as a direct replacement for any commercial or enterprise-level product. However, it draws conceptual inspiration from tools like Chris Titus Tech’s Windows Utility, Talon by RavenDevTeam, and Azurite Optimizer, while providing a cleaner, more security-driven PowerShell-native alternative.
+
+This product is designed to consolidate multiple commonly used administrative and security actions—such as disabling bloatware, optimizing performance settings, and checking for known software vulnerabilities inside a unified user interface. By building the software entirely in PowerShell and packaging it with PS2EXE, SwiftEdge Security eliminates the need for Python runtimes, Python wrapping with Nuitka, third-party debloaters, and manual PowerShell script execution.
+
+**There are no direct dependencies on other systems. However, it does interface with:**
+- The Windows Registry (for performance and privacy tweaks),
+- The Windows Service Controller (to manage and disable services),
+- The NVD API (to retrieve vulnerability data based on installed software),
+- Local system components like Power Plans, Disk Cleanup, Defragmentation, and Temp File Directories.
 
 ### 2.2 Product Functions
-Summarize the major functions the product must perform or must let the user perform. Details will be provided in Section 3, so only a high level summary (such as a bullet list) is needed here. Organize the functions to make them understandable to any reader of the SRS. A picture of the major groups of related requirements and how they relate, such as a top level data flow diagram or object class diagram, is often effective.
+> SwiftEdge Security provides a modular interface that enables users to perform common system maintenance, optimization, and security tasks on Windows 11 systems. Each function is encapsulated within its own script and is accessible via a centralized GUI.
+
+**At a high level, the product must allow users to:**
+*Performance Optimization*
+- Enable the High Performance or Ultimate Performance power plan. 
+- Disable non-essential services such as SysMain and Windows Search.
+- Disable background apps, animations, and transparency effects.
+- Optimize registry settings for boot and responsiveness improvements.
+
+*Security Hardening*
+- Disable vulnerable or unnecessary services (e.g., SMBv1, Remote Assistance).
+- Enable key Windows Defender features like tamper protection and memory integrity.
+- Apply firewall or system-level security tweaks to reduce attack surface.
+- Offer the option to create a System Restore Point before applying changes.
+
+*System Cleanup*
+- Clear system temp folders and Windows Update caches.
+- Remove unused or unwanted built-in Windows applications.
+- Clear Event Viewer logs and optionally disable hibernation.
+- Free up storage by automating disk cleanup and emptying the recycle bin.
+
+*Vulnerability Scanning*
+- Detect installed applications and retrieve their version numbers.
+- Query open-source CVE databases (e.g., NVD API) to identify known vulnerabilities.
+- Display CVE results with severity scores and summaries.
+- Allow export of scan results to CSV or TXT.
+
+*User Interface and Workflow*
+- Provide a tab-based GUI built in PowerShell using Windows Forms.
+- Require administrative privileges for critical operations.
+- Display status and result feedback within the GUI.
+- Function as a standalone EXE file requiring no third-party framework installation.
 
 ### 2.3 Product Constraints
-This subsection should provide a general description of any other items that will limit the developer’s options. These may include:  
+> The following constraints define limitations that impact the design, development, or implementation of SwiftEdge Security:
 
-* Interfaces to users, other applications or hardware.  
-* Quality of service constraints.  
-* Standards compliance.  
-* Constraints around design or implementation.
+**Interface Constraints:**
+- The graphical user interface (GUI) must be implemented using Windows Forms within PowerShell, limiting the available design flexibility compared to full GUIs like Tkinter, .NET, or other web-based frameworks.
+- All modules must be accessible through a tabbed layout, restricting deeper nested features or advanced navigation models.
+The application will run only on Windows 11 (64-bit) systems and does not support macOS or Linux environments.
+
+**Quality of Service Constraints:**
+- All actions must complete with minimal delay (under 30 seconds), particularly on low-end systems with 4GB RAM and dual-core processors.
+- Vulnerability scanning requires internet access and may be limited by API rate limits or response time from external databases.
+
+**Standards and Compliance Constraints:**
+- PowerShell scripts must comply with Windows Execution Policy and may require elevated privileges (Administrator access) to perform system-level changes.
+- When deployed in educational or institutional settings, the tool must not violate FERPA, PII handling guidelines, or local IT usage policies.
+
+**Design and Implementation Constraints:**
+- The application must be built using only PowerShell 5.1+ without relying on third-party frameworks such as Python, Node.js, or compiled .NET projects.
+- Final distribution must be in the form of a standalone executable created with PS2EXE, requiring all features to be embedded within a single compiled script.
+- Modules must remain functionally independent, avoiding shared state or dependencies across performance, security, cleanup, or scanning functions.
 
 ### 2.4 User Characteristics
 Identify the various user classes that you anticipate will use this product. User classes may be differentiated based on frequency of use, subset of product functions used, technical expertise, security or privilege levels, educational level, or experience. Describe the pertinent characteristics of each user class. Certain requirements may pertain only to certain user classes. Distinguish the most important user classes for this product from those who are less important to satisfy.
