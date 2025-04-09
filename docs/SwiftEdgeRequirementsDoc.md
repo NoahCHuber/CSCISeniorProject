@@ -46,8 +46,8 @@ Table of Contents
   * 4.1 [Product Testing and Verification](#41-product-testing-and-verification)
 * 5 [References](#5-references)
   * 5.1 [Documentation](#51-documentation)
-  * 5.2 [Github Repositories](#52-githubrepos)
-  * 5.3 [BAD EXAMPLES OF SOFTWARE](#53-bad-software)
+  * 5.2 [Github Repositories](#52-github-repositories)
+  * 5.3 [BAD EXAMPLES OF SOFTWARE](#53-bad-examples-of-software)
 
 ## Revision History
 |  Name(s)  |    Date    |    Reason For Changes   |   Version   |
