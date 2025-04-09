@@ -12,7 +12,7 @@ Table of Contents
 * 1 [Introduction](#1-introduction)
   * 1.1 [Document Purpose](#11-document-purpose)
   * 1.2 [Product Scope](#12-product-scope)
-  * 1.3 [Definitions, Acronyms and Abbreviations](#13-definitions-acronyms-and-abbreviations)
+  * 1.3 [Definitions, Acronyms, and Abbreviations](#13-definitions-acronyms-and-abbreviations)
   * 1.4 [References](#14-references)
   * 1.5 [Document Overview](#15-document-overview)
 * 2 [Product Overview](#2-product-overview)
@@ -44,7 +44,7 @@ Table of Contents
     * 3.5.7 [Deadline](#357-deadline)
     * 3.5.8 [Proof of Concept](#358-proof-of-concept)
 * 4 [Verification](#4-verification)
-* 5 [Appendixes](#5-appendixes)
+* 5 [References](#5-references)
 
 ## Revision History
 |  Name(s)  |    Date    |    Reason For Changes   |   Version   |
@@ -56,23 +56,53 @@ Table of Contents
 ## 1. Introduction
 This document defines the system requirements for SwiftEdge Security, a modular, GUI-based Windows utility designed to improve system performance, enhance security, perform cleanup operations, and check for known vulnerabilities. Developed entirely in PowerShell with a Windows Forms front end, this tool provides users with a streamlined interface and powerful functionality—all packaged as a standalone executable.
 
-The purpose of this Software Requirements Document (SRD) is to outline both the functional and non-functional requirements of SwiftEdge Security, including performance targets, security expectations, user characteristics, system interfaces, and architectural constraints. It serves as a single point of reference for stakeholders, developers, and testers to ensure a consistent understanding of the system’s scope, behavior, and expected outcomes.
-
-This document is intended for software developers, academic advisors, and IT professionals who are interested in the design, implementation, and validation of the application. This document includes references to any external APIs, packaging tools, and third-party components used during development.
+This Software Requirements Document (SRD) aims to outline the functional and non-functional requirements of SwiftEdge Security, including performance targets, security expectations, user interaction, system interfaces, and constraints. It serves as a single reference point for developers, testers, and academic advisors to ensure a consistent understanding of the system’s scope, behavior, and expected outcomes. This document is intended for software developers, academic advisors, and IT professionals who are interested in the design, implementation, and implications of the application. This document also includes references for external APIs, packaging tools, and third-party components used during development. 
 
 ### 1.1 Document Purpose
-This document aims to define the software requirements for SwiftEdge Security & Optimizer, a performance and security utility for Windows systems. The application is developed using PowerShell and utilizes Windows Forms to deliver a sleek, modern, and minimal GUI. SwiftEdge Security is designed to improve performance, enhance system security, perform system cleanups, and provide vulnerability scanning by interfacing with open-source CVE APIs. It is built to be a one-stop solution for IT professionals, cybersecurity students, and system administrators who need a lightweight yet powerful tool without external frameworks.
+This document aims to define the software requirements for SwiftEdge Security & Optimizer, a performance and security utility for Windows systems. The application is developed using PowerShell and utilizes Windows Forms to deliver a sleek, modern, and minimal GUI. SwiftEdge Security is designed to improve performance, enhance system security, perform system cleanups, and provide vulnerability scanning by interfacing with open-source Common Vulnerabilities and Exposures(CVE) APIs. It is built to be a one-stop solution for IT professionals, cybersecurity students, and system administrators who need a lightweight yet powerful tool without external frameworks.
 
 ### 1.2 Product Scope
-Identify the product whose software requirements are specified in this document, including the revision or release number. Explain what the product that is covered by this SRS will do, particularly if this SRS describes only part of the system or a single subsystem. Provide a short description of the software being specified and its purpose, including relevant benefits, objectives, and goals. Relate the software to corporate goals or business strategies. If a separate vision and scope document is available, refer to it rather than duplicate its contents here.
+SwiftEdge Security is a modular utility for Windows designed to streamline system maintenance and protection through four key functions: performance tuning, security hardening, system cleanup, and vulnerability scanning. Each module operates independently, offering users a focused experience through a unified PowerShell-based GUI. 
+This software operates as a self-contained executable that performs real-time system configuration tasks using native Windows features and external vulnerability databases. Its intended use is for enhancing local machine performance and reducing exposure to known vulnerabilities—without requiring deep system knowledge or large, third-party frameworks.
+
+Key deliverables for this version (v1.0) include:
+- Provide a lightweight, portable, and efficient tool for optimizing and securing Windows systems.
+- Replace the need for multiple standalone scripts or tools by consolidating core administrative tasks into a unified interface.
+- Offer open-source vulnerability checking through integration with APIs like the National Vulnerability Database (NVD) and Vulners.
+- Deliver a clean and professional GUI experience without requiring .NET installation or third-party frameworks—ensuring minimal dependencies and maximum accessibility.
+- Compatibility with Windows 11.
+- A Windows Forms-based GUI with tab navigation.
+
+SwiftEdge Security aligns with broader educational and practical goals by offering a real-world cybersecurity solution that demonstrates scripting, GUI design, API integration, and system administration techniques, all while addressing key points in day-to-day Windows system management.
 
 ### 1.3 Definitions, Acronyms and Abbreviations
 
+GUI: Graphical User Interface
+SRD: Software Requirements Document
+IT: Information Technology
+API: Application Programming Interface
+CVE: Common Vulnerabilities and Exposures
+NVD: National Vulnerability Database
+Powershell: 	A command-line shell and scripting language designed for system admin tasks in Windows.
+PS2EXE: 	A third-party PowerShell module used to compile .ps1 scripts into standalone Windows executable (.exe) files.
+Windows Forms: A GUI framework in the .NET platform used for building desktop interfaces, accessible through PowerShell.
+Module: A specific functional unit within SwiftEdge Security (e.g., Performance, Security, Cleanup, or Vulnerability Scan).
+Standalone Executable: A self-contained application that does not require the installation of external frameworks to run.
+
 ### 1.4 References
-List any other documents or Web addresses to which this SRS refers. These may include user interface style guides, contracts, standards, system requirements specifications, use case documents, or a vision and scope document. Provide enough information so that the reader could access a copy of each reference, including title, author, version number, date, and source or location.
+This Software Requirements Document (SRD) does not rely on any previously established vision or scope document. All project-related references, including external tools, APIs, and third-party components, are included in Section 5 – References.
 
 ### 1.5 Document Overview
-Describe what the rest of the document contains and how it is organized.
+This document is structured to comprehensively define the requirements for the SwiftEdge Security software. It is organized to follow industry-standard software engineering practices to ensure clarity, traceability, and completeness throughout the software development lifecycle. Below are the sections of this document with a brief overview of what each section contains. 
+
+**Section 2 – Product Overview:** Provides general background information, including the system's origin, its major functionalities, external constraints, user characteristics, assumptions, and how requirements are distributed across the software's components.
+
+**Section 3 – Requirements:** Details both the functional and non-functional requirements of the system. This includes software features, quality attributes (such as performance, reliability, and security), and compliance with standards or regulations. External interfaces and design constraints are also described here.
+
+**Section 4 – Verification:** Outlines how the software will be tested and validated against the requirements specified in Section 3. It includes the planned verification methods and criteria for determining successful implementation.
+(Due to the size of this project, actual verification of the software will not be filed)
+
+**Section 5 – Appendices:** Contains any supplemental material, such as references, diagrams, mockups, glossaries, and additional documentation that support or extend the main content of the SRD.
 
 ## 2. Product Overview
 > This section should describe the general factors that affect the product and its requirements. This section does not state specific requirements. Instead, it provides a background for those requirements, which are defined in detail in Section 3, and makes them easier to understand.
@@ -197,4 +227,15 @@ Specify schedule for delivery of the software product.
 <!-- TODO: give more guidance, similar to section 3 -->
 <!-- ieee 15288:2015 -->
 
-## 5. Appendixes
+## 5. References
+Style Guide for SRD: [SRS-Template - Jam01](https://github.com/jam01/SRS-Template/tree/master) 
+PS2EXE PS1 Compiler: [PS2EXE - MScholtes](https://github.com/MScholtes/PS2EXE) 
+NIST NVD Developer Database: [NIST NVD Database](https://nvd.nist.gov/developers/start-here) 
+CVE Program: [CVE Program](https://www.cve.org/) 
+Chris Titus WinUtil (Inspiration): [ChrisTitus - WinUtil](https://christitus.com/windows-tool/) 
+RavenDevTeam Talon (Inspiration): [RavenDevTeam - Talon](https://ravendevteam.org/software/talon/) 
+Avast Security (GUI Inspiration): [Avast Security](https://www.avast.com/) 
+Norton 360 (Software Version Scanning Inspiration): [Norton360](https://us.norton.com/products/norton-360-standard) 
+Azurite Optimizer (WARNING: MALWARE) (Although it is malware it was an original inspiration for this project)
+**Due to Azurite being malware or suspicious activity, I will not be including the download link.**
+**OTHER REFERENCES ADD HERE**
