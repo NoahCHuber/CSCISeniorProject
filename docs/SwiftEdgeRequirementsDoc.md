@@ -411,10 +411,11 @@ RavenDevTeam Talon (Inspiration): [RavenDevTeam - Talon](https://github.com/rave
 > Note: that the software listed below is either suspicious or malware, the design and idea behind the project was an original inspiration to making a secure optimizer. These are bad examples of performance or security optimizers and should not be installed or followed for creating secure optimizing software.
 
 Azurite Optimizer (WARNING: MALWARE) (Although it is malware it was an original inspiration for this project due to the idea/design)  
-**Due to Azurite being malware or suspicious activity, I will not be including the download link.**  
+**Due to Azurite being malware or suspicious activity, I will not be including the download link.**    
+
 8 PC Optimizers that are wrapped as malware. [Beware of these 8 PC tune-up tools](https://www.fortect.com/malware-damage/pc-tuneup-software-malware/?srsltid=AfmBOopUsrZr6Lp9m9m6dvqGR7q1RNxFhEN8nOjlVGoIciYyk3rwpeQG)
 
-> Note: Talon by the RavenDevTeam was considered malware by AVs and other cybersecurity professionals. However, after digging and carving out the file it became clear that the reason Talon is flagged as malware by AVs is due to the wrapper used to wrap the Python code as an executable. Talon uses Nuitka which wraps the Python code and makes it difficult for AVs and other professionals to read and understand what the program does. However, RavenDevTeam has all of the code in the GitHub repository to view and go through to understand exactly what the program does. 
-ANYRUN [ANYRUN Malware Analysis](https://any.run/report/c41c420a472489de4f13c849b3baeb169f6fa0924a2abbb7a4bce57eb08ae9fa/590776c0-408d-4877-a6fb-1aa00a5fdc22)
-
+> Note: Talon by the RavenDevTeam was considered malware by AVs and other cybersecurity professionals. However, after digging and carving out the file it became clear that the reason Talon is flagged as malware by AVs is due to the wrapper used to wrap the Python code as an executable. Talon uses Nuitka which wraps the Python code and makes it difficult for AVs and other professionals to read and understand what the program does. However, RavenDevTeam has all of the code in the GitHub repository to view and go through to understand exactly what the program does.
+John Hammond Analysis of Talon: [John Hammond - But is it malware?](https://youtu.be/1VdscQ8QCkY?si=ol7p8WguGWY5fv8E)   
+ANYRUN Analysis on Talon: [ANYRUN Malware Analysis](https://any.run/report/c41c420a472489de4f13c849b3baeb169f6fa0924a2abbb7a4bce57eb08ae9fa/590776c0-408d-4877-a6fb-1aa00a5fdc22) 
 **OTHER REFERENCES ADD HERE**  
