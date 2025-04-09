@@ -222,10 +222,61 @@ Specify schedule for delivery of the software product.
 <!-- TODO: come up with a description -->
 
 ## 4. Verification
-> This section provides the verification approaches and methods planned to qualify the software. The information items for verification are recommended to be given in a parallel manner with the requirement items in Section 3. The purpose of the verification process is to provide objective evidence that a system or system element fulfills its specified requirements and characteristics.
+> This section outlines the key validation and testing criteria for SwiftEdge Security. Each feature module must function independently and correctly, without requiring external runtimes or manual configuration. The following checklist ensures that all performance, security, cleanup, and vulnerability scan operations perform as expected in the final executable version.
 
-<!-- TODO: give more guidance, similar to section 3 -->
-<!-- ieee 15288:2015 -->
+### 4.1 Product Testing and Verification
+
+**General Application Behavior:**
+| *Test Case*	                                   | *Expected Result*                                         |
+| ---------------------------------------------- | --------------------------------------------------------- |
+| Application launches without errors	           | Main GUI loads with all tabs and buttons functional       |
+| GUI layout renders properly              	     | All text is visible and no elements are clipped           |
+| Runs without requiring external dependencies	 | No errors related to ps1, .NET Core, or external database |
+| Elevated permissions are requested when needed | UAC prompt appears for operations requiring admin rights  |
+| Log files are generated when enabled	         | Logs record operation timestamps and success/failure      |   
+
+**Performance Module Checklist:**
+| *Test Case*	                                  | *Expected Result*                                   |
+| --------------------------------------------- | --------------------------------------------------- |
+| A high-performance power plan is applied	    | Power plan changes are confirmed via powercfg       |
+| SysMain and WSearch services are disabled	    | Services are stopped and set to Disabled            |
+| Background apps disabled in registry	        | Registry key reflects the correct setting           |
+| Visual effects are turned off	                | Animations and transparency are disabled            |
+| Startup delay removed	                        | Registry key StartupDelayInMSec is set to 0         |
+| Indexing is turned off on C: drive	          | Indexing checkbox is cleared under drive properties |
+| Explorer restart button functions	            | Explorer restarts without crashing                  |   
+
+**Security Hardening Checklist:**
+| *Test Case*	                                  | *Expected Result*                                                 | 
+| --------------------------------------------- | ----------------------------------------------------------------- |
+| SMBv1 is disabled	                            | Feature is not listed in Windows Features                         | 
+| Remote assistance and registry are disabled	  | Services are stopped and the registry reflects the disabled state | 
+| Windows Defender settings are updated	        | Tamper protection and cloud protection are enabled                | 
+| A system restore point is created	            | Restore point is visible in the System Restore panel              | 
+| Telemetry and tracking features are off	      | Data collection registry keys are set correctly                   | 
+
+**Cleanup Module Checklist:**
+| *Test Case*	                              | *Expected Result*                                       | 
+| ----------------------------------------- | ------------------------------------------------------- |
+| Temporary folders are emptied	            | %TEMP% and C:\Windows\Temp show a reduced file count    | 
+| Event Viewer logs are cleared	            | Application/System/Security logs show no recent entries | 
+| Windows Update cache is cleared	          | SoftwareDistribution\Download folder is empty           | 
+| Preinstalled apps removed	                | App list no longer includes OneDrive/Xbox               | 
+| RecycleBin is emptied	                    | Bin is confirmed to be empty                            |    
+
+**Vulnerability Scanning Checklist:**
+| *Test Case*	                               | *Expected Result*                                  | 
+| ------------------------------------------ | -------------------------------------------------- |
+| The installed software list is retrieved	 | The List shows app names and version numbers       | 
+| NVD API is queried successfully	           | CVEs with IDs, summaries, and CVSS scores appear   | 
+| Optional Vulners API returns valid         | JSON	Results that match expected software versions | 
+| Export to TXT or CSV works                 | File is created with scan results                  |    
+| No connection = graceful failure	         | App shows a message without crashing               |     
+
+**Pass/Fail Criteria:**   \
+*Pass:* All core modules are complete with no errors, changes confirmed, and scan results displayed or exported.
+
+*Fail:* Application crashes do not apply expected system changes or do not retrieve vulnerability data when online.
 
 ## 5. References
 Style Guide for SRD: [SRS-Template - Jam01](https://github.com/jam01/SRS-Template/tree/master)   
