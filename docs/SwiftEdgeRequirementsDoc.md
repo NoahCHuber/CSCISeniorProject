@@ -87,6 +87,7 @@ SwiftEdge Security aligns with broader educational and practical goals by offeri
 **API:** Application Programming Interface  
 **CVE:** Common Vulnerabilities and Exposures  
 **NVD:** National Vulnerability Database  
+**AV:** Anti-Virus  
 **Powershell:** 	A command-line shell and scripting language designed for system admin tasks in Windows.  
 **PS2EXE:** 	A third-party PowerShell module used to compile .ps1 scripts into standalone Windows executable (.exe) files.  
 **Windows Forms:** A GUI framework in the .NET platform used for building desktop interfaces, accessible through PowerShell.  
@@ -398,16 +399,22 @@ NIST NVD Developer Database: [NIST NVD Database](https://nvd.nist.gov/developers
 CVE Program: [CVE Program](https://www.cve.org/)   
 Avast Security (GUI Inspiration): [Avast Security](https://www.avast.com/)   
 Norton 360 (Software Version Scanning Inspiration): [Norton360](https://us.norton.com/products/norton-360-standard)   
-
-### 5.2 Github Repositories
-PS2EXE PS1 Compiler: [PS2EXE - MScholtes](https://github.com/MScholtes/PS2EXE)   
 Chris Titus WinUtil (Inspiration): [ChrisTitus - WinUtil](https://christitus.com/windows-tool/)   
 RavenDevTeam Talon (Inspiration): [RavenDevTeam - Talon](https://ravendevteam.org/software/talon/)   
 
+### 5.2 Github Repositories
+PS2EXE PS1 Compiler: [PS2EXE - MScholtes](https://github.com/MScholtes/PS2EXE)   
+Chris Titus WinUtil (Inspiration): [ChrisTitus - WinUtil](https://github.com/ChrisTitusTech/winutil)   
+RavenDevTeam Talon (Inspiration): [RavenDevTeam - Talon](https://github.com/ravendevteam/talon)   
+
 ### 5.3 BAD EXAMPLES OF SOFTWARE
-> Note that the software listed below is either suspicious or malware, the design and idea behind the project was an original inspiration to making a secure optimizer. These are bad examples of performance or security optimizers and should not be installed or followed for creating secure optimizing software.
+> Note: that the software listed below is either suspicious or malware, the design and idea behind the project was an original inspiration to making a secure optimizer. These are bad examples of performance or security optimizers and should not be installed or followed for creating secure optimizing software.
 
 Azurite Optimizer (WARNING: MALWARE) (Although it is malware it was an original inspiration for this project due to the idea/design)  
 **Due to Azurite being malware or suspicious activity, I will not be including the download link.**  
+8 PC Optimizers that are wrapped as malware. [Beware of these 8 PC tune-up tools](https://www.fortect.com/malware-damage/pc-tuneup-software-malware/?srsltid=AfmBOopUsrZr6Lp9m9m6dvqGR7q1RNxFhEN8nOjlVGoIciYyk3rwpeQG)
+
+> Note: Talon by the RavenDevTeam was considered malware by AVs and other cybersecurity professionals. However, after digging and carving out the file it became clear that the reason Talon is flagged as malware by AVs is due to the wrapper used to wrap the Python code as an executable. Talon uses Nuitka which wraps the Python code and makes it difficult for AVs and other professionals to read and understand what the program does. However, RavenDevTeam has all of the code in the GitHub repository to view and go through to understand exactly what the program does. 
+ANYRUN [ANYRUN Malware Analysis](https://any.run/report/c41c420a472489de4f13c849b3baeb169f6fa0924a2abbb7a4bce57eb08ae9fa/590776c0-408d-4877-a6fb-1aa00a5fdc22)
 
 **OTHER REFERENCES ADD HERE**  
