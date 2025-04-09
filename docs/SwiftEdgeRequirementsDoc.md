@@ -43,8 +43,11 @@ Table of Contents
     * 3.5.7 [Deadline](#357-deadline)
     * 3.5.8 [Proof of Concept](#358-proof-of-concept)
 * 4 [Verification](#4-verification)
-  * 4.1 [Product Testing and Verification](#41-Product-Testing-and-Verification)
+  * 4.1 [Product Testing and Verification](#41-product-testing-and-verification)
 * 5 [References](#5-references)
+  * 5.1 [Documentation](#51-documentation)
+  * 5.2 [Github Repositories](#52-githubrepos)
+  * 5.3 [BAD EXAMPLES OF SOFTWARE](#53-bad-software)
 
 ## Revision History
 |  Name(s)  |    Date    |    Reason For Changes   |   Version   |
@@ -387,14 +390,24 @@ Specify schedule for delivery of the software product.
 *Fail:* Application crashes do not apply expected system changes or do not retrieve vulnerability data when online.
 
 ## 5. References
+> References listed below are split between documentation and GitHub repositories for inspired projects.
+
+### 5.1 Documentation
 Style Guide for SRD: [SRS-Template - Jam01](https://github.com/jam01/SRS-Template/tree/master)   
-PS2EXE PS1 Compiler: [PS2EXE - MScholtes](https://github.com/MScholtes/PS2EXE)   
 NIST NVD Developer Database: [NIST NVD Database](https://nvd.nist.gov/developers/start-here)   
 CVE Program: [CVE Program](https://www.cve.org/)   
-Chris Titus WinUtil (Inspiration): [ChrisTitus - WinUtil](https://christitus.com/windows-tool/)   
-RavenDevTeam Talon (Inspiration): [RavenDevTeam - Talon](https://ravendevteam.org/software/talon/)   
 Avast Security (GUI Inspiration): [Avast Security](https://www.avast.com/)   
 Norton 360 (Software Version Scanning Inspiration): [Norton360](https://us.norton.com/products/norton-360-standard)   
-Azurite Optimizer (WARNING: MALWARE) (Although it is malware it was an original inspiration for this project)  
+
+### 5.2 Github Repositories
+PS2EXE PS1 Compiler: [PS2EXE - MScholtes](https://github.com/MScholtes/PS2EXE)   
+Chris Titus WinUtil (Inspiration): [ChrisTitus - WinUtil](https://christitus.com/windows-tool/)   
+RavenDevTeam Talon (Inspiration): [RavenDevTeam - Talon](https://ravendevteam.org/software/talon/)   
+
+### 5.3 BAD EXAMPLES OF SOFTWARE
+> Note that the software listed below is either suspicious or malware, the design and idea behind the project was an original inspiration to making a secure optimizer. These are bad examples of performance or security optimizers and should not be installed or followed for creating secure optimizing software.
+
+Azurite Optimizer (WARNING: MALWARE) (Although it is malware it was an original inspiration for this project due to the idea/design)  
 **Due to Azurite being malware or suspicious activity, I will not be including the download link.**  
+
 **OTHER REFERENCES ADD HERE**  
