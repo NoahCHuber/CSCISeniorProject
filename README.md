@@ -123,7 +123,7 @@ Software Version Checker (Checks Software Version Numbers for Vulnerabilities us
 | Export to TXT or CSV works                 | File is created with scan results                  |    
 | No connection = graceful failure	         | App shows a message without crashing               |     
 
-**Pass/Fail Criteria:**
+**Pass/Fail Criteria:**   \
 *Pass:* All core modules are complete with no errors, changes confirmed, and scan results displayed or exported.
 
 *Fail:* Application crashes do not apply expected system changes or do not retrieve vulnerability data when online.
