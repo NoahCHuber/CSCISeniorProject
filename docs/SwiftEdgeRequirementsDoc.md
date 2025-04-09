@@ -94,16 +94,22 @@ SwiftEdge Security aligns with broader educational and practical goals by offeri
 > This Software Requirements Document (SRD) does not rely on any previously established vision or scope document. All project-related references, including external tools, APIs, and third-party components, are included in Section 5 – References.
 
 ### 1.5 Document Overview
-This document is structured to comprehensively define the requirements for the SwiftEdge Security software. It is organized to follow industry-standard software engineering practices to ensure clarity, traceability, and completeness throughout the software development lifecycle. Below are the sections of this document with a brief overview of what each section contains. 
+>This document is structured to comprehensively define the requirements for the SwiftEdge Security software. It is organized to follow industry-standard software engineering practices to ensure clarity, traceability, and completeness throughout the software development lifecycle.
 
-**Section 2 – Product Overview:** Provides general background information, including the system's origin, its major functionalities, external constraints, user characteristics, assumptions, and how requirements are distributed across the software's components.
+*Below are the sections of this document with a brief overview of what each section contains.*
 
-**Section 3 – Requirements:** Details both the functional and non-functional requirements of the system. This includes software features, quality attributes (such as performance, reliability, and security), and compliance with standards or regulations. External interfaces and design constraints are also described here.
+**Section 2 – Product Overview:** 
+*Provides general background information, including the system's origin, its major functionalities, external constraints, user characteristics, assumptions, and how requirements are distributed across the software's components.*
 
-**Section 4 – Verification:** Outlines how the software will be tested and validated against the requirements specified in Section 3. It includes the planned verification methods and criteria for determining successful implementation.
-(Due to the size of this project, actual verification of the software will not be filed)
+**Section 3 – Requirements:** 
+*Details both the functional and non-functional requirements of the system. This includes software features, quality attributes (such as performance, reliability, and security), and compliance with standards or regulations. External interfaces and design constraints are also described here.*
 
-**Section 5 – Appendices:** Contains any supplemental material, such as references, diagrams, mockups, glossaries, and additional documentation that support or extend the main content of the SRD.
+**Section 4 – Verification:** 
+*Outlines how the software will be tested and validated against the requirements specified in Section 3. It includes the planned verification methods and criteria for determining successful implementation.
+(Due to the size of this project, actual verification of the software will not be filed)*
+
+**Section 5 – Appendices:** 
+*Contains any supplemental material, such as references, diagrams, mockups, glossaries, and additional documentation that support or extend the main content of the SRD.*
 
 ## 2. Product Overview
 > This section should describe the general factors that affect the product and its requirements. This section does not state specific requirements. Instead, it provides a background for those requirements, which are defined in detail in Section 3, and makes them easier to understand.
@@ -123,6 +129,7 @@ This product is designed to consolidate multiple commonly used administrative an
 > SwiftEdge Security provides a modular interface that enables users to perform common system maintenance, optimization, and security tasks on Windows 11 systems. Each function is encapsulated within its own script and is accessible via a centralized GUI.
 
 **At a high level, the product must allow users to:**   
+
 *Performance Optimization*
 - Enable the High Performance or Ultimate Performance power plan. 
 - Disable non-essential services such as SysMain and Windows Search.
@@ -215,7 +222,7 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 >The development and functionality of SwiftEdge Security rely on several assumptions and external dependencies. These are not guaranteed conditions but are considered true for the successful design, testing, and use of the software. If any of these assumptions prove to be invalid or these dependencies change, they may impact the final requirements or functionality of the system.
 
 **Assumptions:**
-- The end user will have administrative privileges on the Windows system in order to apply performance, security, and cleanup configurations.
+- The end user will have administrative privileges on the Windows system to apply performance, security, and cleanup configurations.
 - The operating environment is assumed to be Windows 11 (64-bit) or later, with PowerShell 5.1+ pre-installed.
 - The system will have access to the internet when using the Vulnerability Scanner module to query external APIs.
 - End users are expected to have basic to moderate familiarity with system maintenance tools and GUI-based applications.
