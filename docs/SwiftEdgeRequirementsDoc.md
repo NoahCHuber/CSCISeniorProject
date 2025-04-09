@@ -175,10 +175,63 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 - Modules must remain functionally independent, avoiding shared state or dependencies across performance, security, cleanup, or scanning functions.
 
 ### 2.4 User Characteristics
-Identify the various user classes that you anticipate will use this product. User classes may be differentiated based on frequency of use, subset of product functions used, technical expertise, security or privilege levels, educational level, or experience. Describe the pertinent characteristics of each user class. Certain requirements may pertain only to certain user classes. Distinguish the most important user classes for this product from those who are less important to satisfy.
+> SwiftEdge Security is designed with usability in mind, targeting a range of user classes with varying levels of technical expertise. The software’s simple, tab-based interface and modular structure allow it to serve both professional and non-professional users, with most functionality accessible in a few clicks. User groups are distinguished based on how frequently they use the tool, their level of system access, and their understanding of Windows system administration.
+
+**Primary User Classes:**
+**1. IT Professionals / System Administrators**
+**Role:** Maintain Windows systems in school districts, small businesses, or tech support environments.
+**Technical Skill Level:** Intermediate to advanced.
+**Frequency of Use:** Moderate to frequent.
+**Privileges:** Full administrative access.
+**Modules Used:** All (Performance, Security, Cleanup, Vulnerability Scan).
+**Priority Level:** High — this group is most critical to satisfy, as they will benefit the most from the tool’s full range of features.
+
+**2. Cybersecurity Students / Technical Interns**
+**Role:** Use SwiftEdge Security for learning, testing, or auditing basic vulnerabilities and configurations.
+**Technical Skill Level:** Moderate.
+**Frequency of Use:** Occasional or course-dependent.
+**Privileges:** May have admin access depending on system policy.
+**Modules Used:** Primarily Security and Vulnerability Scan.
+**Priority Level:** High — aligns with the educational purpose of the tool.
+
+**Secondary User Classes:**
+**3. Power Users / Tech Enthusiasts**
+**Role:** Use the tool to maintain personal machines or optimize performance.
+**Technical Skill Level:** Moderate (comfortable with system settings, but not scripting).
+**Frequency of Use:** Infrequent or as-needed basis.
+**Privileges:** Typically have admin rights on personal machines.
+**Modules Used:** Performance and Cleanup.
+**Priority Level:** Medium — important for usability and adoption but not the core focus.
+
+**4. Casual Users (Non-Technical):**
+**Role:** End users seeking a "one-click" cleanup or performance boost.
+**Technical Skill Level:** Basic.
+**Frequency of Use:** Rare.
+**Privileges:** May lack admin access.
+**Modules Used:** Mostly Cleanup; limited use of other tabs.
+**Priority Level:** Low — tool will still function for this group, but with limited results or without admin-required features.
 
 ### 2.5 Assumptions and Dependencies
-List any assumed factors (as opposed to known facts) that could affect the requirements stated in the SRS. These could include third-party or commercial components that you plan to use, issues around the development or operating environment, or constraints. The project could be affected if these assumptions are incorrect, are not shared, or change. Also identify any dependencies the project has on external factors, such as software components that you intend to reuse from another project, unless they are already documented elsewhere (for example, in the vision and scope document or the project plan).
+>The development and functionality of SwiftEdge Security rely on several assumptions and external dependencies. These are not guaranteed conditions but are considered true for the successful design, testing, and use of the software. If any of these assumptions prove to be invalid or these dependencies change, they may impact the final requirements or functionality of the system.
+
+**Assumptions:**
+- The end user will have administrative privileges on the Windows system in order to apply performance, security, and cleanup configurations.
+- The operating environment is assumed to be Windows 11 (64-bit) or later, with PowerShell 5.1+ pre-installed.
+- The system will have access to the internet when using the Vulnerability Scanner module to query external APIs.
+- End users are expected to have basic to moderate familiarity with system maintenance tools and GUI-based applications.
+- Windows will maintain consistent registry and service names (e.g., SysMain, DiagTrack) relevant to script logic.
+- The PS2EXE module used to compile the application into an .exe will remain compatible with PowerShell 5.1 and Windows Forms functionality.
+
+**Dependencies:**
+- NVD API is used to retrieve CVE information for the Vulnerability Scanner module. This dependency includes:
+- Continued availability and free access to the API.
+- Stability of response formats (JSON).
+- The application relies on several native Windows tools and services, including:
+- powercfg, Get-Service, Stop-Service, Get-ItemProperty, and cleanmgr.
+- All external scripts and modules (e.g., PS2EXE) must be downloadable and usable within the project’s timeframe.
+- No commercial libraries, SDKs, or paid APIs are required or integrated into the system.
+
+*These assumptions and dependencies form the basis for requirement decisions and software behavior. If any become invalid or unsupported, adjustments in requirements, testing, or distribution methods may be necessary.*
 
 ## 3. Requirements
 > This section specifies the software product's requirements. Specify all of the software requirements to a level of detail sufficient to enable designers to design a software system to satisfy those requirements, and to enable testers to test that the software system satisfies those requirements.
