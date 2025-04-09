@@ -77,17 +77,17 @@ SwiftEdge Security aligns with broader educational and practical goals by offeri
 
 ### 1.3 Definitions, Acronyms and Abbreviations
 
-GUI: Graphical User Interface
-SRD: Software Requirements Document
-IT: Information Technology
-API: Application Programming Interface
-CVE: Common Vulnerabilities and Exposures
-NVD: National Vulnerability Database
-Powershell: 	A command-line shell and scripting language designed for system admin tasks in Windows.
-PS2EXE: 	A third-party PowerShell module used to compile .ps1 scripts into standalone Windows executable (.exe) files.
-Windows Forms: A GUI framework in the .NET platform used for building desktop interfaces, accessible through PowerShell.
-Module: A specific functional unit within SwiftEdge Security (e.g., Performance, Security, Cleanup, or Vulnerability Scan).
-Standalone Executable: A self-contained application that does not require the installation of external frameworks to run.
+GUI: Graphical User Interface  
+SRD: Software Requirements Document  
+IT: Information Technology  
+API: Application Programming Interface  
+CVE: Common Vulnerabilities and Exposures  
+NVD: National Vulnerability Database  
+Powershell: 	A command-line shell and scripting language designed for system admin tasks in Windows.  
+PS2EXE: 	A third-party PowerShell module used to compile .ps1 scripts into standalone Windows executable (.exe) files.  
+Windows Forms: A GUI framework in the .NET platform used for building desktop interfaces, accessible through PowerShell.  
+Module: A specific functional unit within SwiftEdge Security (e.g., Performance, Security, Cleanup, or Vulnerability Scan).  
+Standalone Executable: A self-contained application that does not require the installation of external frameworks to run.  
 
 ### 1.4 References
 This Software Requirements Document (SRD) does not rely on any previously established vision or scope document. All project-related references, including external tools, APIs, and third-party components, are included in Section 5 – References.
@@ -228,14 +228,14 @@ Specify schedule for delivery of the software product.
 <!-- ieee 15288:2015 -->
 
 ## 5. References
-Style Guide for SRD: [SRS-Template - Jam01](https://github.com/jam01/SRS-Template/tree/master) 
-PS2EXE PS1 Compiler: [PS2EXE - MScholtes](https://github.com/MScholtes/PS2EXE) 
-NIST NVD Developer Database: [NIST NVD Database](https://nvd.nist.gov/developers/start-here) 
-CVE Program: [CVE Program](https://www.cve.org/) 
-Chris Titus WinUtil (Inspiration): [ChrisTitus - WinUtil](https://christitus.com/windows-tool/) 
-RavenDevTeam Talon (Inspiration): [RavenDevTeam - Talon](https://ravendevteam.org/software/talon/) 
-Avast Security (GUI Inspiration): [Avast Security](https://www.avast.com/) 
-Norton 360 (Software Version Scanning Inspiration): [Norton360](https://us.norton.com/products/norton-360-standard) 
-Azurite Optimizer (WARNING: MALWARE) (Although it is malware it was an original inspiration for this project)
-**Due to Azurite being malware or suspicious activity, I will not be including the download link.**
-**OTHER REFERENCES ADD HERE**
+Style Guide for SRD: [SRS-Template - Jam01](https://github.com/jam01/SRS-Template/tree/master)   
+PS2EXE PS1 Compiler: [PS2EXE - MScholtes](https://github.com/MScholtes/PS2EXE)   
+NIST NVD Developer Database: [NIST NVD Database](https://nvd.nist.gov/developers/start-here)   
+CVE Program: [CVE Program](https://www.cve.org/)   
+Chris Titus WinUtil (Inspiration): [ChrisTitus - WinUtil](https://christitus.com/windows-tool/)   
+RavenDevTeam Talon (Inspiration): [RavenDevTeam - Talon](https://ravendevteam.org/software/talon/)   
+Avast Security (GUI Inspiration): [Avast Security](https://www.avast.com/)   
+Norton 360 (Software Version Scanning Inspiration): [Norton360](https://us.norton.com/products/norton-360-standard)   
+Azurite Optimizer (WARNING: MALWARE) (Although it is malware it was an original inspiration for this project)  
+**Due to Azurite being malware or suspicious activity, I will not be including the download link.**  
+**OTHER REFERENCES ADD HERE**  
