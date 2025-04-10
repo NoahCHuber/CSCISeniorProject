@@ -53,33 +53,33 @@ Table of Contents
 |  Name(s)  |    Date    |    Reason For Changes   |   Version   |
 | --------- | ---------- | ----------------------- | ----------- |
 |   Swift   | 2025-08-04 | Intiial Requirments Doc |     1.0     |
-|           |            |                         |             |
+|   Daniel  | 2025-10-04 | Editing and Review      |     1.1     |
 |           |            |                         |             |
 
 ## 1. Introduction
 > This document defines the system requirements for SwiftEdge Security, a modular, GUI-based Windows utility designed to improve system performance, enhance security, perform cleanup operations, and check for known vulnerabilities. Developed entirely in PowerShell with a Windows Forms front end, this tool provides users with a streamlined interface and powerful functionality—all packaged as a standalone executable.
 
-This Software Requirements Document (SRD) aims to outline the functional and non-functional requirements of SwiftEdge Security, including performance targets, security expectations, user interaction, system interfaces, and constraints. It serves as a single reference point for developers, testers, and academic advisors to ensure a consistent understanding of the system’s scope, behavior, and expected outcomes. This document is intended for software developers, academic advisors, and IT professionals who are interested in the design, implementation, and implications of the application. This document also includes references for external APIs, packaging tools, and third-party components used during development. 
+This Software Requirements Document (SRD) aims to outline the functional and non-functional requirements of SwiftEdge Security, including performance targets, security expectations, user interaction, system interfaces, and constraints. It serves as a single reference point for developers, testers, and academic advisors to ensure a consistent understanding of the system’s scope, behavior, and expected outcomes. This document is intended for software developers, academic advisors, and IT professionals interested in the application's design, implementation, and implications. This document also includes references for external APIs, packaging tools, and third-party components used during development. 
 
 ### 1.1 Document Purpose
 This document aims to define the software requirements for SwiftEdge Security & Optimizer, a performance and security utility for Windows systems. The application is developed using PowerShell and utilizes Windows Forms to deliver a sleek, modern, and minimal GUI. SwiftEdge Security is designed to improve performance, enhance system security, perform system cleanups, and provide vulnerability scanning by interfacing with open-source Common Vulnerabilities and Exposures(CVE) APIs. It is built to be a one-stop solution for IT professionals, cybersecurity students, and system administrators who need a lightweight yet powerful tool without external frameworks.
 
 ### 1.2 Product Scope
 SwiftEdge Security is a modular utility for Windows designed to streamline system maintenance and protection through four key functions: performance tuning, security hardening, system cleanup, and vulnerability scanning. Each module operates independently, offering users a focused experience through a unified PowerShell-based GUI. 
-This software operates as a self-contained executable that performs real-time system configuration tasks using native Windows features and external vulnerability databases. Its intended use is for enhancing local machine performance and reducing exposure to known vulnerabilities—without requiring deep system knowledge or large, third-party frameworks.
+This software operates as a self-contained executable that performs real-time system configuration tasks using native Windows features and external vulnerability databases. Its intended use is for enhancing local machine performance and reducing exposure to known vulnerabilities without requiring deep system knowledge or large, third-party frameworks.
 
 Key deliverables for this version (v1.0) include:
 - Provide a lightweight, portable, and efficient tool for optimizing and securing Windows systems.
 - Replace the need for multiple standalone scripts or tools by consolidating core administrative tasks into a unified interface.
 - Offer open-source vulnerability checking through integration with APIs like the National Vulnerability Database (NVD) and Vulners.
-- Deliver a clean and professional GUI experience without requiring .NET installation or third-party frameworks—ensuring minimal dependencies and maximum accessibility.
+- Deliver a clean and professional GUI experience without requiring .NET installation or third-party frameworks, ensuring minimal dependencies and maximum accessibility.
 - Compatibility with Windows 11.
 - A Windows Forms-based GUI with tab navigation.
 
 SwiftEdge Security aligns with broader educational and practical goals by offering a real-world cybersecurity solution that demonstrates scripting, GUI design, API integration, and system administration techniques, all while addressing key points in day-to-day Windows system management.
 
 ### 1.3 Definitions, Acronyms and Abbreviations
-> Below are definitions, acronyms, or abbreviations used through the SRD.
+> Below are definitions, acronyms, or abbreviations used throughout the SRD.
 
 **GUI:** Graphical User Interface  
 **SRD:** Software Requirements Document  
@@ -110,7 +110,7 @@ SwiftEdge Security aligns with broader educational and practical goals by offeri
 
 **Section 4 – Verification:** 
 *Outlines how the software will be tested and validated against the requirements specified in Section 3. It includes the planned verification methods and criteria for determining successful implementation.
-(Due to the size of this project, actual verification of the software will not be filed)*
+(Due to the size of this project, actual verification of the software will not be filed.)*
 
 **Section 5 – Appendices:** 
 *Contains any supplemental material, such as references, diagrams, mockups, glossaries, and additional documentation that support or extend the main content of the SRD.*
@@ -119,9 +119,9 @@ SwiftEdge Security aligns with broader educational and practical goals by offeri
 > This section should describe the general factors that affect the product and its requirements. This section does not state specific requirements. Instead, it provides a background for those requirements, which are defined in detail in Section 3, and makes them easier to understand.
 
 ### 2.1 Product Perspective
-SwiftEdge Security is a new, self-contained system developed as a standalone utility for Windows 11 environments. It is not part of an existing software family and does not serve as a direct replacement for any commercial or enterprise-level product. However, it draws conceptual inspiration from tools like Chris Titus Tech’s Windows Utility, Talon by RavenDevTeam, and Azurite Optimizer, while providing a cleaner, more security-driven PowerShell-native alternative.
+SwiftEdge Security is a new, self-contained system developed as a standalone utility for Windows 11 environments. It is not part of an existing software family and does not serve as a direct replacement for any commercial or enterprise-level product. However, it draws conceptual inspiration from tools like Chris Titus Tech’s Windows Utility, Talon by RavenDevTeam, and Azurite Optimizer while providing a cleaner, more security-driven PowerShell-native alternative.
 
-This product is designed to consolidate multiple commonly used administrative and security actions—such as disabling bloatware, optimizing performance settings, and checking for known software vulnerabilities inside a unified user interface. By building the software entirely in PowerShell and packaging it with PS2EXE, SwiftEdge Security eliminates the need for Python runtimes, Python wrapping with Nuitka, third-party debloaters, and manual PowerShell script execution.
+This product is designed to consolidate multiple commonly used administrative and security actions, such as disabling bloatware, optimizing performance settings, and checking for known software vulnerabilities inside a unified user interface. By building the software entirely in PowerShell and packaging it with PS2EXE, SwiftEdge Security eliminates the need for Python runtimes, Python wrapping with Nuitka, third-party debloaters, and manual PowerShell script execution.
 
 **There are no direct dependencies on other systems. However, it does interface with:**
 - The Windows Registry (for performance and privacy tweaks),
@@ -195,7 +195,7 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 **Frequency of Use:** *Moderate to frequent.*   
 **Privileges:** *Full administrative access.*   
 **Modules Used:** *All (Performance, Security, Cleanup, Vulnerability Scan).*   
-**Priority Level:** *High — this group is most critical to satisfy, as they will benefit the most from the tool’s full range of features.*   
+**Priority Level:** *High — This group is the most critical to satisfy, as they will benefit the most from the tool’s full range of features.*   
 
 **2. Cybersecurity Students / Technical Interns**   
 **Role:** *Use SwiftEdge Security for learning, testing, or auditing basic vulnerabilities and configurations.*   
@@ -208,7 +208,7 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 **Secondary User Classes:**   
 **3. Power Users / Tech Enthusiasts**   
 **Role:** *Use the tool to maintain personal machines or optimize performance.*   
-**Technical Skill Level:** *Moderate (comfortable with system settings, but not scripting).*   
+**Technical Skill Level:** *Moderate (comfortable with system settings but not scripting).*   
 **Frequency of Use:** *Infrequent or as-needed basis.*   
 **Privileges:** *Typically have admin rights on personal machines.*   
 **Modules Used:** *Performance and Cleanup.*   
@@ -220,7 +220,7 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 **Frequency of Use:** *Rare.*   
 **Privileges:** *May lack admin access.*   
 **Modules Used:** *Mostly Cleanup; limited use of other tabs.*   
-**Priority Level:** *Low — tool will still function for this group, but with limited results or without admin-required features.*   
+**Priority Level:** *Low — the tool will still function for this group, but with limited results or without admin-required features.*   
 
 ### 2.5 Assumptions and Dependencies
 >The development and functionality of SwiftEdge Security rely on several assumptions and external dependencies. These are not guaranteed conditions but are considered true for the successful design, testing, and use of the software. If any of these assumptions prove to be invalid or these dependencies change, they may impact the final requirements or functionality of the system.
@@ -256,7 +256,7 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 * Conform to agreed upon syntax, keywords, and terms.
 
 ### 3.1 External Interfaces
-> This subsection defines all the inputs into and outputs requirements of the software system. Each interface defined may include the following content:
+> This subsection defines all the inputs into and output requirements of the software system. Each interface defined may include the following content:
 * Name of item
 * Source of input or destination of output
 * Valid range, accuracy, and/or tolerance
@@ -275,10 +275,10 @@ Define the software components for which a user interface is needed. Describe th
 Could be further divided into Usability and Convenience requirements.
 
 #### 3.1.2 Hardware interfaces
-Describe the logical and physical characteristics of each interface between the software product and the hardware components of the system. This may include the supported device types, the nature of the data and control interactions between the software and the hardware, and communication protocols to be used.
+Describe the logical and physical characteristics of each interface between the software product and the hardware components of the system. This may include the supported device types, the nature of the data and control interactions between the software and the hardware, and the communication protocols to be used.
 
 #### 3.1.3 Software interfaces
-Describe the connections between this product and other specific software components (name and version), including databases, operating systems, tools, libraries, and integrated commercial components. Identify the data items or messages coming into the system and going out and describe the purpose of each. Describe the services needed and the nature of communications. Refer to documents that describe detailed application programming interface protocols. Identify data that will be shared across software components. If the data sharing mechanism must be implemented in a specific way (for example, use of a global data area in a multitasking operating system), specify this as an implementation constraint.
+Describe the connections between this product and other specific software components (name and version), including databases, operating systems, tools, libraries, and integrated commercial components. Identify the data items or messages coming into the system and going out and describe the purpose of each. Describe the services needed and the nature of communications. Refer to documents that describe detailed application programming interface protocols. Identify data that will be shared across software components. If the data-sharing mechanism must be implemented in a specific way (for example, use of a global data area in a multitasking operating system), specify this as an implementation constraint.
 
 ### 3.2 Functional
 > This section specifies the requirements of functional effects that the software-to-be is to have on its environment.
@@ -287,7 +287,7 @@ Describe the connections between this product and other specific software compon
 > This section states additional, quality-related property requirements that the functional effects of the software should present.
 
 #### 3.3.1 Performance
-If there are performance requirements for the product under various circumstances, state them here and explain their rationale, to help the developers understand the intent and make suitable design choices. Specify the timing relationships for real time systems. Make such requirements as specific as possible. You may need to state performance requirements for individual functional requirements or features.
+If there are performance requirements for the product under various circumstances, state them here and explain their rationale to help the developers understand the intent and make suitable design choices. Specify the timing relationships for real time systems. Make such requirements as specific as possible. You may need to state performance requirements for individual functional requirements or features.
 
 #### 3.3.2 Security
 Specify any requirements regarding security or privacy issues surrounding use of the product or protection of the data used or created by the product. Define any user identity authentication requirements. Refer to any external policies or regulations containing security issues that affect the product. Define any security or privacy certifications that must be satisfied.
@@ -296,7 +296,7 @@ Specify any requirements regarding security or privacy issues surrounding use of
 Specify the factors required to establish the required reliability of the software system at time of delivery.
 
 #### 3.3.4 Availability
-Specify the factors required to guarantee a defined availability level for the entire system such as checkpoint, recovery, and restart.
+Specify the factors required to guarantee a defined availability level for the entire system, such as checkpoint, recovery, and restart.
 
 ### 3.4 Compliance
 Specify the requirements derived from existing standards or regulations, including:  
@@ -334,7 +334,7 @@ Specify schedule for delivery of the software product.
 <!-- TODO: come up with a description -->
 
 ## 4. Verification
-> This section outlines the key validation and testing criteria for SwiftEdge Security. Each feature module must function independently and correctly, without requiring external runtimes or manual configuration. The following checklist ensures that all performance, security, cleanup, and vulnerability scan operations perform as expected in the final executable version.
+> This section outlines the key validation and testing criteria for SwiftEdge Security. Each feature module must function independently and correctly without requiring external runtimes or manual configuration. The following checklist ensures that all performance, security, cleanup, and vulnerability scan operations perform as expected in the final executable version.
 
 ### 4.1 Product Testing and Verification
 
@@ -342,7 +342,7 @@ Specify schedule for delivery of the software product.
 | *Test Case*	                                   | *Expected Result*                                         |
 | ---------------------------------------------- | --------------------------------------------------------- |
 | Application launches without errors	           | Main GUI loads with all tabs and buttons functional       |
-| GUI layout renders properly              	     | All text is visible and no elements are clipped           |
+| GUI layout renders properly              	     | All text is visible, and no elements are clipped           |
 | Runs without requiring external dependencies	 | No errors related to ps1, .NET Core, or external database |
 | Elevated permissions are requested when needed | UAC prompt appears for operations requiring admin rights  |
 | Log files are generated when enabled	         | Logs record operation timestamps and success/failure      |   
