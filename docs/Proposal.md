@@ -109,7 +109,7 @@ To complete this project successfully, several research areas need to be explore
  - Possibly research to develop a website for background and details on software functionality with a download link online. 
  - Research automation methods if deploying from a USB stick. (Not best security practice as malware can hop through USB).
 
-## By focusing on these research areas, SwiftEdge Security & Optimizer can achieve its goal of providing a robust, efficient, and user-friendly solution for PC performance and security.
+### By focusing on these research areas, SwiftEdge Security & Optimizer can achieve its goal of providing a robust, efficient, and user-friendly solution for PC performance and security.
 
 Schedule
 --------
@@ -145,3 +145,11 @@ Schedule
     -   Week 6-10 - Apply updates and bug fixes based on the results
     -   Week 8 - Computer the first 4 chapters of the defense documentation.
     -   ...
+ 
+## References
+- [NVD API](https://nvd.nist.gov/developers/start-here)
+- [PS2EXE - MScholtes](https://github.com/MScholtes/PS2EXE)
+- [Chris Titus WinUtil](https://christitus.com/windows-tool/)
+- [Talon by RavenDevTeam](https://github.com/ravendevteam/talon)
+- [CVE Program](https://www.cve.org/)
+- [Norton 360 UI](https://us.norton.com/products/norton-360-standard)
