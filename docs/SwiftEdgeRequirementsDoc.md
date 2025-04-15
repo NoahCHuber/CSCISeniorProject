@@ -26,7 +26,7 @@ Table of Contents
     * 3.1.1 [User Interfaces](#311-user-interfaces)
     * 3.1.2 [Hardware Interfaces](#312-hardware-interfaces)
     * 3.1.3 [Software Interfaces](#313-software-interfaces)
-  * 3.2 [Functional](#32-functional)
+  * 3.2 [Functional Requirements](#32-functional-requirements)
     * 3.2.1 [General Functional Requirements](#321-general-functional-requirements)
     * 3.2.2 [Performance Module](#322-performance-module)
     * 3.2.3 [Security Module](#323-security-module)
