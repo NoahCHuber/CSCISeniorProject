@@ -320,20 +320,37 @@ Constraints to ensure that the software-to-be will run smoothly on the target im
 Constraints on software components to fit the geographically distributed structure of the host organization, the distribution of data to be processed, or the distribution of devices to be controlled.
 
 #### 3.5.3 Maintainability
-Specify attributes of software that relate to the ease of maintenance of the software itself. These may include requirements for certain modularity, interfaces, or complexity limitation. Requirements should not be placed here just because they are thought to be good design practices.
+The code shall be commented and follow PowerShell community formatting standards.
 
+It should be easy to update vulnerability databases and be ready for small changes and Windows updates
+
+Each functional module (e.g., Performance, Security, Cleanup, Vulnerability Scan) shall be modular and loosely coupled to facilitate easy updates and debugging.
+
+The codebase shall be written in clear, well-commented PowerShell, following community standards (e.g., naming conventions, formatting).
+
+As Windows 11 continues to evolve, the software shall be designed to easily adapt to deprecations or changes in PowerShell cmdlets, Windows APIs, or system services.
+
+Scripts shall detect and gracefully handle deprecated or missing components in future Windows builds.
+
+The vulnerability scanning feature shall pull CVE data dynamically from the NVD API to ensure up-to-date threat detection without requiring updates to the software itself.
+
+Periodic review of PowerShell commands, registry tweaks, and cleanup procedures shall be conducted to ensure compatibility with Windows Feature Updates and cumulative patches.
+
+The project repository shall include version-controlled changelogs and update notes for maintainers and contributors.
 #### 3.5.4 Reusability
 <!-- TODO: come up with a description -->
 Each feature module (Performance, Security, Cleanup, Vulnerability Scan) shall be capable of being reused in future PowerShell projects with minimal refactoring.
-
+A daily-use product that is used for protection with minimal errors. Error code will be introduced to increase reusability.
 #### 3.5.5 Portability
-Specify attributes of software that relate to the ease of porting the software to other host machines and/or operating systems.
+supports only Windows 11 (64-bit). You don't need any support for other platforms.
 
 #### 3.5.6 Cost
-The cost should be minimal no purchases will be made
+The cost should be minimal; no purchases will be made
 
 #### 3.5.7 Deadline
-Specify schedule for delivery of the software product.
+ GUI completion 9/25/2025
+ Testing 11/1/2025 - 11/30/2025
+ Full project completion 12/1/2025
 
 #### 3.5.8 Proof of Concept
 A working prototype demonstrating:
