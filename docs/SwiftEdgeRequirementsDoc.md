@@ -293,10 +293,14 @@ If there are performance requirements for the product under various circumstance
 Specify any requirements regarding security or privacy issues surrounding use of the product or protection of the data used or created by the product. Define any user identity authentication requirements. Refer to any external policies or regulations containing security issues that affect the product. Define any security or privacy certifications that must be satisfied.
 
 #### 3.3.3 Reliability
-Specify the factors required to establish the required reliability of the software system at time of delivery.
+95% of all defined functions shall succeed without error on a clean Windows 11 install.
+
+All functions shall include error handling to prevent partial or inconsistent application states.
 
 #### 3.3.4 Availability
-Specify the factors required to guarantee a defined availability level for the entire system, such as checkpoint, recovery, and restart.
+No online activation or licensing is required.
+
+Vulnerability scanning module is available only when internet is accessible.
 
 ### 3.4 Compliance
 Specify the requirements derived from existing standards or regulations, including:  
@@ -320,18 +324,31 @@ Specify attributes of software that relate to the ease of maintenance of the sof
 
 #### 3.5.4 Reusability
 <!-- TODO: come up with a description -->
+Each feature module (Performance, Security, Cleanup, Vulnerability Scan) shall be capable of being reused in future PowerShell projects with minimal refactoring.
 
 #### 3.5.5 Portability
 Specify attributes of software that relate to the ease of porting the software to other host machines and/or operating systems.
 
 #### 3.5.6 Cost
-Specify monetary cost of the software product.
+The cost should be minimal no purchases will be made
 
 #### 3.5.7 Deadline
 Specify schedule for delivery of the software product.
 
 #### 3.5.8 Proof of Concept
-<!-- TODO: come up with a description -->
+A working prototype demonstrating:
+
+Tabbed GUI interface in Windows Forms
+
+Functional disk cleanup module
+
+Power plan toggling
+
+Vulnerability scan returning CVE data from NVD API
+
+Prototype must be fully executable as a single PS2EXE output file
+
+Demonstration log or video to be provided as evidence of proof of concept
 
 ## 4. Verification
 > This section outlines the key validation and testing criteria for SwiftEdge Security. Each feature module must function independently and correctly without requiring external runtimes or manual configuration. The following checklist ensures that all performance, security, cleanup, and vulnerability scan operations perform as expected in the final executable version.
