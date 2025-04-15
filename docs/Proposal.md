@@ -28,30 +28,41 @@ SwiftEdge is developed for a wide range of users, from students and professional
 
 Proposed Implementation Language(s) 
 -----------------------------------
-
- - Python 
- - C++ 
- - Powershell 
-
+ 
+ - PowerShell Script
 
 Libraries, Packages, Development Kit(s)
 --------------------------------------------------------------------------------------------------
 
-While we may not use third-party libraries directly, we will be using programs like RavenDevTeam/TALON to see the implementation of Python scripts in Powershell to run commands to alter system settings. \
-We will also be using Hellzerg/Optimizer as a reference to a similar optimizer but with different outcomes. \
-The UI and software version number functionality would like to be similar to Norton 360. \
-Any supporting libraries, packages, or other development kits will be listed here at a later date. 
+- **Primary Language**: PowerShell 5.1+
+- **GUI Framework**: .NET Windows Forms (via PowerShell)
+- **Packaging Tool**: PS2EXE
+- **External APIs**: National Vulnerability Database (NVD)
+
+While we may not use third-party libraries directly, we will be using programs like RavenDevTeam/TALON to see the implementation of Python scripts in Powershell to run commands to alter system settings.  
+We will also be using Hellzerg/Optimizer as a reference to a similar optimizer but with different outcomes.  
+The UI and software version number functionality would like to be similar to Norton 360 or Avast.  
+
+**Design Features**
+- Modular code with reusable scripts per module
+- Auto-detection of internet connectivity for vulnerability scanning
+- System restore point support
+- Tabbed, user-friendly Windows Forms interface
+- Graceful error handling and rollback on failure
 
 Additional Software/Equipment Needed
 ------------------------------------
 
 Hardware: 
- - Windows PC 11 
- - Amd64 (Not Arm64 or aarch) 
+ - Windows PC 11
+ - 4GB RAM minimum
+ - Dual-core CPU minimum
+ - Amd64 (Not Arm64 or aarch) architecture
 
 Software: 
- - VSCode 
- - Terminal/Powershell 
+ - PowerShell 5.1+ (built-in)
+ - VSCode / GitHub (for editing and collaboration)
+ - NVD API
 
 Personal Motivation
 -------------------
