@@ -260,45 +260,45 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 #### 3.1.1 User interfaces
 > Main user interface, system actions, and setup.
 
-* Main GUI (Windows Forms-based interface)(.NET appliance)
-* Input: Mouse, Button Selection, Tab Changes, Check Boxes.
-* Output: Text fields, system logs, message boxes, alerts.
-* Range/Accuracy: Buttons/Check-Boxes/Fields mapped to corresponding PowerShell modules and commands with no overlapping functionality. 
-* Units of Measure: Log Output: Hr,Min,Sec. Completion Time. 
-* Timing: All actions must be completed within a reasonable timeframe: 1 minute MAXIMUM. 15-30Sec Probable.
-* Relationships: Tab changes will switch modules and therefore functionality. Buttons will trigger script execution with defined tasks.
-* Screen Format/Layout: Four tabs: Performance/Security/Cleanup/Vulnerabilities. Buttons laid out next to each.
-* Organization: Standard Windows Forms Layout .NET Appliance. Possible Adaptive Resolution and Autosizing. Neon-Accented Dark-Theme.
-* Plain-Text Output: (Completion Status, Active Tasks, Module Type, Vulnerabilities Found)
-* Command Format: NONE: No scripting is required by the user.
-* End Messages: Success, Warning, Alerts, Notifications, Error, Popup, Status, Completion. Etc.
+* **R-UI1:** Main GUI: (Windows Forms-based interface)(.NET appliance)
+* **R-UI2:** Input: Mouse, Button Selection, Tab Changes, Check Boxes.
+* **R-UI3:** Output: Text fields, system logs, message boxes, alerts.
+* **R-UI4:** Range/Accuracy: Buttons/Check-Boxes/Fields mapped to corresponding PowerShell modules and commands with no overlapping functionality. 
+* **R-UI5:** Units of Measure: Log Output: Hr,Min,Sec. Completion Time. 
+* **R-UI6:** iming: All actions must be completed within a reasonable timeframe: 1 minute MAXIMUM. 15-30Sec Probable.
+* **R-UI7:** Relationships: Tab changes will switch modules and therefore functionality. Buttons will trigger script execution with defined tasks.
+* **R-UI8:** Screen Format/Layout: Four tabs: Performance/Security/Cleanup/Vulnerabilities. Buttons laid out next to each.
+* **R-UI9:** Organization: Standard Windows Forms Layout .NET Appliance. Possible Adaptive Resolution and Autosizing. Neon-Accented Dark-Theme.
+* **R-UI10:** Plain-Text Output: (Completion Status, Active Tasks, Module Type, Vulnerabilities Found)
+* **R-UI11:** Command Format: NONE: No scripting is required by the user.
+* **R-UI12:** End Messages: Success, Warning, Alerts, Notifications, Error, Popup, Status, Completion. Etc.
 
 #### 3.1.2 Hardware interfaces
 > Logical and physical characteristics of the hardware required for interface/system. Device types, data, interactions, etc. 
-* HW1: Windows-Compatible Hardware: Desktop/Laptop amd64 Architecture.
-* HW2: Input: System Information Tools: Registry, Powershell Commands, Scripts, Hardware Services.
-* HW3: Output: Output to log file only if checked or necessary.
-* HW4: Range/Accuracy: Must be compatible with Windows 11 (x64) (Latest).
-* HW5: Units of Measure: Power mode settings, service status, disk space (TB, GB, MB), Timing Hr,Min,Sec.
-* HW6: Timing: System changes should take no longer than 1 minute. The average should be between 15-30 seconds depending on the depth of command.
-* HW7: Relationships: Hardware status is adjusted via Powershell, Windows APIs, and Registry Editor.
-* HW8: Data Format: N/A (System-Level Commands) No User Interaction.
-* HW9: Command Format: powercfg, Get-Service, Stop-Service, Regedit, Powershell Scripts(etc).
-* HW10: End Messages: Visual Confirmation via GUI or output log. (Alert: Success/Failure)
+* **HW1:** Windows-Compatible Hardware: Desktop/Laptop amd64 Architecture.
+* **HW2:** Input: System Information Tools: Registry, Powershell Commands, Scripts, Hardware Services.
+* **HW3:** Output: Output to log file only if checked or necessary.
+* **HW4:** Range/Accuracy: Must be compatible with Windows 11 (x64) (Latest).
+* **HW5:** Units of Measure: Power mode settings, service status, disk space (TB, GB, MB), Timing Hr,Min,Sec.
+* **HW6:** Timing: System changes should take no longer than 1 minute. The average should be between 15-30 seconds depending on the depth of command.
+* **HW7:** Relationships: Hardware status is adjusted via Powershell, Windows APIs, and Registry Editor.
+* **HW8:** Data Format: N/A (System-Level Commands) No User Interaction.
+* **HW9:** Command Format: powercfg, Get-Service, Stop-Service, Regedit, Powershell Scripts(etc).
+* **HW10:** End Messages: Visual Confirmation via GUI or output log. (Alert: Success/Failure)
 
 #### 3.1.3 Software interfaces
 > Connections between this product and other specific software components (name and version), including databases, operating systems, tools, libraries, and integrated commercial components. Identify the data items or messages coming into the system and going out and describe the purpose of each. Describe the services needed and the nature of communications. Refer to documents that describe detailed application programming interface protocols. Identify data that will be shared across software components.
 
-* SW1: Software Interfaces: PowerShell, NVD API, Windows Registry, System Services, Powercfg, etc.
-* SW2: Input: Internal PowerShell functions, API queries, Windows Regedit calls, powercfg changes.
-* SW3: Output: GUI feedback, external logs(if checked), exported output.
-* SW4: Range/Accuracy: API responses must return valid CVE that coincides with vulnerable software names and version numbers. PowerShell scripts must run without errors in a reasonable time frame.
-* SW5: Units of Measure: CVSS scores, CVE numbers, number of CVEs, vulnerability version numbers, application data.
-* SW6: Timing: Local commands < 1 minute. NVD API calls < 3 minutes (MAXIMUM)
-* SW7: Relationships: Local software modules independent to system functions. Vulnerability module dependent on NVD API and internet.
-* SW8: Data Format: JSON or other API format, TXT for exported logs, GUI Output.
-* SW9: Command Format: PowerShell(Invoke-RestMethod), (Get-ItemProperty).
-* SW10: End Messages: Success logs, CVE results, Vulnerability Results. 
+* **SW1:** Software Interfaces: PowerShell, NVD API, Windows Registry, System Services, Powercfg, etc.
+* **SW2:** Input: Internal PowerShell functions, API queries, Windows Regedit calls, powercfg changes.
+* **SW3:** Output: GUI feedback, external logs(if checked), exported output.
+* **SW4:** Range/Accuracy: API responses must return valid CVE that coincides with vulnerable software names and version numbers. PowerShell scripts must run without errors in a reasonable time frame.
+* **SW5:** Units of Measure: CVSS scores, CVE numbers, number of CVEs, vulnerability version numbers, application data.
+* **SW6:** Timing: Local commands < 1 minute. NVD API calls < 3 minutes (MAXIMUM)
+* **SW7:** Relationships: Local software modules independent to system functions. Vulnerability module dependent on NVD API and internet.
+* **SW8:** Data Format: JSON or other API format, TXT for exported logs, GUI Output.
+* **SW9:** Command Format: PowerShell(Invoke-RestMethod), (Get-ItemProperty).
+* **SW10:** End Messages: Success logs, CVE results, Vulnerability Results. 
 
 ### 3.2 Functional Requirements
 > This section outlines the specific functional capabilities of SwiftEdge Security. Each function is organized by module and describes what the system must allow the user to do, the expected result, and any related conditions or triggers. All listed functions shall be accessible via the application's graphical user interface.
@@ -306,52 +306,52 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 #### 3.2.1 General Functional Requirements
 > These are some general functional requirements for SwiftEdge Security.
 
-* GFR1: System should load Windows Forms GUI with four primary tabs: Performance, Security, Cleanup, and Vulnerability Scanning (Online).
-* GFR2: System should prompt for administrative privileges when launching and/or running the programming requiring system-level modification.
-* GFR3: The GUI should allow the user to execute each module's functions independently or together through an all-in-one button.
-* GFR4: System should display success or failure messages based on the completion of scripts within the GUI for ALL Operations.
-* GFR5: System should prevent module execution if the user lacks administrative privileges.
+* **GFR1:** System should load Windows Forms GUI with four primary tabs: Performance, Security, Cleanup, and Vulnerability Scanning (Online).
+* **GFR2:** System should prompt for administrative privileges when launching and/or running the programming requiring system-level modification.
+* **GFR3:** The GUI should allow the user to execute each module's functions independently or together through an all-in-one button.
+* **GFR4:** System should display success or failure messages based on the completion of scripts within the GUI for ALL Operations.
+* **GFR5:** System should prevent module execution if the user lacks administrative privileges.
 
 #### 3.2.2 Performance Module
 > Performance Module Functional Requirements for SwiftEdge Security.
 
-* PM1: System should allow the user to change the power plan to high using the powercfg or similar command.
-* PM2: System should disable the SysMain (Superfetch) and Windows Search (WSearch) Services.
-* PM3: System should disable Windows animations, transparency, and adjust text performance via Windows tools or Regedit.
-* PM4: System should disable all background apps through user Regedit.
-* PM5: System should disable all startup applications.
-* PM6: System should remove startup delay via Registry
-* PM7: System should run defrag and optimize and enable monthly optimizations for peak performance. 
+* **PM1:** System should allow the user to change the power plan to high using the powercfg or similar command.
+* **PM2:** System should disable the SysMain (Superfetch) and Windows Search (WSearch) Services.
+* **PM3:** System should disable Windows animations, transparency, and adjust text performance via Windows tools or Regedit.
+* **PM4:** System should disable all background apps through user Regedit.
+* **PM5:** System should disable all startup applications.
+* **PM6:** System should remove startup delay via Registry
+* **PM7:** System should run defrag and optimize and enable monthly optimizations for peak performance. 
 
 #### 3.2.3 Security Module
 > Security module is separate from the Vulnerability Scanner and changes local settings without internet access. Hardening operations will be lightweight and non-invasive. 
 
-* SM1: System should create a system restore point before applying any major security-related modifications in case of error or failure.
-* SM2: System should disable SMBv1 via Windows Features if enabled.
-* SM3: System should disable Remote Assistance and Remote Registry via services and Regedit.
-* SM4: System Should enable All Windows Defender Security settings if disabled and ensure Memory Integrity is enabled.
-* SM5: System should provide a confirmation message before applying any security hardening operations. (Lightweight)
+* **SM1:** System should create a system restore point before applying any major security-related modifications in case of error or failure.
+* **SM2:** System should disable SMBv1 via Windows Features if enabled.
+* **SM3:** System should disable Remote Assistance and Remote Registry via services and Regedit.
+* **SM4:** System Should enable All Windows Defender Security settings if disabled and ensure Memory Integrity is enabled.
+* **SM5:** System should provide a confirmation message before applying any security hardening operations. (Lightweight)
 
 #### 3.2.4 Cleanup Module
 > This module is specifically designed for cleaning temporary files, trash, emptying the recycle bin, and removing bloatware applications. (Note: OneDrive users must uncheck the box for removing OneDrive.)
 
-* CM1: System should clear all temporary files in %TEMP%, TEMP, and PREFETCH.
-* CM2: System should clear all of the Windows Update Cache. (This helps reduce errors when performing Windows Updates)
-* CM3: System should empty the Recycle Bin.
-* CM4: System should remove built-in applications if checked for removal. (OneDrive, Xbox, Help, Feedback Center, etc)
-* CM5: System should clear minor event logs in the event viewer by invoking related PowerShell commands.
-* CM6: System should run disk cleanup with all items checked except the downloads folder.
-* CM7: System should perform any extra commands required to clean extra or junk files from the system to improve organization and system performance.
+* **CM1:** System should clear all temporary files in %TEMP%, TEMP, and PREFETCH.
+* **CM2:** System should clear all of the Windows Update Cache. (This helps reduce errors when performing Windows Updates)
+* **CM3:** System should empty the Recycle Bin.
+* **CM4:** System should remove built-in applications if checked for removal. (OneDrive, Xbox, Help, Feedback Center, etc)
+* **CM5:** System should clear minor event logs in the event viewer by invoking related PowerShell commands.
+* **CM6:** System should run disk cleanup with all items checked except the downloads folder.
+* **CM7:** System should perform any extra commands required to clean extra or junk files from the system to improve organization and system performance.
 
 #### 3.2.5 Vulnerability Scanner Module
 > This module requires access to the internet to utilize the NIST NVD API for checking application version numbers and checking the CVE database for matching numbers.
 
-* VSM1: System should retrieve a list of installed software and their version numbers from the Registry or by utilizing PowerShell GetInfo Commands.
-* VSM2: System should use the NVD API to search for CVEs based on installed software names and version numbers.
-* VSM3: System shall display each CVE found with the corresponding ID, Name, Severity (CVSS score), and a short summary.
-* VSM4: System should allow the user to export vulnerability results to a file.
-* VSM5: System should display a message if no internet connection is detected or the API fails.
-* VSM6: System should alert the user in the GUI to update or remove vulnerable software. 
+* **VSM1:** System should retrieve a list of installed software and their version numbers from the Registry or by utilizing PowerShell GetInfo Commands.
+* **VSM2:** System should use the NVD API to search for CVEs based on installed software names and version numbers.
+* **VSM3:** System shall display each CVE found with the corresponding ID, Name, Severity (CVSS score), and a short summary.
+* **VSM4:** System should allow the user to export vulnerability results to a file.
+* **VSM5:** System should display a message if no internet connection is detected or the API fails.
+* **VSM6:** System should alert the user in the GUI to update or remove vulnerable software. 
 
 ### 3.3 Quality of Service
 > SwiftEdge Security should function quickly in real-time with zero delay. Users should be able to run SwiftEdge Security and be satisfied with the performance, security, and reliability of SwiftEdge Security. 
@@ -359,57 +359,56 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 #### 3.3.1 Performance
 > SwiftEdge Security must perform consistently and responsively under a range of hardware conditions, with specific emphasis on supporting low-to-mid-tier systems that are common in educational and small business environments. All performance requirements are focused on maintaining speed, resource efficiency, and responsiveness while executing system-level commands.
 
-* QOS-P1: The GUI shall load within 30 seconds of system call and application launch. (4Gb RAM and minimum dual-core CPU).
-* QOS-P2: Each module operation (Performance, Security, Cleanup, Vulnerability Scan) should be completed within a reasonable time frame. NOTE: Vulnerability scanning requires internet access and may run slower due to API calls or internet speed.
-* QOS-P3: During active operations, the application should consume no more than 2Gb of RAM and should never exceed more than 25% of CPU usage. (NOTE: CPU usage will be higher on lower core CPU and older architectures)
-* QOS-P4: Button presses and tab navigation should have no delay and respond within 1-5 seconds.
-* QOS-P5: Initializing Script execution should take no longer than 5 seconds.
-* QOS-P6: The application shall complete all performance optimization tasks in under 45 seconds when executed in full.
-
-* QOS-P7:Security and Cleanup tabs will only take as much time as the system needs to process commands and run system-level tasks. 
+* **QOS-P1:** The GUI shall load within 30 seconds of system call and application launch. (4Gb RAM and minimum dual-core CPU).
+* **QOS-P2:** Each module operation (Performance, Security, Cleanup, Vulnerability Scan) should be completed within a reasonable time frame. NOTE: Vulnerability scanning requires internet access and may run slower due to API calls or internet speed.
+* **QOS-P3:** During active operations, the application should consume no more than 2Gb of RAM and should never exceed more than 25% of CPU usage. (NOTE: CPU usage will be higher on lower core CPU and older architectures)
+* **QOS-P4:** Button presses and tab navigation should have no delay and respond within 1-5 seconds.
+* **QOS-P5:** Initializing Script execution should take no longer than 5 seconds.
+* **QOS-P6:** The application shall complete all performance optimization tasks in under 45 seconds when executed in full.
+* **QOS-P7:** Security and Cleanup tabs will only take as much time as the system needs to process commands and run system-level tasks. 
 
 #### 3.3.2 Security
 > Security is a core component of SwiftEdge Security’s purpose and operation. The software is intended to harden a system against unnecessary services and known vulnerabilities, without introducing risk through its use. As such, security requirements focus on controlled access, safe modification of system settings, and privacy-respecting behavior
 
-* QOS-S1: The application shall prompt for elevated (admin) permissions before launching and before running any system-level operations.
-* QOS-S2: All security-related changes must be preceded by user confirmation (e.g. checking boxes before running the security module).
-* QOS-S3: The application should create a System Restore Point before applying any heavy security modifications. (Protects against data loss).
-* QOS-S4: Software: `SHOULD NOT UNDER ANY CIRCUMSTANCE COLLECT, STORE, OR TRANSMIT ANY PERSONALLY IDENTIFIABLE INFORMATION OR IDENTIFIABLE SYSTEM INFORMATION. EXCLUDING APPLICATION NAMES AND VERSION NUMBERS FOR VULNERABILITY SCANNING`.
-* QOS-S5: Any registry changes or service modifications must be reversible and documented. (e.g. logs).
-* QOS-S6: Application should not disable nor interfere with core system protections such as Defender or Firewall unless explicitly requested by the user.
-* QOS-S7: The vulnerability scanner should only retrieve publicly available CVE data and should not upload any user software or device data.
-* QOS-S8: Software must comply with security-related industry standards.
-* QOS-S9: API responses used in the vulnerability scanner must be parsed and displayed read-only to the user without writing back to the system. 
+* **QOS-S1:** The application shall prompt for elevated (admin) permissions before launching and before running any system-level operations.
+* **QOS-S2:** All security-related changes must be preceded by user confirmation (e.g. checking boxes before running the security module).
+* **QOS-S3:** The application should create a System Restore Point before applying any heavy security modifications. (Protects against data loss).
+* **QOS-S4**: Software: `SHOULD NOT UNDER ANY CIRCUMSTANCE COLLECT, STORE, OR TRANSMIT ANY PERSONALLY IDENTIFIABLE INFORMATION OR IDENTIFIABLE SYSTEM INFORMATION. EXCLUDING APPLICATION NAMES AND VERSION NUMBERS FOR VULNERABILITY SCANNING`.
+* **QOS-S5:** Any registry changes or service modifications must be reversible and documented. (e.g. logs).
+* **QOS-S6:** Application should not disable nor interfere with core system protections such as Defender or Firewall unless explicitly requested by the user.
+* **QOS-S7:** The vulnerability scanner should only retrieve publicly available CVE data and should not upload any user software or device data.
+* **QOS-S8:** Software must comply with security-related industry standards.
+* **QOS-S9:** API responses used in the vulnerability scanner must be parsed and displayed read-only to the user without writing back to the system. 
 
 #### 3.3.3 Reliability
 > SwiftEdge Security was built on Reliability and Reusability to provide a fast, secure, and optimized experience.
 
-* QOS-R1: 95% of all defined functions shall succeed without error on a clean Windows 11 install.
-* QOS-R2: All functions shall include error handling to prevent partial or inconsistent application states.
-* QOS-R3: If an error occurs, it shall be logged and presented to the user without halting the application or operation.
-* QOS-R4: Application should verify the completion of critical operations with confirmation messages.
-* QOS-R5: All modules must be isolated to prevent one module's failure from affecting another. (e.g., if cleanup failed, security remains unaffected). 
+* **QOS-R1:** 95% of all defined functions shall succeed without error on a clean Windows 11 install.
+* **QOS-R2:** All functions shall include error handling to prevent partial or inconsistent application states.
+* **QOS-R3:** If an error occurs, it shall be logged and presented to the user without halting the application or operation.
+* **QOS-R4:** Application should verify the completion of critical operations with confirmation messages.
+* **QOS-R5:** All modules must be isolated to prevent one module's failure from affecting another. (e.g., if cleanup failed, security remains unaffected). 
 
 #### 3.3.4 Availability
 > SwiftEdge Security was built with availability and the end-user in mind.
 
-* QOS-A1: Application should run entirely offline, except for vulnerability scanning which requires an internet connection.
-* QOS-A2: Offline mode should allow the software to detect and gracefully skip the vulnerability module while allowing other modules to function. (e.g., if no internet is found, gray out the Vulnerability Module Tab).
-* QOS-A3: No online activation, subscriptions, or licensing is required.
-* QOS-A4: .EXE file should be fully portable and able to run from a flash drive or a download folder without any extended installation. 
+* **QOS-A1:** Application should run entirely offline, except for vulnerability scanning which requires an internet connection.
+* **QOS-A2:** Offline mode should allow the software to detect and gracefully skip the vulnerability module while allowing other modules to function. (e.g., if no internet is found, gray out the Vulnerability Module Tab).
+* **QOS-A3:** No online activation, subscriptions, or licensing is required.
+* **QOS-A4:** .EXE file should be fully portable and able to run from a flash drive or a download folder without any extended installation. 
 
 ### 3.4 Compliance
 > SwiftEdge Security shall comply with relevant technical standards, ethical data handling practices, and institutional policies to ensure safe and approved usage in both academic and organizational environments. The following compliance requirements ensure the software remains legal, auditable, and professionally acceptable for use.
 
-* CMP1: Software should comply with all industry standards when used in all environments and avoid collection, storage, or transmission of personal data.
-* CMP2: All logs generated by the application should not contain any personal information, system information, or configuration details.
-* CMP3: CVE queries made through NVD API should use read-only methods.
-* CMP4: Software should conform to PowerShell scripting standards.
-* CMP5: Any exports should be generated in plain-text formats to be readable by the average user.
-* CMP6: Any changes made to the Windows system should be traceable and reversible.
-* CMP7: Vulnerability scanning should rely only on publicly accessible and reputable sources such as NIST's NVD.
-* CMP8: Software should never bypass or override Windows Policy Settings unless otherwise specified by the user.
-* CMP9: All third-party modules used must be open-source and publicly licensed.
+* **CMP1:** Software should comply with all industry standards when used in all environments and avoid collection, storage, or transmission of personal data.
+* **CMP2:** All logs generated by the application should not contain any personal information, system information, or configuration details.
+* **CMP3:** CVE queries made through NVD API should use read-only methods.
+* **CMP4:** Software should conform to PowerShell scripting standards.
+* **CMP5:** Any exports should be generated in plain-text formats to be readable by the average user.
+* **CMP6:** Any changes made to the Windows system should be traceable and reversible.
+* **CMP7:** Vulnerability scanning should rely only on publicly accessible and reputable sources such as NIST's NVD.
+* **CMP8:** Software should never bypass or override Windows Policy Settings unless otherwise specified by the user.
+* **CMP9:** All third-party modules used must be open-source and publicly licensed.
 
 ### 3.5 Design and Implementation
 > This section outlines how SwiftEdge Security will be structured, built, distributed, and maintained. It includes implementation constraints, portability expectations, cost, timeline, and proof-of-concept deliverables.
@@ -417,37 +416,37 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 #### 3.5.1 Installation
 > This section is specifically for understanding how this software will run. SwiftEdge Security does not require any extended installation.
 
-* D&I-I1: Software should run directly as a compiled .EXE file created using PS2EXE from a carvable PowerShell script.
-* D&I-I2: Software should not require any additional installation steps, frameworks, or runtimes unless out of date. (This may be required for the .NET framework utilized by Windows Forms GUI).
-* D&I-I3: This tool should be compatible with systems that have PowerShell 5.1+ installed. (Installed by default on Windows 11).
+* **D&I-I1:** Software should run directly as a compiled .EXE file created using PS2EXE from a carvable PowerShell script.
+* **D&I-I2:** Software should not require any additional installation steps, frameworks, or runtimes unless out of date. (This may be required for the .NET framework utilized by Windows Forms GUI).
+* **D&I-I3:** This tool should be compatible with systems that have PowerShell 5.1+ installed. (Installed by default on Windows 11).
 
 #### 3.5.2 Distribution
 > This section is specific to the distribution and open-source property of SwiftEdge Security.
 
-* D&I-D1: Software should be distributed as a standalone executable .EXE. Script code will only be available through GitHub.
-* D&I-D2: No internet connection should be required for operation except for the Vulnerability Scanner Module.
-* D&I-D3: The executable may be optionally signed but not required for future use in managed environments. 
+* **D&I-D1:** Software should be distributed as a standalone executable .EXE. Script code will only be available through GitHub.
+* **D&I-D2:** No internet connection should be required for operation except for the Vulnerability Scanner Module.
+* **D&I-D3:** The executable may be optionally signed but not required for future use in managed environments. 
 
 #### 3.5.3 Maintainability
 > The Maintainability of SwiftEdge Security is based on code readability, updates, debugging, future enhancement, collaboration, and increased adaptability. This is why the open-source property of SwiftEdge Security makes it so great.
 
-* D&I-M1: All code must follow industry formatting standards for formatting, naming, and overall structure.
-* D&I-M2: The code should be modular, separating GUI logic from each script module.
-* D&I-M3: Feature modules should be loosely coupled, allowing reuse or replacement with minimal disruption to the rest of the application.
-* D&I-M4: Configuration variables should be easily editable and refined.
-* D&I-M5: Scripts should detect and handle missing or deprecated features accordingly. (Note: However this may not apply to Windows 11 only compatibility).
-* D&I-M6: Changelogs and version history shall be maintained within the source repository or packaging README.
-* D&I-M7: Software should be easy to update including vulnerability databases to be ready for small changes and Windows updates
-* D&I-M8: As Windows 11 continues to evolve, the software shall be designed to easily adapt to deprecations or changes in PowerShell cmdlets, Windows APIs, or system services.
-* D&I-M9: The vulnerability scanning feature shall pull CVE data dynamically from the NVD API to ensure up-to-date threat detection without requiring updates to the software itself.
-* D&I-M10: Periodic review of PowerShell commands, registry tweaks, and cleanup procedures shall be conducted to ensure compatibility with Windows Feature Updates and cumulative patches.
+* **D&I-M1:** All code must follow industry formatting standards for formatting, naming, and overall structure.
+* **D&I-M2:** The code should be modular, separating GUI logic from each script module.
+* **D&I-M3:** Feature modules should be loosely coupled, allowing reuse or replacement with minimal disruption to the rest of the application.
+* **D&I-M4:** Configuration variables should be easily editable and refined.
+* **D&I-M5:** Scripts should detect and handle missing or deprecated features accordingly. (Note: However this may not apply to Windows 11 only compatibility).
+* **D&I-M6:** Changelogs and version history shall be maintained within the source repository or packaging README.
+* **D&I-M7:** Software should be easy to update including vulnerability databases to be ready for small changes and Windows updates
+* **D&I-M8:** As Windows 11 continues to evolve, the software shall be designed to easily adapt to deprecations or changes in PowerShell cmdlets, Windows APIs, or system services.
+* **D&I-M9:** The vulnerability scanning feature shall pull CVE data dynamically from the NVD API to ensure up-to-date threat detection without requiring updates to the software itself.
+* **D&I-M10:** Periodic review of PowerShell commands, registry tweaks, and cleanup procedures shall be conducted to ensure compatibility with Windows Feature Updates and cumulative patches.
 
 #### 3.5.4 Reusability
 > SwiftEdge Security was designed with Reusability in mind and should thoughtfully demonstrate that throughout its implication.
 
-* D&I-R1: Each functional module should be completely reusable as an independent PowerShell script.
-* D&I-R2: Scripts should include standardized return codes and logging, enabling integration into pipelines or other systems.
-* D&I-R3: Software used for NVD API, CVEs, or PowerShell Scripts should be isolated and maintain independent functionality.
+* **D&I-R1:** Each functional module should be completely reusable as an independent PowerShell script.
+* **D&I-R2:** Scripts should include standardized return codes and logging, enabling integration into pipelines or other systems.
+* **D&I-R3:** Software used for NVD API, CVEs, or PowerShell Scripts should be isolated and maintain independent functionality.
 
 #### 3.5.5 Portability
 > Portability of SwiftEdge Security is based on a standalone .EXE this could be available on a USB, however, best cybersecurity practices should be followed and the .EXE should only be downloaded from the source repository.
@@ -459,9 +458,9 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 #### 3.5.6 Cost
 > SwiftEdge Security believes that it should be free to keep your computer fast, secure, and optimized. Therefore SwiftEdge Security should not be under any circumstances sold or require payment.
 
-* D&I-C1: All tools and libraries used should be free and open-source.
-* D&I-C2: All tools and libraries should be readily accessible to the public.
-* D&I-C3: The project as a whole should require no licensing, subscriptions, or commercial software unless otherwise indicated. 
+* **D&I-C1:** All tools and libraries used should be free and open-source.
+* **D&I-C2:** All tools and libraries should be readily accessible to the public.
+* **D&I-C3:** The project as a whole should require no licensing, subscriptions, or commercial software unless otherwise indicated. 
 
 #### 3.5.7 Deadline
  GUI completion 9/25/2025
@@ -471,13 +470,13 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 #### 3.5.8 Proof of Concept
 > This section outlines the necessary items for SwiftEdge Security to be considered a proof of concept and must have some form of actual functionality before being distributed as a pre-release.
 
-* D&I-PC1: Working Windows Forms GUI with tab-based navigation.
-* D&I-PC2: Working Performance Module
-* D&I-PC3: Working Cleanup Module
-* D&I-PC4: Partially Assembled Security Module that will at the bare minimum output a security assessment.
-* D&I-PC5: A Vulnerability Scanner that collects installed software info, retrieves information from the NVD API, and displays the results either in a text file or terminal.
-* D&I-PC6: All functionality to-date should be wrapped in a single standalone executable .exe.
-* D&I-PC7: Demonstration video, screenshots, or presentation on successful execution of each functioning module. 
+* **D&I-PC1:** Working Windows Forms GUI with tab-based navigation.
+* **D&I-PC2:** Working Performance Module
+* **D&I-PC3:** Working Cleanup Module
+* **D&I-PC4:** Partially Assembled Security Module that will at the bare minimum output a security assessment.
+* **D&I-PC5:** A Vulnerability Scanner that collects installed software info, retrieves information from the NVD API, and displays the results either in a text file or terminal.
+* **D&I-PC6:** All functionality to-date should be wrapped in a single standalone executable .exe.
+* **D&I-PC7:** Demonstration video, screenshots, or presentation on successful execution of each functioning module. 
 
 ## 4. Verification
 > This section outlines the key validation and testing criteria for SwiftEdge Security. Each feature module must function independently and correctly without requiring external runtimes or manual configuration. The following checklist ensures that all performance, security, cleanup, and vulnerability scan operations perform as expected in the final executable version.
