@@ -54,7 +54,7 @@ Table of Contents
 | --------- | ---------- | ----------------------- | ----------- |
 |   Swift   | 2025-08-04 | Intiial Requirments Doc |     1.0     |
 |   Daniel  | 2025-10-04 | Editing and Review      |     1.1     |
-|           |            |                         |             |
+|   Daniel  | 2025-25-04 | Adding to Section 3     |     1.11    |
 
 ## 1. Introduction
 > This document defines the system requirements for SwiftEdge Security, a modular, GUI-based Windows utility designed to improve system performance, enhance security, perform cleanup operations, and check for known vulnerabilities. Developed entirely in PowerShell with a Windows Forms front end, this tool provides users with a streamlined interface and powerful functionality—all packaged as a standalone executable.
