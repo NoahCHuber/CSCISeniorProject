@@ -27,11 +27,10 @@ Software Version Checker (Checks Software Version Numbers for Vulnerabilities us
 - Set Power Plan to “High Performance” or “Ultimate Performance”
 - Disable SysMain (Superfetch) service
 - Disable Search Indexing (WSearch)
-- Disable Xbox-related services (XblAuthManager, XblGameSave, etc.)
+- Disable Xbox-related services (XblAuthManager, XblGameSave, etc.) (optional)
 - Disable background apps via registry
 - Remove startup delay via registry
 - Turn off Windows animations and visual effects
-- Clear prefetch/superfetch cache
 - Disable telemetry-related scheduled tasks
 - Adjust visual settings for best performance
 - Restart Windows Explorer (quick refresh option)
@@ -54,11 +53,12 @@ Software Version Checker (Checks Software Version Numbers for Vulnerabilities us
 > Options for removing junk, temp files, and unnecessary applications:
 
 - Clean %TEMP% and C:\Windows\Temp
+- Clear prefetch/superfetch cache
 - Clear Windows Update cache
 - Remove old system restore points (optional)
 - Clear Event Viewer logs
-- Uninstall OneDrive
-- Optionally Remove Xbox Game Bar and Feedback Hub
+- Uninstall OneDrive (optional)
+- Remove Xbox Game Bar and Feedback Hub (optional)
 - Disable hibernation (optional)
 - Run Disk Cleanup silently
 - Empty Recycle Bin
