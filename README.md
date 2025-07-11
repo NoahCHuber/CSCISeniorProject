@@ -10,6 +10,7 @@ The application offers features such as junk file removal, system optimization, 
 
 This application is developed using PowerShell scripts and will be compiled into a single executable using PS2EXE. 
 This application must be run using administrator privileges when opening the .exe. A Windows Form should open and the user can select the options they would like before running the script for each section. The GUI is modular and each section will have its own interface and button to execute the script. To learn more details please see the user interface section in the requirements document. 
+> NOTE: All changes performed using scripts can be reverted using the revert script for each module or as a whole. 
 
 ## Usage
 
