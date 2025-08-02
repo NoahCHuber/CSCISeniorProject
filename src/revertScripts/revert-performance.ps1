@@ -69,16 +69,6 @@ try {
     Log "Error re-enabling animations/transparency: $($_.Exception.Message)"
 }
 
-# Revert paging file to automatic (if modified)
-try {
-    $computer = Get-WmiObject -Class Win32_ComputerSystem
-    $computer.AutomaticManagedPagefile = $true
-    $computer.Put() | Out-Null
-    Log "Paging file reverted to system managed."
-} catch {
-    Log "Error reverting paging file: $($_.Exception.Message)"
-}
-
 # Re-enable Windows Tips
 try {
     $path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"
@@ -110,3 +100,4 @@ try {
 }
 
 Log "[${moduleName}] Performance settings successfully reverted."
+
