@@ -24,21 +24,29 @@ Log "[${moduleName}] Starting Performance Optimization Module..."
 
 Log "[Performance Module] Starting optimization..."
 
-# Enable High Performance / Ultimate Performance Power Plan
+# Enable Ultimate Performance / Fallback to High Performance
 Log "Enabling Ultimate Performance power plan..."
+
 try {
-    powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Out-Null
-    $guid = (powercfg -list | Select-String "Ultimate Performance").ToString().Split()[3]
-    powercfg -setactive $guid
-    Log "Ultimate Performance plan enabled."
-} catch {
-    Log "Unable to enable Ultimate Performance plan, falling back to High Performance..."
+    $ultimateGUID = "e9a42b02-d5df-448d-aa00-03f14749eb61"
+    $ultimateExists = powercfg -list | Select-String $ultimateGUID
+
+    if (-not $ultimateExists) {
+        Log "Ultimate Performance plan not found. Attempting to add it..."
+        powercfg -duplicatescheme $ultimateGUID | Out-Null
+    }
+
+    powercfg -setactive $ultimateGUID
+    Log "Ultimate Performance plan is now active."
+}
+catch {
+    Log "Unable to enable Ultimate Performance plan. Attempting to enable High Performance instead..."
     try {
-        $guid = (powercfg -list | Select-String "High performance").ToString().Split()[3]
-        powercfg -setactive $guid
+        $highPerfGUID = (powercfg -list | Select-String "High performance").ToString().Split()[3]
+        powercfg -setactive $highPerfGUID
         Log "High Performance plan enabled."
     } catch {
-        Log "Error setting power plan: $_"
+        Log "Error setting any power plan: $($_.Exception.Message)"
     }
 }
 
@@ -46,6 +54,7 @@ try {
 $services = @("SysMain", "WSearch", "DiagTrack")
 foreach ($svc in $services) {
     Log "Disabling service: $svc"
+
     try {
         Stop-Service -Name $svc -Force -ErrorAction SilentlyContinue
         Set-Service -Name $svc -StartupType Disabled
@@ -57,6 +66,7 @@ foreach ($svc in $services) {
 
 # Disable background apps
 Log "Disabling background apps..."
+
 try {
     $regBA = "HKCU:\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications"
     if (-not (Test-Path $regBA)) {
@@ -70,6 +80,7 @@ try {
 
 # Disable animations and transparency
 Log "Disabling animations and transparency effects..."
+
 try {
     # Disable animations
     Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Value 0
@@ -84,17 +95,9 @@ try {
     Log "Error disabling animations/transparency: $_"
 }
 
-# Set Paging File to System Managed
-Log "Setting paging file to system managed..."
-try {
-    wmic computersystem where name="%computername%" set AutomaticManagedPagefile=True | Out-Null
-    Log "Paging file set to system managed."
-} catch {
-    Log "Error setting paging file: $_"
-}
-
 # Disable Windows Tips 
 Log "Disabling Windows Tips..."
+
 try {
     $path = "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager"
     if (-not (Test-Path $path)) { New-Item -Path $path -Force | Out-Null }
@@ -107,6 +110,7 @@ try {
 
 # Disable Hibernation
 Log "Disabling hibernation to free disk space..."
+
 try {
     powercfg -h off
     Log "Hibernation disabled successfully."
@@ -116,6 +120,7 @@ try {
 
 # Optimize startup delay
 Log "Optimizing startup delay..."
+
 try {
     $serializePath = "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Serialize"
     if (-not (Test-Path $serializePath)) { New-Item -Path $serializePath -Force | Out-Null }
