@@ -1,4 +1,4 @@
-# Revert-Performance.ps1
+# revert-performance.ps1
 # SwiftEdge Security - Performance Reversal Module (with logging)
 
 # ==============
@@ -6,29 +6,30 @@
 # ==============
 $logTime = Get-Date -Format "yyyyMMdd_HHmmss"
 $moduleName = "RevertPerformance"
-$logPath = "..\..\logs\SwiftEdgeLog_${logTime}_${moduleName}.log"
+$logFolder = Join-Path $env:USERPROFILE "Documents\SwiftEdgeLogs"
+$logPath = Join-Path $logFolder "SwiftEdgeLog_${logTime}_${moduleName}.txt"
 
-# Create logs folder if it does not exist
-$logFolder = "..\..\logs"
 if (-not (Test-Path $logFolder)) {
     New-Item -ItemType Directory -Path $logFolder -Force | Out-Null
 }
 
-# Function to log and display
 function Log {
     param ([string]$Message)
-    $Message | Tee-Object -FilePath $logPath -Append
+    Write-Host $Message
+    Add-Content -Path $logPath -Value $Message
 }
 
-Log "[${moduleName}] Reverting Performance Optimization Changes..."
+Log "[${moduleName}] Reverting performance optimizations..."
 
-# Revert power plan to Balanced
+# Revert to Balanced power plan
+Log "Reverting power plan to Balanced..."
+
 try {
     $balancedGUID = (powercfg -list | Select-String "Balanced").ToString().Split()[3]
     powercfg -setactive $balancedGUID
     Log "Balanced power plan restored."
 } catch {
-    Log "Error restoring Balanced power plan: $($_.Exception.Message)"
+    Log "Error setting Balanced power plan: $($_.Exception.Message)"
 }
 
 # Re-enable essential services
@@ -50,7 +51,7 @@ try {
     if (-not (Test-Path $regBA)) {
         New-Item -Path $regBA -Force | Out-Null
     }
-    Set-ItemProperty -Path $regBA -Name "GlobalUserDisabled" -Value 0
+    Set-ItemProperty -Path $regBA -Name "GlobalUserDisabled" -Value 0 -Force
     Log "Background apps re-enabled."
 } catch {
     Log "Error re-enabling background apps: $($_.Exception.Message)"
@@ -99,5 +100,4 @@ try {
     Log "Error restoring startup delay: $($_.Exception.Message)"
 }
 
-Log "[${moduleName}] Performance settings successfully reverted."
-
+Log "[${moduleName}] Reversion complete."
