@@ -6,18 +6,19 @@
 # ==============
 $logTime = Get-Date -Format "yyyyMMdd_HHmmss"
 $moduleName = "OptimizePerformance"
-$logPath = "..\..\logs\SwiftEdgeLog_${logTime}_${moduleName}.log"
+$logFolder = Join-Path $env:USERPROFILE "Documents\SwiftEdgeLogs"
+$logPath = Join-Path $logFolder "SwiftEdgeLog_${logTime}_${moduleName}.txt"
 
-# Create logs folder if it does not exist
-$logFolder = "..\..\logs"
+# Create the folder if it doesn't exist
 if (-not (Test-Path $logFolder)) {
     New-Item -ItemType Directory -Path $logFolder -Force | Out-Null
 }
 
-# Function to log and display
+# Simple logging function
 function Log {
     param ([string]$Message)
-    $Message | Tee-Object -FilePath $logPath -Append
+    Write-Host $Message
+    Add-Content -Path $logPath -Value $Message
 }
 
 Log "[${moduleName}] Starting Performance Optimization Module..."
@@ -25,31 +26,26 @@ Log "[${moduleName}] Starting Performance Optimization Module..."
 Log "[Performance Module] Starting optimization..."
 
 # Enable Ultimate Performance / Fallback to High Performance
-Log "Enabling Ultimate Performance power plan..."
+Log "Setting Ultimate Performance plan..."
+Log "Note: You may see 'Attempted to write to unsupported setting' - this is normal and does not affect functionality."
 
+# Attempt to duplicate the Ultimate Performance plan (harmless if already exists)
+powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61 | Out-Null
+
+# Try to activate it
 try {
-    $ultimateGUID = "e9a42b02-d5df-448d-aa00-03f14749eb61"
-    $ultimateExists = powercfg -list | Select-String $ultimateGUID
-
-    if (-not $ultimateExists) {
-        Log "Ultimate Performance plan not found. Attempting to add it..."
-        powercfg -duplicatescheme $ultimateGUID | Out-Null
-    }
-
-    powercfg -setactive $ultimateGUID
+    powercfg -setactive e9a42b02-d5df-448d-aa00-03f14749eb61
     Log "Ultimate Performance plan is now active."
-}
-catch {
-    Log "Unable to enable Ultimate Performance plan. Attempting to enable High Performance instead..."
+} catch {
+    Log "Failed to activate Ultimate Performance plan. Falling back to High Performance..."
     try {
         $highPerfGUID = (powercfg -list | Select-String "High performance").ToString().Split()[3]
         powercfg -setactive $highPerfGUID
         Log "High Performance plan enabled."
     } catch {
-        Log "Error setting any power plan: $($_.Exception.Message)"
+        Log "Unable to activate any performance plan: $($_.Exception.Message)"
     }
 }
-
 # Disable non-essential services (SysMain, Windows Search, DiagTrack)
 $services = @("SysMain", "WSearch", "DiagTrack")
 foreach ($svc in $services) {
