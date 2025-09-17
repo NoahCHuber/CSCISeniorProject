@@ -1,6 +1,6 @@
 # SwiftEdge Security & Optimizer
 
-## Brief Project Description
+## Project Description
 
 SwiftEdge Security & Optimizer is a lightweight software application designed to enhance computer performance and security in a single, streamlined solution. The project aims to eliminate the need for multiple optimization and security tools by integrating system cleanup, performance tuning, and enhanced cybersecurity into one intuitive platform.
 
@@ -9,17 +9,20 @@ The application offers features such as junk file removal, system optimization, 
 ## Compile/Deploy
 
 This application is developed using PowerShell scripts and will be compiled into a single executable using PS2EXE. 
-This application must be run using administrator privileges when opening the .exe. A Windows Form should open and the user can select the options they would like before running the script for each section. The GUI is modular and each section will have its own interface and button to execute the script. To learn more details please see the user interface section in the requirements document. 
-> NOTE: All changes performed using scripts can be reverted using the revert script for each module or as a whole. 
+This application must be run using administrator privileges when opening the .exe. A Windows Form should open, and the user can select the options they would like before running the script for each section. The GUI is modular, and each section will have its own interface and button to execute the script. To learn more details, please see the user interface section in the requirements document. 
+> NOTE: All changes performed using scripts can be reverted using the revert script for each module or through a system restore point as a whole. 
 
 ## Usage
 
 System Clean Up (Unused System Files)   
 Performance Optimizations (Changes Registry for performance booster)       
-Security Check and Hardening (Checks for Generic Vulnerabilities and Optional System Hardening)      
-Software Version Checker (Checks Software Version Numbers for Vulnerabilities using external NVD CVE)      
+Security Check (Checks for Generic Vulnerabilities and system settings)
+Hardening (Optional System Hardening module that allows for hardening the system)      
+Software Vulnerability Scanner (Checks Software Version Numbers for Vulnerabilities using external NVD CVE)      
 
 ## Suggested Options 
+
+> Note: A system restore point should be created before any modules are run. 
 
 **Performance Module:**
 > Options focused on improving speed, responsiveness, and reducing system overhead:
@@ -41,13 +44,10 @@ Software Version Checker (Checks Software Version Numbers for Vulnerabilities us
 - Disable SMBv1 protocol
 - Disable Remote Assistance
 - Disable Remote Registry
-- Enable Windows Defender cloud protection
-- Enable Windows Defender tamper protection
+- Enable Windows Defender protection(s)
 - Disable Windows Script Host
 - Configure basic outbound firewall rules
-- Disable data collection and telemetry features
-- Disable Wi-Fi Sense
-- Create a System Restore Point before changes
+- Disable data collection and additional telemetry features
 
 **System Cleanup Module:**
 > Options for removing junk, temp files, and unnecessary applications:
@@ -73,7 +73,7 @@ Software Version Checker (Checks Software Version Numbers for Vulnerabilities us
 - Export vulnerability results to TXT or CSV
 - Flag outdated or unsupported software
 
-**Optional:** Check for latest versions of detected software
+**Optional:** Check for the latest versions of detected software
 
 ## Testing
 > This section outlines the key validation and testing criteria for SwiftEdge Security. Each feature module must function independently and correctly, without requiring external runtimes or manual configuration. The following checklist ensures that all performance, security, cleanup, and vulnerability scan operations perform as expected in the final executable version.
