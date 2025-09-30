@@ -1,5 +1,6 @@
 Test Plan Document
 ==================
+SwiftEdge Security & Optimizer
 
 - [IDENTIFICATION INFORMATION](#identification-information)
   - [Product](#product)
@@ -30,28 +31,78 @@ IDENTIFICATION INFORMATION
 
 ### Product
 
-- **Product Name:** (project name)
+- **Product Name:** SwiftEdge Security & Optimizer
 
 ### Project Description
 
-(A short concise project description).
+SwiftEdge Security & Optimizer is a lightweight Windows-based software application designed to enhance computer performance and security in a single, streamlined solution. The project aims to eliminate the need for multiple optimization and security tools by integrating system cleanup, performance tuning, and enhanced cybersecurity measures into one intuitive platform. The application offers features such as junk file removal, system optimization, high-risk software version numbers comparison, and generic security checking.
 
 ### Testing Objectives
 
-Provide an overview of the test plan including a concise statement about the 
-purpose of the testing to be performed.
+The objective of this test plan is to validate and ensure that SwiftEdge Security & Optimizer functions as intended, meets project requirements, and operates reliably under multiple system conditions. Testing will confirm performance enhancements, verify vulnerability scanning accuracy, ensure the ability to rollback changes, and evaluate usability. The goal is to identify defects early and confirm that our solution is a viable and stable product for real-world uses.
 
 ### Features to be Tested
 
-(List the features of the software/product to be tested with references to the 
-Requirements and/or Design specifications of the features to be tested.)
+> Note: Features being tested may change with the addition of new features or alteration of established features. 
 
+## User Interfaces (R-UI1 - R-UI12)
+- GUI design and tab switching (R-UI1, R-UI8, R-UI9).
+- Input handling via mouse, keyboard, buttons, and checkboxes (R-UI2, R-UI4, R-UI7).
+- Output handling with logs, alerts, and completion status (R-UI3, R-UI10, R-UI12).
+- All actions must be completed within a reasonable time frame (R-UI6).
+
+## Hardware Interfaces (HW1 - HW10)
+- Compatibility with Windows 11 x64 systems & Windows-compatible hardware (HW1, HW4).
+- Execution of hardware/service interaction commands: powercfg, Stop-Service (HW2, HW9).
+- Disk, power, and other service metrics measured in proper units (HW5).
+- Completion messages are output correctly and are provided in the log file (HW10).
+
+## Software Interfaces (SW1 - SW10)
+- PowerShell script, API queries, Registry, & Service operations complete successfully (SW1, SW2, SW9).
+- CVE/Application Version Numbers Compared against NVD API CVE/Application Version Numbers checked properly (SW1, SW4, SW6, SW7, SW8).
+
+## General Functional Requirements
+- GUI with a functional tab system with four modules (GFR1).
+- Admin privilege prompt/enforcement (GFR2, GFR5).
+- Independent or Combined execution of modules (GFR3).
+- Status/Completion messages for all operations (GFR4).
+
+## Performance Module (PM1 - PM7)
+- Power plan changes successfully (PM1).
+- Disable SysMain, Search, and other non-essential services successfully (PM2).
+- Successfully disables performance hits animation/transparency effects (PM3).
+- All background apps and startup apps should be disabled (PM4, PM5).
+- Startup delay optimized correctly (PM6).
+- Prompt Defrag & Optimize drives (PM7).
+
+## Security Module (SM1 - SM5)
+- Successful creation of system restore point (SM1).
+- Disabled SMBv1 and Remote features (SM2, SM3).
+- Enable proper Windows Defender configuration (SM4).
+- System provides confirmation messages before applying major/critical security hardening operations (SM5).
+
+## Cleanup Module (CM1 - CM7)
+- Clear TEMP, %TEMP%, PREFETCH, Update caches, & Recycle Bin (CM1 - CM3).
+- Remove checked built-in applications (CM4).
+- Clear Event Viewer Logs (CM5).
+- Run disk cleanup (CM6).
+- Perform any additional cleanup commands to improve organization and performance (CM7).
+
+## Vulnerability Scanner Module (VSM1 - VSM6)
+- Retrieve installed software/version list (VSM1).
+- Query NVD API for CVEs & corresponding version list (VSM2).
+- Display CVE ID, version number, severity, & summary (if necessary) (VSM3).
+- Export results to log file (VSM4).
+- Handle API framework/network failure message (VSM5).
+- Provide user guidance on vulnerable software if detected (VSM6).
 
 ### Features Not to Be Tested
 
-(List the features of the software/product which will not be tested. Specify the
-reasons these features won’t be tested.)
-
+- Future API integrations beyond the current scope (e.g., signed certificates, system update prompting, alternative APIs for vulnerability scanning. 
+- Cross-platform compatibility (TOOL IS WINDOWS-ONLY).
+- Non-administrator runtime (Requires elevated permissions).
+- Debloat Features (Not a debloat tool).
+- External application removal, installation, or repair. 
 
 UNIT TEST
 ---------
