@@ -99,10 +99,12 @@ The objective of this test plan is to validate and ensure that SwiftEdge Securit
 ### Features Not to Be Tested
 
 - Future API integrations beyond the current scope (e.g., signed certificates, system update prompting, alternative APIs for vulnerability scanning. 
-- Cross-platform compatibility (TOOL IS WINDOWS-ONLY).
+- Cross-platform compatibility: macOS/Linux will not be tested.
 - Non-administrator runtime (Requires elevated permissions).
-- Debloat Features (Not a debloat tool).
-- External application removal, installation, or repair. 
+- Debloat Features: The tool is not a Windows debloater and will not be tested as such. 
+- External application removal, installation, or repair is not within scope.
+- Legacy Windows versions are not supported and out of scope.
+- Performance benchmarking is only relevant to scripts that require completion within a reasonable time frame. 
 
 UNIT TEST
 ---------
@@ -177,13 +179,14 @@ form, *scenarios*, scripts to read, and data collection methods.
 Test Deliverables
 -----------------
 
-(List test deliverables, and links to them if available, including the following.)
-
--   Test Plan (this document itself)
--   Test Scripts
--   Defect/Enhancement Logs
--   Test Result Reports
-
+-   Test Plan Document (this document).
+-   Test Cases (Unit, Regression, Integration, and UAT with requirement maps).
+-   Test Scripts (PowerShell scripts used for automated checks, including reversion scripts).
+-   Defect/Enhancement Logs (Logs of issues, bugs, and suggested improvements from our advisor).
+-   Test Execution Logs (Output logs from each module run).
+-   Screenshots & System Snapshots (Before/After comparison).
+-   Test Result Reports (Summary of testing results, pass/fail status, and status of requirements met).
+-   User Acceptance Test & Feedback (Completed by the test group of end users during UAT). 
 
 Schedule
 --------
