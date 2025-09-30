@@ -45,29 +45,29 @@ The objective of this test plan is to validate and ensure that SwiftEdge Securit
 
 > Note: Features being tested may change with the addition of new features or alteration of established features. 
 
-## User Interfaces (R-UI1 - R-UI12)
+#### User Interfaces (R-UI1 - R-UI12)
 - GUI design and tab switching (R-UI1, R-UI8, R-UI9).
 - Input handling via mouse, keyboard, buttons, and checkboxes (R-UI2, R-UI4, R-UI7).
 - Output handling with logs, alerts, and completion status (R-UI3, R-UI10, R-UI12).
 - All actions must be completed within a reasonable time frame (R-UI6).
 
-## Hardware Interfaces (HW1 - HW10)
+#### Hardware Interfaces (HW1 - HW10)
 - Compatibility with Windows 11 x64 systems & Windows-compatible hardware (HW1, HW4).
 - Execution of hardware/service interaction commands: powercfg, Stop-Service (HW2, HW9).
 - Disk, power, and other service metrics measured in proper units (HW5).
 - Completion messages are output correctly and are provided in the log file (HW10).
 
-## Software Interfaces (SW1 - SW10)
+#### Software Interfaces (SW1 - SW10)
 - PowerShell script, API queries, Registry, & Service operations complete successfully (SW1, SW2, SW9).
 - CVE/Application Version Numbers Compared against NVD API CVE/Application Version Numbers checked properly (SW1, SW4, SW6, SW7, SW8).
 
-## General Functional Requirements
+#### General Functional Requirements
 - GUI with a functional tab system with four modules (GFR1).
 - Admin privilege prompt/enforcement (GFR2, GFR5).
 - Independent or Combined execution of modules (GFR3).
 - Status/Completion messages for all operations (GFR4).
 
-## Performance Module (PM1 - PM7)
+#### Performance Module (PM1 - PM7)
 - Power plan changes successfully (PM1).
 - Disable SysMain, Search, and other non-essential services successfully (PM2).
 - Successfully disables performance hits animation/transparency effects (PM3).
@@ -75,20 +75,20 @@ The objective of this test plan is to validate and ensure that SwiftEdge Securit
 - Startup delay optimized correctly (PM6).
 - Prompt Defrag & Optimize drives (PM7).
 
-## Security Module (SM1 - SM5)
+#### Security Module (SM1 - SM5)
 - Successful creation of system restore point (SM1).
 - Disabled SMBv1 and Remote features (SM2, SM3).
 - Enable proper Windows Defender configuration (SM4).
 - System provides confirmation messages before applying major/critical security hardening operations (SM5).
 
-## Cleanup Module (CM1 - CM7)
+#### Cleanup Module (CM1 - CM7)
 - Clear TEMP, %TEMP%, PREFETCH, Update caches, & Recycle Bin (CM1 - CM3).
 - Remove checked built-in applications (CM4).
 - Clear Event Viewer Logs (CM5).
 - Run disk cleanup (CM6).
 - Perform any additional cleanup commands to improve organization and performance (CM7).
 
-## Vulnerability Scanner Module (VSM1 - VSM6)
+#### Vulnerability Scanner Module (VSM1 - VSM6)
 - Retrieve installed software/version list (VSM1).
 - Query NVD API for CVEs & corresponding version list (VSM2).
 - Display CVE ID, version number, severity, & summary (if necessary) (VSM3).
