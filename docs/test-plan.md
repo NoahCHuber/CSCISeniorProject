@@ -124,9 +124,19 @@ Evaluate new features and bug fixes introduced in this release.
 
 | \#  | OBJECTIVE | INPUT | EXPECTED RESULTS | TEST DELIVERABLES |
 | --: | --------- | ----- | ---------------- | ----------------- |
-|  1  | Verify GUI configuration (4 Tabs)[Req:R-UI1, R-UI8, R-UI9, GFR1] |   Launch Script/EXE (elevated UAC) |  Windows Forms GUI opens with 4 set tabs (Performance, Security, Cleanup, Vulnerabilities)  |   Screenshot & possible intial log.  |
-|  2  |           |       |                  |                   |
-
+|  1  | Verify GUI configuration (4 Tabs)[Req: R-UI1, R-UI8, R-UI9, GFR1] | Launch Script/EXE (elevated UAC) | Windows Forms GUI opens with 4 set tabs (Performance, Security, Cleanup, Vulnerabilities) | Screenshot & possible initial log. |
+|  2  | Validate basic inputs (tabs & buttons) [Req: R-UI2, R-UI4, R-UI7] | Click each tab & press buttons.| Controls respond, no overlap or improper action. | Screen recording of the function. |
+|  3  | Performance: Power & Core Service [Req: PM1, PM2, HW2, HW9] | Click optimize performance button. | Activate Ultimate Power plan and disable SysMain, WSearch, etc. | Before/After Log &Or Screenshots |
+|  4  | Performance: Visuals, Background, Startup [Req: PM3, PM4, PM5] | Click optimize performance button | disables animations, transparency, background slides, and startup application. | Change log &Or Screenshots |
+|  5  | Performance: Startup Delay & Drive Optimization [Req: PM6, PM7] | Click optimize performance button | Applies startup-delay tweak, runs/enables drive optimization, regedit change. | Change Log &Or Screenshots |
+|  6  | Security: Restore point confirmation [Req: SM1, SM5] | Checkbox for restore point | Restore point created | Confirmation shown in application log |
+|  7  | Security: SMBv1 & Remote Features Disabled [Req: SM2, SM3] | Click/Run security hardening button/module | SMBv1 off, remote services disabled | Feature-Status/confirmation log |
+|  8  | Security: Defender configuration & Firewall settings [Req: SM4, SW2] | Click/Run security hardening botton/module | Defender settings enabled, firewall rules set | Change/Confirmation Log |
+|  9  | Cleanup Module: File Cleaning [Req: CM1, CM2, CM3] | Run file cleanup button | TEMP, %TEMP%, PREFETCH, WU cache, Recycle bin cleared. | Change/Confirmation Log |
+|  10  | Cleanup Module: Select Package Removal [Req: CM4] | Click cleanup button | Removed select packages for cleaner system. | Change/Confirmation Log |
+|  11  | Cleanup: Logs & Disk Cleanup [Req: CM5, CM6, CM7] | Click cleanup button | Extra logs, event logs, disk cleanup run, and miscellaneous extras performed | Free space value & Change/Confirmation Log |
+|  12  | Vulnerability Module: NVD Pull/Query [Req: VSM1, VSM2, VSM3, SW1, SW4, SW6, SW8] | Click Run Vulnerability Scanner button | Scans currrently installed app list and pulls corresponding verison numbers. Queries the NVD API and fetches the CVEs and corresponding version numbers. | API pull log, APP log/Confirmation Log |
+|  13  | Vulnerability Module: Exports, Offline Handling, User Warning [Req: VSM4, VSM5, VSM6] | Click Run Vulnerability Scanner button | Exports results (if applicable), pulls API locally for scan (if selected), Flags user if CVE matches. | API output, Export log, Confirmation log. |
 
 REGRESSION TEST
 ---------------
