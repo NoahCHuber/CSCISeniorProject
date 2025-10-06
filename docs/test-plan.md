@@ -212,14 +212,19 @@ Test Deliverables
 Schedule
 --------
 
-(Provide a summary of the testing schedule, specifying key test milestones, 
-and/or provide a link to the detailed schedule.)
+October 26: Unit testing and log validation
+November 5: Regression testing post-fixes
+November 16: Integration testing across modules
+November 30: User Acceptance Testing and final report
 
 Risks
 -----
 
--   (If any risks have been identified, list them here.)
--   (Specify the mitigation plan and the contingency plan for each risk.)
+| Risk                       | Mitigation Plan                 | Contingency Plan              |
+| -------------------------- | ------------------------------- | ----------------------------- |
+| API downtime or rate limit | Use cached CVE data             | Retry with local API cache    |
+| UAC elevation failure      | Prompt user to re-run as admin  | Exit with warning             |
+| Log corruption             | Enable timestamped log rotation | Backup logs in temp directory |
 
 
 Appendix
