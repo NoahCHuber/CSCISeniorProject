@@ -319,7 +319,7 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 * **PM2:** System should disable the SysMain (Superfetch) and Windows Search (WSearch) Services.
 * **PM3:** System should disable Windows animations, transparency, and adjust text performance via Windows tools or Regedit.
 * **PM4:** System should disable all background apps through user Regedit.
-* **PM5:** System should disable all startup applications.
+* **PM5:** System should disable Windows tips and hibernation.
 * **PM6:** System should remove startup delay via Registry
 * **PM7:** System should run defrag and optimize and enable monthly optimizations for peak performance. 
 
