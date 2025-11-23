@@ -541,6 +541,7 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 ### 5.1 Documentation
 Style Guide for SRD: [SRS-Template - Jam01](https://github.com/jam01/SRS-Template/tree/master)   
 NIST NVD Developer Database: [NIST NVD Database](https://nvd.nist.gov/developers/start-here)   
+NIST Data Feeds: [NIST NVD Data Feed](https://nvd.nist.gov/vuln/data-feeds#divJson20Feeds)
 CVE Program: [CVE Program](https://www.cve.org/)   
 Avast Security (GUI Inspiration): [Avast Security](https://www.avast.com/)   
 Norton 360 (Software Version Scanning Inspiration): [Norton360](https://us.norton.com/products/norton-360-standard)   
