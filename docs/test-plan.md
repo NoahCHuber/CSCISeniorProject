@@ -67,19 +67,19 @@ The objective of this test plan is to validate and ensure that SwiftEdge Securit
 - Independent or Combined execution of modules (GFR3).
 - Status/Completion messages for all operations (GFR4).
 
-#### Performance Module (PM1 - PM7)
+#### Performance Module (PM1 - PM6)
 - Power plan changes successfully (PM1).
 - Disable SysMain, Search, and other non-essential services successfully (PM2).
 - Successfully disables performance hits animation/transparency effects (PM3).
 - All background apps and startup apps should be disabled (PM4, PM5).
 - Startup delay optimized correctly (PM6).
-- Prompt Defrag & Optimize drives (PM7).
 
-#### Security Module (SM1 - SM5)
+#### Security Module (SM1 - SM6)
 - Successful creation of system restore point (SM1).
 - Disabled SMBv1 and Remote features (SM2, SM3).
 - Enable proper Windows Defender configuration (SM4).
 - System provides confirmation messages before applying major/critical security hardening operations (SM5).
+- Enable Windows Firewall Features (SM6).
 
 #### Cleanup Module (CM1 - CM7)
 - Clear TEMP, %TEMP%, PREFETCH, Update caches, & Recycle Bin (CM1 - CM3).
@@ -128,7 +128,7 @@ Evaluate new features and bug fixes introduced in this release.
 |  2  | Validate basic inputs (tabs & buttons) [Req: R-UI2, R-UI4, R-UI7] | Click each tab & press buttons.| Controls respond, no overlap or improper action. | Screen recording of the function. |
 |  3  | Performance: Power & Core Service [Req: PM1, PM2, HW2, HW9] | Click optimize performance button. | Activate Ultimate Power plan and disable SysMain, WSearch, etc. | Before/After Log &Or Screenshots |
 |  4  | Performance: Visuals, Background, Startup [Req: PM3, PM4, PM5] | Click optimize performance button | disables animations, transparency, background slides, and startup application. | Change log &Or Screenshots |
-|  5  | Performance: Startup Delay & Drive Optimization [Req: PM6, PM7] | Click optimize performance button | Applies startup-delay tweak, runs/enables drive optimization, regedit change. | Change Log &Or Screenshots |
+|  5  | Performance: Startup Delay [Req: PM6] | Click optimize performance button | Applies startup-delay tweak, runs/enables drive optimization, regedit change. | Change Log &Or Screenshots |
 |  6  | Security: Restore point confirmation [Req: SM1, SM5] | Checkbox for restore point | Restore point created | Confirmation shown in application log |
 |  7  | Security: SMBv1 & Remote Features Disabled [Req: SM2, SM3] | Click/Run security hardening button/module | SMBv1 off, remote services disabled | Feature-Status/confirmation log |
 |  8  | Security: Defender configuration & Firewall settings [Req: SM4, SW2] | Click/Run security hardening botton/module | Defender settings enabled, firewall rules set | Change/Confirmation Log |
@@ -160,7 +160,7 @@ REGRESSION TEST
 |  2  | Re-Validate basic inputs (tabs & buttons) [Req: R-UI2, R-UI4, R-UI7] | Click each tab & press buttons.| Controls respond, no overlap or improper action. | TBD |
 |  3  | Verify Performance: Powercfg & Core Services [Req: PM1, PM2, HW2, HW9] | Click optimize performance button. | Activate Ultimate Power plan and disable SysMain, WSearch, etc. | TBD |
 |  4  | Verify Performance: Visuals, Background, Startup [Req: PM3, PM4, PM5] | Click optimize performance button | disables animations, transparency, background slides, and startup application. | TDB |
-|  5  | Verify Performance: Startup Delay & Drive Optimization [Req: PM6, PM7] | Click optimize performance button | Applies startup-delay tweak, runs/enables drive optimization, regedit change. | TBD |
+|  5  | Verify Performance: Startup Delay [Req: PM6] | Click optimize performance button | Applies startup-delay tweak, regedit change. | TBD |
 |  6  | Verify Security: Restore point confirmation [Req: SM1, SM5] | Check-box for restore point | Restore point created | TBD |
 |  7  | Verify Changes - Security: SMBv1 & Remote Features Disabled [Req: SM2, SM3] | Click/Run security hardening button/module | SMBv1 off, remote services disabled | TBD |
 |  8  | Verify Config - Security: Defender configuration & Firewall settings [Req: SM4, SW2] | Click/Run security hardening botton/module | Defender settings enabled, firewall rules set | TBD |
@@ -191,7 +191,7 @@ INTEGRATION TEST
 USER-ACCEPTANCE TEST
 --------------------
 
-Verify that the solution works for potential user. Include the method (e.g.,
+Verify that the solution works for a potential user. Include the method (e.g.,
 heuristic, performance measures, thinking aloud, observation, questionnaire, 
 interviews, etc.), the number of participants and demographics, the concent
 form, *scenarios*, scripts to read, and data collection methods.
