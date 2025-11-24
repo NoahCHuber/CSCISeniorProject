@@ -246,3 +246,5 @@ Appendix
 --------
 
 (Include any information that is helpful to reference.)
+
+**Note:** Test-plan will be utilized in writing a testing script in CSCI499 Defense. Any tables empty in the test-plan will be completed after the script testing phase is performed in the following semester. In the event that the minimum viable product does not run/execute/perform as intended while grading. Please reach out to Noah Huber or Daniel Howard via Email, and we should be available to resolve any issues in a reasonable time frame. Thank you for your understanding. 
