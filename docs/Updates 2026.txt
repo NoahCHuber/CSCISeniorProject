@@ -1,0 +1,98 @@
+Daniel and Noah. 
+
+THE FIXES/CURRENT PROBLEMS/TESTING/ETC:
+The time it takes to run the vulnerability scan. 
+When packaging with PS2EXE it still compiles the additional files as scripts and therefore cannot be run
+on a system that does not have scripts enabled. There is a possibilty of using hashes or base64 to interally
+call the other modules so it doesn't run as a external script and falls underneath the same exe. 
+
+Testing needs to be quantifiable as mentioned below in detail. 
+Another issue that we have is we would really like to have a single command that we could run from powershell
+that would pull the entire project and run it similar to ChrisTitus WinUtil. 
+I would also like to see any additional things that we could add from the other tool in our references. 
+
+THINGS TO KEEP IN MIND:
+We need to emphasize logging for the defense presentation. How and why that is important. 
+We mainly need to focus on how we are going to write the test script for the entire program. 
+A future work section that we can keep in mind for our presentation is having an extra module or additional settings
+for power users who want to really lock down their pc. WE can use the STIGS and other government resources to back that up. 
+
+CHALLENGES WE HAVE OVERCOME:
+One of the hardest challenges that we overcame was figuring out how to run the vulnerability scanner. 
+This was a pretty difficult challenge as the online NVD API has a hard rate limit of 5 queries per 30 secs
+It then has a hard lock if you exceed that too many times from the same IP. 
+In order to get around this issue, we pulled down the daily updated NVD .targz/file
+That contains all of the CVES generated throughout the year. The unfortunate part of doing that
+is that is can take several minutes to parse through the entire document and pull
+all of the CVE information. 
+
+Another difficult challenge that we faced was learning powershell and getting comfortable with
+programming an entire UI using windows forms elements. Turns out that windows forms can look
+suprisingly good if you add coloring and a couple of UI element adjustments. 
+
+Another really difficult challenge was packaging it as a single EXE. At the very beginning I wanted
+an application/EXE that I could download or run from a USB quickly. 
+However, compiling with PS2EXE has been more of a challenge than expected.
+Scripts that are compiled into the main exe are not executed as an additional EXE
+but rather an external script called by the program. We are attempting a few ways to get around this issue. 
+
+Instructor & Internal Feedback: 
+
+THE GOOD:
+I like how you mapped all the test cases clearly to the requirements. 
+Also, the feature set is well categorized and structured. 
+Also, good thinking around constraints.
+
+Overall we have a functional product that can work as long as scripts are enabled on the system. 
+The UI looks fantastic and there are slight changes that we can make like console output for module runs etc. 
+At the end of the day we have really created a security and performance application that can be used on windows 11.
+This can be used by many different types of users, is pretty user friendly. 
+
+THE BAD
+Note that the instructions expect that you have Entry Criteria / Exit Criteria (part of the ISTQB standard).
+Examples:
+Entry criteria for unit testing (e.g., modules compile, requirements baseline, development complete).
+Exit criteria (e.g., all unit tests pass; no Critical or High defects open).
+
+Solution: This would be fixed whenever re-evaluating our unit testing. 
+
+Also, state whether tests are run by the developer, peer testers, or external users.
+
+Solution: Tests are only run or performed by the developer. User Acceptance Testing may be removed.
+The app only needs to appeal to Daniel and Noah. 
+
+Be more specific with the test environment. This is particularly important for your project because it checks the system state. Include the following:
+hardware specs,
+OS versions,
+tools,
+data sources/scripts,
+restore point expectations,
+and how environments are reset between tests.
+
+Solution: Be very specific about the test environment including the windows version numbers, BIOS Build, 
+minimum or base hardware specs. Tools utilized. Sources either internal or external. Restore point expectations. 
+
+The expected results must be quantifiable (measurable) to know if the tests pass. Consider these examples from your plan:
+“disables animations,”
+“improves system performance,”
+“runs within a reasonable time.”
+The probably should be something like this:
+“Animations are disabled as verified by registry value X = 0.”
+“Startup delay reduced by Y ms as shown in registry key HKCU\Software\Microsoft...”
+“Module execution finishes within 5 seconds (fit criterion for R-XXX).”
+
+Solution: Ensure that all testing performed has a quantifiable measureable outcome. 
+
+You don't need to include all types of testing. 
+However, if you include user acceptance testing (UAT), 
+you must have formal scripts (what you will say to the participants), 
+scenarios (what you will ask them to do), 
+and methods (what you will measure).
+
+Solution: After re-evaluating our testing and test cases we should arrive on the types that will be used for further testing.
+Removal of acceptance testing UAT. 
+
+NOTES:
+There are additional things that will come up as we resume production on this project. 
+This file serves to annotate the good, bad, and issues that we have with our current build. 
+Please feel free to add anything else necessary here. 
