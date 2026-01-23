@@ -132,19 +132,26 @@ Schedule
     -   June 2 - June 6 - Meet up for preparation of project construction (Generic)
 
 *   Fall 2025 - CSCI 498
-    -   October 20 - 
-    -   October 27 - 
-    -   November 3 - 
-    -   November 10 - 
-    -   November 17 - 
-    -   November 20 - 
+    -   October 20 - Began construction on the program. 
+    -   October 27 - Performance Module 50% Completed. 
+    -   November 3 - Cleanup & Performance Module Completed. 
+    -   November 10 - Security Module Started. 
+    -   November 17 - Vulnerability Scanner Module Started. 
+    -   November 20 - Module Wrap Up & PS2EXE Compiler Work.
+    -   December 4 - Minimum Viable Product Completed.
+    -   December 8 - Received Feedback & Created ToDo List for 2026.
 
-*   Spring 2026 - CSCI 499 (more detail will be added here once you are closer)
-    -   Weeks 1-4 - Implement test plan
-    -   Week 5 - Evaluate test results
-    -   Week 6-10 - Apply updates and bug fixes based on the results
-    -   Week 8 - Computer the first 4 chapters of the defense documentation.
-    -   ...
+*   Spring 2026 - CSCI 499
+    -   January 26 - Continue work on program and finalize functionality.
+    -   February 2 - Begin implementing test plan (manually).
+    -   February 2:20 - Fixing older bugs, errors, and efficiency.  
+    -   February 23 - Evaluate test results.
+    -   February 23 - Begin applying updates and bug fixes based on the results.
+    -   March 2 - Begin drafting final documentation and presentation. 
+    -   March 30 - Finalize all documentations, presentations, and program code.
+    -   April 6 - Run through all material & practice presentations.
+    -   April 14 - Senior Project Defense material due.
+    -   FINAL - Present Final Project. 
  
 ## References
 - [NVD API](https://nvd.nist.gov/developers/start-here)
