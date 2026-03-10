@@ -204,7 +204,6 @@ Schedule
 October 26: Unit testing and log validation \
 November 5: Regression testing post-fixes \
 November 16: Integration testing across modules \
-November 30: User Acceptance Testing and final report \
 March 16: Testing Performed and Completed
 
 Risks
