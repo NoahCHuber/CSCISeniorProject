@@ -17,9 +17,6 @@ SwiftEdge Security & Optimizer
 - [INTEGRATION TEST](#integration-test)
   - [Integration Test Strategy and Extent of Integration Testing](#integration-test-strategy-and-extent-of-integration-testing)
   - [Integration Test Cases](#integration-test-cases)
-- [USER-ACCEPTANCE TEST (To be completed by the business office)](#user-acceptance-test-to-be-completed-by-the-business-office)
-  - [User-Acceptance Test Strategy](#user-acceptance-test-strategy)
-  - [User-Acceptance Test Cases](#user-acceptance-test-cases)
 - [Test Deliverables](#test-deliverables)
 - [Schedule](#schedule)
 - [Risks](#risks)
@@ -58,8 +55,8 @@ The objective of this test plan is to validate and ensure that SwiftEdge Securit
 - Completion messages are output correctly and are provided in the log file (HW10).
 
 #### Software Interfaces (SW1 - SW10)
-- PowerShell script, API queries, Registry, & Service operations complete successfully (SW1, SW2, SW9).
-- CVE/Application Version Numbers Compared against NVD API CVE/Application Version Numbers checked properly (SW1, SW4, SW6, SW7, SW8).
+- PowerShell script, NVD feed retrieval, Registry, and service operations complete successfully (SW1, SW2, SW9).
+- CVE/application version matching against NVD feed data is handled correctly (SW1, SW4, SW6, SW7, SW8).
 
 #### General Functional Requirements
 - GUI with a functional tab system with four modules (GFR1).
@@ -67,12 +64,15 @@ The objective of this test plan is to validate and ensure that SwiftEdge Securit
 - Independent or Combined execution of modules (GFR3).
 - Status/Completion messages for all operations (GFR4).
 
-#### Performance Module (PM1 - PM6)
+#### Performance Module (PM1 - PM9)
 - Power plan changes successfully (PM1).
 - Disable SysMain, Search, and other non-essential services successfully (PM2).
 - Successfully disables performance hits animation/transparency effects (PM3).
-- All background apps and startup apps should be disabled (PM4, PM5).
+- Background apps should be disabled (PM4).
+- Hibernation should be disabled (PM5).
 - Startup delay optimized correctly (PM6).
+- Startup applications can be disabled and restored through reset workflow (PM7).
+- Game Mode and Hardware-Accelerated GPU Scheduling can be enabled (PM8, PM9).
 
 #### Security Module (SM1 - SM6)
 - Successful creation of system restore point (SM1).
@@ -90,9 +90,9 @@ The objective of this test plan is to validate and ensure that SwiftEdge Securit
 
 #### Vulnerability Scanner Module (VSM1 - VSM6)
 - Retrieve installed software/version list (VSM1).
-- Query NVD API for CVEs & corresponding version list (VSM2).
+- Query NVD feed for CVEs & corresponding version list (VSM2).
 - Display CVE ID, version number, severity, & summary (if necessary) (VSM3).
-- Export results to log file (VSM4).
+- Display vulnerability results in GUI output panel (VSM4).
 - Handle API framework/network failure message (VSM5).
 - Provide user guidance on vulnerable software if detected (VSM6).
 
@@ -127,23 +127,23 @@ Evaluate new features and bug fixes introduced in this release.
 |  1  | Verify GUI configuration (4 Tabs)[Req: R-UI1, R-UI8, R-UI9, GFR1] | Launch Script/EXE (elevated UAC) | Windows Forms GUI opens with 4 set tabs (Performance, Security, Cleanup, Vulnerabilities) | Screenshot & possible initial log. |
 |  2  | Validate basic inputs (tabs & buttons) [Req: R-UI2, R-UI4, R-UI7] | Click each tab & press buttons.| Controls respond, no overlap or improper action. | Screen recording of the function. |
 |  3  | Performance: Power & Core Service [Req: PM1, PM2, HW2, HW9] | Click optimize performance button. | Activate Ultimate Power plan and disable SysMain, WSearch, etc. | Before/After Log &Or Screenshots |
-|  4  | Performance: Visuals, Background, Startup [Req: PM3, PM4, PM5] | Click optimize performance button | disables animations, transparency, background slides, and startup application. | Change log &Or Screenshots |
-|  5  | Performance: Startup Delay [Req: PM6] | Click optimize performance button | Applies startup-delay tweak, runs/enables drive optimization, regedit change. | Change Log &Or Screenshots |
+|  4  | Performance: Visuals, Background, Startup [Req: PM3, PM4, PM7] | Click optimize performance button | Disables animations/transparency/background apps and disables startup applications for current user (Run key). | Change log &Or Screenshots |
+|  5  | Performance: Startup Delay + Gaming Tweaks [Req: PM6, PM8, PM9] | Click optimize performance button | Applies startup-delay tweak and enables Game Mode/HAGS (reboot may be required). | Change Log &Or Screenshots |
 |  6  | Security: Restore point confirmation [Req: SM1, SM5] | Checkbox for restore point | Restore point created | Confirmation shown in application log |
 |  7  | Security: SMBv1 & Remote Features Disabled [Req: SM2, SM3] | Click/Run security hardening button/module | SMBv1 off, remote services disabled | Feature-Status/confirmation log |
-|  8  | Security: Defender configuration & Firewall settings [Req: SM4, SW2] | Click/Run security hardening botton/module | Defender settings enabled, firewall rules set | Change/Confirmation Log |
+|  8  | Security: Defender configuration & Firewall settings [Req: SM4, SW2] | Click/Run security hardening button/module | Defender real-time/behavior/IOAV enabled, firewall enabled across profiles | Change/Confirmation Log |
 |  9  | Cleanup Module: File Cleaning [Req: CM1, CM2, CM3] | Run file cleanup button | TEMP, %TEMP%, PREFETCH, WU cache, Recycle bin cleared. | Change/Confirmation Log |
 |  10  | Cleanup Module: Select Package Removal [Req: CM4] | Click cleanup button | Removed select packages for cleaner system. | Change/Confirmation Log |
 |  11  | Cleanup: Logs & Disk Cleanup [Req: CM5, CM6, CM7] | Click cleanup button | Extra logs, event logs, disk cleanup run, and miscellaneous extras performed | Free space value & Change/Confirmation Log |
-|  12  | Vulnerability Module: NVD Pull/Query [Req: VSM1, VSM2, VSM3, SW1, SW4, SW6, SW8] | Click Run Vulnerability Scanner button | Scans currrently installed app list and pulls corresponding verison numbers. Queries the NVD API and fetches the CVEs and corresponding version numbers. | API pull log, APP log/Confirmation Log |
-|  13  | Vulnerability Module: Exports, Offline Handling, User Warning [Req: VSM4, VSM5, VSM6] | Click Run Vulnerability Scanner button | Exports results (if applicable), pulls API locally for scan (if selected), Flags user if CVE matches. | API output, Export log, Confirmation log. |
+|  12  | Vulnerability Module: NVD Pull/Query [Req: VSM1, VSM2, VSM3, SW1, SW4, SW6, SW8] | Click Run Vulnerability Scanner button | Scans installed app list and versions, retrieves NVD feed data, and matches CVEs. | Feed pull log, app/version confirmation log |
+|  13  | Vulnerability Module: GUI Output, Offline Handling, User Warning [Req: VSM4, VSM5, VSM6] | Click Run Vulnerability Scanner button | Displays results in GUI output panel, handles offline/API failure gracefully, and provides user guidance when CVEs are found. | GUI output capture, confirmation log |
 
 REGRESSION TEST
 ---------------
 
 ### Regression Test Strategy
 
-**Purpose of Regression Testing:** Ensures that previous working functionality remains intact after fixes/changes or new features are created. Re-running low-level tests across all aspects of the application, including UI, Performance, Security, Cleanup, and Vulnerability modules, helps focus in on elevation handling, timing limits, restore-point creation, system changes, and stable exports/logs. 
+**Purpose of Regression Testing:** Ensures that previous working functionality remains intact after fixes/changes or new features are created. Re-running low-level tests across all aspects of the application, including UI, Performance, Security, Cleanup, and Vulnerability modules, helps focus in on elevation handling, timing limits, restore-point creation, system changes, and stable logging.
 
 **Hardware:** Windows-compatible x64 desktops/laptops, > 8GB of RAM, SSD preferred. \
 **OS:** Windows 11 23H2-24H2. \
@@ -159,16 +159,16 @@ REGRESSION TEST
 |  1  | Verify GUI configuration (4 Tabs)[Req: R-UI1, R-UI8, R-UI9, GFR1] | Launch Script/EXE (elevated UAC) | Windows Forms GUI opens with 4 set tabs (Performance, Security, Cleanup, Vulnerabilities) | TBD |
 |  2  | Re-Validate basic inputs (tabs & buttons) [Req: R-UI2, R-UI4, R-UI7] | Click each tab & press buttons.| Controls respond, no overlap or improper action. | TBD |
 |  3  | Verify Performance: Powercfg & Core Services [Req: PM1, PM2, HW2, HW9] | Click optimize performance button. | Activate Ultimate Power plan and disable SysMain, WSearch, etc. | TBD |
-|  4  | Verify Performance: Visuals, Background, Startup [Req: PM3, PM4, PM5] | Click optimize performance button | disables animations, transparency, background slides, and startup application. | TDB |
-|  5  | Verify Performance: Startup Delay [Req: PM6] | Click optimize performance button | Applies startup-delay tweak, regedit change. | TBD |
+|  4  | Verify Performance: Visuals, Background, Startup [Req: PM3, PM4, PM7] | Click optimize performance button | Disables animations/transparency/background apps and disables startup applications for current user (Run key). | TBD |
+|  5  | Verify Performance: Startup Delay + Gaming Tweaks [Req: PM6, PM8, PM9] | Click optimize performance button | Applies startup-delay tweak and enables Game Mode/HAGS (reboot may be required). | TBD |
 |  6  | Verify Security: Restore point confirmation [Req: SM1, SM5] | Check-box for restore point | Restore point created | TBD |
 |  7  | Verify Changes - Security: SMBv1 & Remote Features Disabled [Req: SM2, SM3] | Click/Run security hardening button/module | SMBv1 off, remote services disabled | TBD |
-|  8  | Verify Config - Security: Defender configuration & Firewall settings [Req: SM4, SW2] | Click/Run security hardening botton/module | Defender settings enabled, firewall rules set | TBD |
+|  8  | Verify Config - Security: Defender configuration & Firewall settings [Req: SM4, SW2] | Click/Run security hardening button/module | Defender real-time/behavior/IOAV enabled, firewall enabled across profiles | TBD |
 |  9  | Check Deletion - Cleanup Module: File Cleaning [Req: CM1, CM2, CM3] | Run file cleanup button | TEMP, %TEMP%, PREFETCH, WU cache, Recycle bin cleared. | TBD |
 |  10  | Check Removal - Cleanup Module: Select Package Removal [Req: CM4] | Click cleanup button | Removed select packages for cleaner system. | TBD |
 |  11  | Check - Cleanup: Logs & Disk Cleanup [Req: CM5, CM6, CM7] | Click cleanup button | Extra logs, event logs, disk cleanup run, and miscellaneous extras performed | TBD |
-|  12  | Verify Query - Vulnerability Module: NVD Pull/Query [Req: VSM1, VSM2, VSM3, SW1, SW4, SW6, SW8] | Click Run Vulnerability Scanner button | Scans currrently installed app list and pulls corresponding verison numbers. Queries the NVD API and fetches the CVEs and corresponding version numbers. | TBD |
-|  13  | Confirm Exports & Warnings - Vulnerability Module: Exports, Offline Handling, User Warning [Req: VSM4, VSM5, VSM6] | Click Run Vulnerability Scanner button | Exports results (if applicable), pulls API locally for scan (if selected), Flags user if CVE matches. | TBD |
+|  12  | Verify Query - Vulnerability Module: NVD Pull/Query [Req: VSM1, VSM2, VSM3, SW1, SW4, SW6, SW8] | Click Run Vulnerability Scanner button | Scans installed app list and versions, retrieves NVD feed data, and matches CVEs. | TBD |
+|  13  | Confirm GUI Output & Warnings - Vulnerability Module: GUI Output, Offline Handling, User Warning [Req: VSM4, VSM5, VSM6] | Click Run Vulnerability Scanner button | Displays results in GUI output panel, handles offline/API failure gracefully, and flags user guidance when CVEs are found. | TBD |
 
 
 INTEGRATION TEST
@@ -188,41 +188,15 @@ INTEGRATION TEST
 |  4  | Module Execution Stability | Run any of the modules followed by another module. | All modules must complete within a reasonable time, complete successfully, and the GUI must remain responsive throughout execution. | Timestamped log entries for each completed log & possible screenshot of utilized system resources. |
 |  5  | Administrator priviledge, UAC, & GUI Feedback | Launch application or attempt any module without proper UAC level. Relaunch with elevated permissions. | Non-Admin attempted execution results in a failure, elevated run executes properly and gives correct GUI feedback. | UAC warning message screenshots, screenshot of GUI feedback. |
 
-USER-ACCEPTANCE TEST
---------------------
-
-Verify that the solution works for a potential user. Include the method (e.g.,
-heuristic, performance measures, thinking aloud, observation, questionnaire, 
-interviews, etc.), the number of participants and demographics, the concent
-form, *scenarios*, scripts to read, and data collection methods.
-
-### User-Acceptance Test Strategy
-
-User Acceptance Testing (UAT) will be conducted to verify that SwiftEdge Security & Optimizer meets end-user expectations and functions correctly in a real-world environment. The goal is to confirm that the interface is functional and aesthetically appealing to end-users, modules execute without errors, and performance and security changes behave as intended. Testing will be completed by a small group of users, including some technology-competent individuals and some typical everyday end-users. All tests will be performed on devices running Windows 11, and each participant will perform typical use case scenarios such as running optimization, cleanup, security hardening, and vulnerability scans. Feedback will be collected through immediate observation and short user surveys to evaluate usability, functionality, and overall satisfaction when using the tool.
-
-### User-Acceptance Test Cases
-
-| #   | TEST ITEM | EXPECTED RESULTS | ACTUAL RESULTS | DATE |
-| --: | --------- | ---------------- | -------------- | ---- |
-|  1  | Launch SwiftEdge Security & Optimizer & Navigate All GUI Items | GUI loads with a welcome screen prompting a system restore point. After the welcome screen, the four module tabs appear. All text is readable & application launches as intended. |                |      |
-|  2  | Run Performance Optimization Module | Performance Optimization module runs as intended, changes power plans, disables services, animations, and improves system performance.  |                |      |
-|  3  | Run Security Hardening Module | SMBv1 and Remote services are disabled, defender configuration applied, firewall configuration applied, and STIGs followed successfully. |                |      |
-|  4  | Run System Cleanup Module | All TEMP files, Prefetch files, caches, and the recycle bin are cleared. |  |      |
-|  5  | Run Vulnerability Scanner Module | Installed Application list displayed with version numbers and CVE comparisons. The export option, if checked before running, will export results to a file. |         |      |
-|  6  | Check user feedback and overall usability | All feedback messages (Success, Warning, Error) are understandable. User completes all tasks without confusion. User can understand warnings from CVE results |  |      |
-
-
 Test Deliverables
 -----------------
 
 -   Test Plan Document (this document).
--   Test Cases (Unit, Regression, Integration, and UAT with requirement maps).
--   Test Scripts (PowerShell scripts used for automated checks, including reversion scripts).
--   Defect/Enhancement Logs (Logs of issues, bugs, and suggested improvements from our advisor).
+-   Test Cases (Unit, Regression, and Integration with requirement maps).
+-   Defect/Enhancement Logs.
 -   Test Execution Logs (Output logs from each module run).
 -   Screenshots & System Snapshots (Before/After comparison).
 -   Test Result Reports (Summary of testing results, pass/fail status, and status of requirements met).
--   User Acceptance Test & Feedback (Completed by the test group of end users during UAT). 
 
 Schedule
 --------
@@ -230,7 +204,8 @@ Schedule
 October 26: Unit testing and log validation \
 November 5: Regression testing post-fixes \
 November 16: Integration testing across modules \
-November 30: User Acceptance Testing and final report
+November 30: User Acceptance Testing and final report \
+March 16: Testing Performed and Completed
 
 Risks
 -----
@@ -241,10 +216,10 @@ Risks
 | UAC elevation failure      | Prompt user to re-run as admin  | Exit with warning             |
 | Log corruption             | Enable timestamped log rotation | Backup logs in temp directory |
 
-
 Appendix
 --------
 
 (Include any information that is helpful to reference.)
 
-**Note:** Test-plan will be utilized in writing a testing script in CSCI499 Defense. Any tables empty in the test-plan will be completed after the script testing phase is performed in the following semester. In the event that the minimum viable product does not run/execute/perform as intended while grading. Please reach out to Noah Huber or Daniel Howard via Email, and we should be available to resolve any issues in a reasonable time frame. Thank you for your understanding. 
+**Note:** The Test-Plan will be utilized in conducting manual confirmation and verification of scripts and system changes implemented by SwiftEdge.
+Please reach out to Noah Huber or Daniel Howard via Email, and we should be available to resolve any issues in a reasonable time frame. Thank you for your understanding. 
