@@ -135,7 +135,7 @@ This product is designed to consolidate multiple commonly used administrative an
 - The Windows Registry (for performance and privacy tweaks),
 - The Windows Service Controller (to manage and disable services),
 - The NVD feed (to retrieve vulnerability data based on installed software),
-- Local system components like Power Plans, Disk Cleanup, Defragmentation, and Temp File Directories.
+- Local system components like Power Plans, Disk Cleanup, and Temp File Directories.
 
 ### 2.2 Product Functions
 > SwiftEdge Security provides a modular interface that enables users to perform common system maintenance, optimization, and security tasks on Windows 11 systems. Each function is encapsulated within its own script and is accessible via a centralized GUI.
@@ -321,7 +321,6 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 * **PM4:** System should disable all background apps through user Regedit.
 * **PM5:** System should disable Windows tips and hibernation.
 * **PM6:** System should remove startup delay via Registry
-* **PM7:** System should run defrag and optimize and enable monthly optimizations for peak performance. 
 
 #### 3.2.3 Security Module
 > Security module is separate from the Vulnerability Scanner and changes local settings without internet access. Hardening operations will be lightweight and non-invasive. 
