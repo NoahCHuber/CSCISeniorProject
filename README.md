@@ -8,72 +8,94 @@ The application offers features such as junk file removal, system optimization, 
 
 ## Compile/Deploy
 
-This application is developed using PowerShell scripts and will be compiled into a single executable using PS2EXE. 
-This application must be run using administrator privileges when opening the .exe. A Windows Form should open, and the user can select the options they would like before running the script for each section. The GUI is modular, and each section will have its own interface and button to execute the script. To learn more details, please see the user interface section in the requirements document. 
-> NOTE: All changes performed using scripts can be reverted using the revert script for each module or through a system restore point as a whole. 
+This application is developed using PowerShell scripts and can be compiled into a single executable using PS2EXE.
+Run as Administrator for full module functionality.
+
+### Current Build Workflow
+
+Use the build helper script in `scripts/build-single.ps1`.
+
+- Build combined script + EXE (default behavior):
+  `powershell -ExecutionPolicy Bypass -File .\scripts\build-single.ps1`
+- Build combined script only (skip EXE):
+  `powershell -ExecutionPolicy Bypass -File .\scripts\build-single.ps1 -SkipExe`
+- If PS2EXE is not installed:
+  `Install-Module ps2exe -Scope CurrentUser`
+  or run with:
+  `powershell -ExecutionPolicy Bypass -File .\scripts\build-single.ps1 -InstallPs2ExeIfMissing`
+
+> Note: A restore point is still recommended before applying system changes.
 
 ## Usage
 
-System Clean Up (Unused System Files)   
-Performance Optimizations (Changes Registry for performance booster)       
-Security Check (Checks for Generic Vulnerabilities and system settings)
-Hardening (Optional System Hardening module that allows for hardening the system)      
-Software Vulnerability Scanner (Checks Software Version Numbers for Vulnerabilities using external NVD CVE)      
+SwiftEdge currently includes four GUI tabs:
+
+- Performance
+- Cleanup
+- Security
+- Vulnerability
 
 ## Suggested Options 
 
 > Note: A system restore point should be created before any modules are run. 
 
 **Performance Module:**
-> Options focused on improving speed, responsiveness, and reducing system overhead:
+> Current options focused on speed and responsiveness:
 
-- Set Power Plan to “High Performance” or “Ultimate Performance”
+- Set Ultimate Performance power plan (fallback to High Performance if needed)
 - Disable SysMain (Superfetch) service
-- Disable Search Indexing (WSearch)
-- Disable Xbox-related services (XblAuthManager, XblGameSave, etc.) (optional)
+- Disable Windows Search (WSearch)
+- Disable DiagTrack
+- Disable window animations
+- Disable transparency
 - Disable background apps via registry
-- Remove startup delay via registry
-- Turn off Windows animations and visual effects
-- Disable telemetry-related scheduled tasks
-- Adjust visual settings for best performance
-- Restart Windows Explorer (quick refresh option)
+- Disable Windows tips
+- Disable hibernation
+- Optimize startup delay
+- Disable startup applications (current user `Run` entries, with backup for restore)
+- Enable Game Mode
+- Enable Hardware-Accelerated GPU Scheduling (reboot may be required)
+- Reset Performance to Defaults button (module-level reset path)
 
 **Security Hardening Module:**
-> Options for improving system security and reducing the attack surface:
+> Current options for hardening and safe baseline configuration:
 
 - Disable SMBv1 protocol
+- Disable SMB Guest Access
 - Disable Remote Assistance
 - Disable Remote Registry
-- Enable Windows Defender protection(s)
-- Disable Windows Script Host
-- Configure basic outbound firewall rules
-- Disable data collection and additional telemetry features
+- Enable Defender Real-Time protection
+- Enable Defender Behavior monitoring
+- Enable Defender IOAV protection
+- Enable Memory Integrity (HVCI)
+- Enable Windows Firewall for all profiles
+- Reset Security to Defaults button (safe baseline reset, not factory Windows defaults)
 
 **System Cleanup Module:**
-> Options for removing junk, temp files, and unnecessary applications:
+> Current options for removing junk and temporary data:
 
 - Clean %TEMP% and C:\Windows\Temp
 - Clear prefetch/superfetch cache
 - Clear Windows Update cache
-- Remove old system restore points (optional)
 - Clear Event Viewer logs
-- Uninstall OneDrive (optional)
-- Remove Xbox Game Bar and Feedback Hub (optional)
-- Disable hibernation (optional)
-- Run Disk Cleanup silently
+- Remove selected built-in apps (`MicrosoftFeedback`, `Help`)
+- Run Disk Cleanup
 - Empty Recycle Bin
+- Perform additional cleanup (logs/minidumps/memory dump file)
 
 **Vulnerability & Software Scanning Module:**
-> Options for inspecting installed applications and identifying known risks:
+> Current scanner behavior:
 
 - Scan and list installed programs with versions
-- Query NVD API for known vulnerabilities
-- Query Vulners API for advanced CVE info (optional)
-- Display CVE ID, severity score (CVSS), and summary
-- Export vulnerability results to TXT or CSV
-- Flag outdated or unsupported software
+- Download/use local cache of NVD yearly JSON feed
+- Match installed app names/versions against NVD CPE version ranges
+- Display top vulnerable apps and CVE IDs with CVSS severity/score in the GUI text panel
 
-**Optional:** Check for the latest versions of detected software
+Not currently implemented in code:
+
+- Vulners API integration
+- Export to TXT/CSV from vulnerability tab
+- Automatic latest-version check for installed software
 
 ## Testing
 > This section outlines the key validation and testing criteria for SwiftEdge Security. Each feature module must function independently and correctly, without requiring external runtimes or manual configuration. The following checklist ensures that all performance, security, cleanup, and vulnerability scan operations perform as expected in the final executable version.
@@ -95,17 +117,17 @@ Software Vulnerability Scanner (Checks Software Version Numbers for Vulnerabilit
 | Background apps disabled in registry	        | Registry key reflects the correct setting           |
 | Visual effects are turned off	                | Animations and transparency are disabled            |
 | Startup delay removed	                        | Registry key StartupDelayInMSec is set to 0         |
-| Indexing is turned off on C: drive	          | Indexing checkbox is cleared under drive properties |
-| Explorer restart button functions	            | Explorer restarts without crashing                  |   
+| Startup apps are disabled                      | Current-user Run entries are removed and backed up  |
+| Game mode and HAGS can be enabled              | Registry values are set and change applies after reboot if required |
 
 **Security Hardening Checklist:**
 | *Test Case*	                                  | *Expected Result*                                                 | 
 | --------------------------------------------- | ----------------------------------------------------------------- |
 | SMBv1 is disabled	                            | Feature is not listed in Windows Features                         | 
 | Remote assistance and registry are disabled	  | Services are stopped and the registry reflects the disabled state | 
-| Windows Defender settings are updated	        | Tamper protection and cloud protection are enabled                | 
+| Windows Defender settings are updated	        | Real-time, behavior monitoring, and IOAV are enabled             | 
 | A system restore point is created	            | Restore point is visible in the System Restore panel              | 
-| Telemetry and tracking features are off	      | Data collection registry keys are set correctly                   | 
+| Firewall is enabled for all profiles	          | Domain, Private, and Public profiles are enabled                  | 
 
 **Cleanup Module Checklist:**
 | *Test Case*	                              | *Expected Result*                                       | 
@@ -113,7 +135,7 @@ Software Vulnerability Scanner (Checks Software Version Numbers for Vulnerabilit
 | Temporary folders are emptied	            | %TEMP% and C:\Windows\Temp show a reduced file count    | 
 | Event Viewer logs are cleared	            | Application/System/Security logs show no recent entries | 
 | Windows Update cache is cleared	          | SoftwareDistribution\Download folder is empty           | 
-| Preinstalled apps removed	                | App list no longer includes OneDrive/Xbox               | 
+| Selected built-in apps removed	         | App list no longer includes matching Feedback/Help entries |
 | RecycleBin is emptied	                    | Bin is confirmed to be empty                            |    
 
 **Vulnerability Scanning Checklist:**
@@ -121,11 +143,9 @@ Software Vulnerability Scanner (Checks Software Version Numbers for Vulnerabilit
 | ------------------------------------------ | -------------------------------------------------- |
 | The installed software list is retrieved	 | The List shows app names and version numbers       | 
 | NVD API is queried successfully	           | CVEs with IDs, summaries, and CVSS scores appear   | 
-| Optional Vulners API returns valid         | JSON	Results that match expected software versions | 
-| Export to TXT or CSV works                 | File is created with scan results                  |    
 | No connection = graceful failure	         | App shows a message without crashing               |     
 
 **Pass/Fail Criteria:**   \
-*Pass:* All core modules are complete with no errors, changes confirmed, and scan results displayed or exported.
+*Pass:* All core modules are complete with no errors, and scan results are displayed correctly in the UI.
 
 *Fail:* Application crashes do not apply expected system changes or do not retrieve vulnerability data when online.
