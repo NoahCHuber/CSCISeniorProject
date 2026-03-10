@@ -62,6 +62,7 @@ Table of Contents
 |   Daniel  | 2025-10-04 | Editing and Review      |     1.1     |
 |   Daniel  | 2025-15-04 | Adding to Section 3     |     1.11    |
 |    Noah   | 2025-15-04 | Final Draft Revisions   |     1.11    |
+|    Noah   | 2026-23-02 | Updates & Revisions     |     1.2     |
 
 ## 1. Introduction
 > This document defines the system requirements for SwiftEdge Security, a modular, GUI-based Windows utility designed to improve system performance, enhance security, perform cleanup operations, and check for known vulnerabilities. Developed entirely in PowerShell with a Windows Forms front end, this tool provides users with a streamlined interface and powerful functionality—all packaged as a standalone executable.
@@ -78,7 +79,7 @@ This software operates as a self-contained executable that performs real-time sy
 Key deliverables for this version (v1.0) include:
 - Provide a lightweight, portable, and efficient tool for optimizing and securing Windows systems.
 - Replace the need for multiple standalone scripts or tools by consolidating core administrative tasks into a unified interface.
-- Offer open-source vulnerability checking through integration with APIs like the National Vulnerability Database (NVD) and Vulners.
+- Offer open-source vulnerability checking through the National Vulnerability Database (NVD) feed.
 - Deliver a clean and professional GUI experience without requiring .NET installation or third-party frameworks, ensuring minimal dependencies and maximum accessibility.
 - Compatibility with Windows 11.
 - A Windows Forms-based GUI with tab navigation.
@@ -133,7 +134,7 @@ This product is designed to consolidate multiple commonly used administrative an
 **There are no direct dependencies on other systems. However, it does interface with:**
 - The Windows Registry (for performance and privacy tweaks),
 - The Windows Service Controller (to manage and disable services),
-- The NVD API (to retrieve vulnerability data based on installed software),
+- The NVD feed (to retrieve vulnerability data based on installed software),
 - Local system components like Power Plans, Disk Cleanup, Defragmentation, and Temp File Directories.
 
 ### 2.2 Product Functions
@@ -161,9 +162,8 @@ This product is designed to consolidate multiple commonly used administrative an
 
 *Vulnerability Scanning*
 - Detect installed applications and retrieve their version numbers.
-- Query open-source CVE databases (e.g., NVD API) to identify known vulnerabilities.
-- Display CVE results with severity scores and summaries.
-- Allow export of scan results to CSV or TXT.
+- Query the NVD feed to identify known vulnerabilities.
+- Display CVE results with severity scores and summaries in the GUI output panel.
 
 *User Interface and Workflow*
 - Provide a tab-based GUI built in PowerShell using Windows Forms.
@@ -241,8 +241,8 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 - The PS2EXE module used to compile the application into an .exe will remain compatible with PowerShell 5.1 and Windows Forms functionality.
 
 **Dependencies:**
-- NVD API is used to retrieve CVE information for the Vulnerability Scanner module. This dependency includes:
-- Continued availability and free access to the API.
+- NVD feed is used to retrieve CVE information for the Vulnerability Scanner module. This dependency includes:
+- Continued availability and free access to the feed.
 - Stability of response formats (JSON).
 - The application relies on several native Windows tools and services, including:
 - powercfg, Get-Service, Stop-Service, Get-ItemProperty, and cleanmgr.
@@ -289,14 +289,14 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 #### 3.1.3 Software interfaces
 > Connections between this product and other specific software components (name and version), including databases, operating systems, tools, libraries, and integrated commercial components. Identify the data items or messages coming into the system and going out and describe the purpose of each. Describe the services needed and the nature of communications. Refer to documents that describe detailed application programming interface protocols. Identify data that will be shared across software components.
 
-* **SW1:** Software Interfaces: PowerShell, NVD API, Windows Registry, System Services, Powercfg, etc.
+* **SW1:** Software Interfaces: PowerShell, NVD feed, Windows Registry, System Services, Powercfg, etc.
 * **SW2:** Input: Internal PowerShell functions, API queries, Windows Regedit calls, powercfg changes.
-* **SW3:** Output: GUI feedback, external logs(if checked), exported output.
+* **SW3:** Output: GUI feedback and module logs.
 * **SW4:** Range/Accuracy: API responses must return valid CVE that coincides with vulnerable software names and version numbers. PowerShell scripts must run without errors in a reasonable time frame.
 * **SW5:** Units of Measure: CVSS scores, CVE numbers, number of CVEs, vulnerability version numbers, application data.
-* **SW6:** Timing: Local commands < 1 minute. NVD API calls < 3 minutes (MAXIMUM)
-* **SW7:** Relationships: Local software modules independent to system functions. Vulnerability module dependent on NVD API and internet.
-* **SW8:** Data Format: JSON or other API format, TXT for exported logs, GUI Output.
+* **SW6:** Timing: Local commands < 1 minute. NVD feed retrieval/parsing < 3 minutes (MAXIMUM)
+* **SW7:** Relationships: Local software modules independent to system functions. Vulnerability module dependent on NVD feed and internet.
+* **SW8:** Data Format: JSON (NVD feed), TXT logs, GUI output.
 * **SW9:** Command Format: PowerShell(Invoke-RestMethod), (Get-ItemProperty).
 * **SW10:** End Messages: Success logs, CVE results, Vulnerability Results. 
 
@@ -333,23 +333,23 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 * **SM5:** System should provide a confirmation message before applying any security hardening operations. (Lightweight)
 
 #### 3.2.4 Cleanup Module
-> This module is specifically designed for cleaning temporary files, trash, emptying the recycle bin, and removing bloatware applications. (Note: OneDrive users must uncheck the box for removing OneDrive.)
+> This module is specifically designed for cleaning temporary files, trash, emptying the recycle bin, and removing selected built-in applications.
 
 * **CM1:** System should clear all temporary files in %TEMP%, TEMP, and PREFETCH.
 * **CM2:** System should clear all of the Windows Update Cache. (This helps reduce errors when performing Windows Updates)
 * **CM3:** System should empty the Recycle Bin.
-* **CM4:** System should remove built-in applications if checked for removal. (OneDrive, Xbox, Help, Feedback Center, etc)
+* **CM4:** System should remove selected built-in applications if checked for removal (Help and Feedback entries currently implemented).
 * **CM5:** System should clear minor event logs in the event viewer by invoking related PowerShell commands.
 * **CM6:** System should run disk cleanup with all items checked except the downloads folder.
 * **CM7:** System should perform any extra commands required to clean extra or junk files from the system to improve organization and system performance.
 
 #### 3.2.5 Vulnerability Scanner Module
-> This module requires access to the internet to utilize the NIST NVD API for checking application version numbers and checking the CVE database for matching numbers.
+> This module requires internet access to retrieve the NVD JSON feed for matching installed application versions against CVE entries.
 
 * **VSM1:** System should retrieve a list of installed software and their version numbers from the Registry or by utilizing PowerShell GetInfo Commands.
-* **VSM2:** System should use the NVD API to search for CVEs based on installed software names and version numbers.
+* **VSM2:** System should use the NVD feed to search for CVEs based on installed software names and version numbers.
 * **VSM3:** System shall display each CVE found with the corresponding ID, Name, Severity (CVSS score), and a short summary.
-* **VSM4:** System should allow the user to export vulnerability results to a file.
+* **VSM4:** System should display vulnerability results and recommendations in the GUI output panel.
 * **VSM5:** System should display a message if no internet connection is detected or the API fails.
 * **VSM6:** System should alert the user in the GUI to update or remove vulnerable software. 
 
@@ -402,9 +402,9 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 
 * **CMP1:** Software should comply with all industry standards when used in all environments and avoid collection, storage, or transmission of personal data.
 * **CMP2:** All logs generated by the application should not contain any personal information, system information, or configuration details.
-* **CMP3:** CVE queries made through NVD API should use read-only methods.
+* **CMP3:** CVE retrieval through the NVD feed should use read-only methods.
 * **CMP4:** Software should conform to PowerShell scripting standards.
-* **CMP5:** Any exports should be generated in plain-text formats to be readable by the average user.
+* **CMP5:** Any generated logs should be plain-text and readable by the average user.
 * **CMP6:** Any changes made to the Windows system should be traceable and reversible.
 * **CMP7:** Vulnerability scanning should rely only on publicly accessible and reputable sources such as NIST's NVD.
 * **CMP8:** Software should never bypass or override Windows Policy Settings unless otherwise specified by the user.
@@ -438,7 +438,7 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 * **D&I-M6:** Changelogs and version history shall be maintained within the source repository or packaging README.
 * **D&I-M7:** Software should be easy to update including vulnerability databases to be ready for small changes and Windows updates
 * **D&I-M8:** As Windows 11 continues to evolve, the software shall be designed to easily adapt to deprecations or changes in PowerShell cmdlets, Windows APIs, or system services.
-* **D&I-M9:** The vulnerability scanning feature shall pull CVE data dynamically from the NVD API to ensure up-to-date threat detection without requiring updates to the software itself.
+* **D&I-M9:** The vulnerability scanning feature shall pull CVE data dynamically from the NVD feed to ensure up-to-date threat detection without requiring updates to the software itself.
 * **D&I-M10:** Periodic review of PowerShell commands, registry tweaks, and cleanup procedures shall be conducted to ensure compatibility with Windows Feature Updates and cumulative patches.
 
 #### 3.5.4 Reusability
@@ -446,7 +446,7 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 
 * **D&I-R1:** Each functional module should be completely reusable as an independent PowerShell script.
 * **D&I-R2:** Scripts should include standardized return codes and logging, enabling integration into pipelines or other systems.
-* **D&I-R3:** Software used for NVD API, CVEs, or PowerShell Scripts should be isolated and maintain independent functionality.
+* **D&I-R3:** Software used for NVD feed parsing, CVEs, or PowerShell scripts should be isolated and maintain independent functionality.
 
 #### 3.5.5 Portability
 > Portability of SwiftEdge Security is based on a standalone .EXE this could be available on a USB, however, best cybersecurity practices should be followed and the .EXE should only be downloaded from the source repository.
@@ -474,7 +474,7 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 * **D&I-PC2:** Working Performance Module
 * **D&I-PC3:** Working Cleanup Module
 * **D&I-PC4:** Partially Assembled Security Module that will at the bare minimum output a security assessment.
-* **D&I-PC5:** A Vulnerability Scanner that collects installed software info, retrieves information from the NVD API, and displays the results either in a text file or terminal.
+* **D&I-PC5:** A Vulnerability Scanner that collects installed software info, retrieves information from the NVD feed, and displays the results in the GUI output panel.
 * **D&I-PC6:** All functionality to-date should be wrapped in a single standalone executable .exe.
 * **D&I-PC7:** Demonstration video, screenshots, or presentation on successful execution of each functioning module. 
 
@@ -500,17 +500,17 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 | Background apps disabled in registry	        | Registry key reflects the correct setting           |
 | Visual effects are turned off	                | Animations and transparency are disabled            |
 | Startup delay removed	                        | Registry key StartupDelayInMSec is set to 0         |
-| Indexing is turned off on C: drive	          | Indexing checkbox is cleared under drive properties |
-| Explorer restart button functions	            | Explorer restarts without crashing                  |   
+| Startup apps are disabled                      | Current-user Run entries are removed and backed up  |
+| Game mode and HAGS can be enabled              | Registry values are set and apply after reboot if required |
 
 **Security Hardening Checklist:**
 | *Test Case*	                                  | *Expected Result*                                                 | 
 | --------------------------------------------- | ----------------------------------------------------------------- |
 | SMBv1 is disabled	                            | Feature is not listed in Windows Features                         | 
 | Remote assistance and registry are disabled	  | Services are stopped and the registry reflects the disabled state | 
-| Windows Defender settings are updated	        | Tamper protection and cloud protection are enabled                | 
+| Windows Defender settings are updated	        | Real-time, behavior monitoring, and IOAV are enabled             | 
 | A system restore point is created	            | Restore point is visible in the System Restore panel              | 
-| Telemetry and tracking features are off	      | Data collection registry keys are set correctly                   | 
+| Firewall is enabled for all profiles	          | Domain, Private, and Public firewall profiles are enabled         | 
 
 **Cleanup Module Checklist:**
 | *Test Case*	                              | *Expected Result*                                       | 
@@ -518,20 +518,18 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 | Temporary folders are emptied	            | %TEMP% and C:\Windows\Temp show a reduced file count    | 
 | Event Viewer logs are cleared	            | Application/System/Security logs show no recent entries | 
 | Windows Update cache is cleared	          | SoftwareDistribution\Download folder is empty           | 
-| Preinstalled apps removed	                | App list no longer includes OneDrive/Xbox               | 
+| Selected built-in apps removed	         | App list no longer includes matching Feedback/Help entries |
 | RecycleBin is emptied	                    | Bin is confirmed to be empty                            |    
 
 **Vulnerability Scanning Checklist:**
 | *Test Case*	                               | *Expected Result*                                  | 
 | ------------------------------------------ | -------------------------------------------------- |
 | The installed software list is retrieved	 | The List shows app names and version numbers       | 
-| NVD API is queried successfully	           | CVEs with IDs, summaries, and CVSS scores appear   | 
-| Optional Vulners API returns valid         | JSON	Results that match expected software versions | 
-| Export to TXT or CSV works                 | File is created with scan results                  |    
+| NVD feed retrieval succeeds                | CVEs with IDs, summaries, and CVSS scores appear   | 
 | No connection = graceful failure	         | App shows a message without crashing               |     
 
 **Pass/Fail Criteria:**   \
-*Pass:* All core modules are complete with no errors, changes confirmed, and scan results displayed or exported.
+*Pass:* All core modules are complete with no errors, changes confirmed, and scan results displayed in the GUI output.
 
 *Fail:* Application crashes do not apply expected system changes or do not retrieve vulnerability data when online.
 
