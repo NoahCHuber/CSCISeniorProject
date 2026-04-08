@@ -13,18 +13,21 @@ Run as Administrator for full module functionality.
 
 ### Current Build Workflow
 
-Use the build helper script in `scripts/build-single.ps1`.
+**Build Steps:**
+1. Open PowerShell in the project root. Typically, 'User/Documents/CSCISeniorProject/'
 
-- Build combined script + EXE (default behavior):
-  `powershell -ExecutionPolicy Bypass -File .\scripts\build-single.ps1`
-- Build combined script only (skip EXE):
-  `powershell -ExecutionPolicy Bypass -File .\scripts\build-single.ps1 -SkipExe`
-- If PS2EXE is not installed:
-  `Install-Module ps2exe -Scope CurrentUser`
-  or run with:
-  `powershell -ExecutionPolicy Bypass -File .\scripts\build-single.ps1 -InstallPs2ExeIfMissing`
+2. Run the build script: 'powershell -ExecutionPolicy Bypass -File .\scripts\build-single.ps1 -NoOutput'
+> Note: The PowerShell ExecutionPolicy Bypass is not necessary if it is already disabled on your system.
+> This build will have no additional debug output. If you want extra GUI confirmation, remove -NoOutput.
 
-> Note: A restore point is still recommended before applying system changes.
+What the build script does:
+- The build script checks that all required module files and mainFinal.ps1 exist, creates the dist folder if needed, then merges the module scripts into one combined script.
+The build script then appends mainFinal.ps1 to the end of the combined script. > Just like procedural calls. 
+- Saves the merged file as: 'dist\SwiftEdge-Compiled.ps1'
+- The build script then called the compiler PS2EXE to compile the single PowerShell script into an executable:  'dist\SwiftEdge-Compiled.exe'
+
+3. If you only want the combined PowerShell script and not the EXE:
+  'powershell -ExecutionPolicy Bypass -File .\scripts\build-single.ps1 -SkipExe'
 
 ## Usage
 
