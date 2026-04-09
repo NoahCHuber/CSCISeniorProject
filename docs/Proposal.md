@@ -73,7 +73,6 @@ We strive to develop an application that can have real-world applications for bo
 Outline of Future Research Efforts
 ----------------------------------
 
-(PLEASE! Keep in mind that this is a very generic outline for future research efforts that will be subject to change)
 To complete this project successfully, several research areas need to be explored:
 
 ## Performance Optimization Techniques:
