@@ -148,6 +148,9 @@ Here is a small section overviewing the testing results in a table.
 | Vulnerability Scanner | Scanner not yet run and NVD data not yet loaded for the current session | Open the Vulnerability tab and run the scanner | Installed software is evaluated, NVD data is retrieved or reused from cache, and results appear in the output panel | The scanner retrieved or reused NVD feed data, checked installed software, and displayed ranked results in the GUI output panel. |
 | Build and Packaging | Source powershell scripts in modular structure | Run the build script to generate combined script or executable output | Build process generates a combined script or standalone executable for app | The build workflow generated the combined script and executable output for use in testing and demonstration. |
 
+Here are some test results from the Vulnerability Scanner with output containing known vulnerabilities on the system. 
+[SwiftEdgeLog](/docs/Output/SwiftEdgeLog_Vulnerability.txt)
+
 ### 7.2 Interpretation of Results
 The manual testing results show that the project is functioning as an integrated Windows utility rather than as a disconnected set of scripts. The GUI, module execution flow, logging, and vulnerability-scanning workflow are all present and usable in the current implementation. The strongest results are in the consistency of the module layout and the ability to execute actions through the interface with clear completion messaging and log generation.
 
