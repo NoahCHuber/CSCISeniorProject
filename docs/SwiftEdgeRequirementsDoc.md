@@ -1,10 +1,10 @@
 # Software Requirements Document
 
 ## SwiftEdge Security & Optimizer
-Version: 1.2 (Pre-release)  
+Version: 1.2 
 Prepared by: Noah Huber and Daniel Howard  
 Organization: SwiftEdge Security   
-Date Created: April 8th, 2025  
+Date Created: August 4th, 2025  
 
 Table of Contents
 =================
@@ -57,12 +57,13 @@ Table of Contents
 ## Revision History
 |  Name(s)  |    Date    |    Reason For Changes   |   Version   |
 | --------- | ---------- | ----------------------- | ----------- |
-| SwiftEdge | 2025-08-04 | Intiial Requirments Doc |     1.0     |
-|    Noah   | 2025-09-04 | Drafting and Additions  |     1.0     |
-|   Daniel  | 2025-10-04 | Editing and Review      |     1.1     |
-|   Daniel  | 2025-15-04 | Adding to Section 3     |     1.11    |
-|    Noah   | 2025-15-04 | Final Draft Revisions   |     1.11    |
-|    Noah   | 2026-23-02 | Updates & Revisions     |     1.2     |
+| SwiftEdge | 04-08-2025 | Intiial Requirments Doc |     1.0     |
+|    Noah   | 04-09-2025 | Drafting and Additions  |     1.0     |
+|   Daniel  | 04-10-2025 | Editing and Review      |     1.1     |
+|   Daniel  | 04-15-2025 | Adding to Section 3     |     1.11    |
+|    Noah   | 04-18-2025 | Final Draft Revisions   |     1.11    |
+|    Noah   | 02-23-2026 | Updates & Revisions     |     1.2     |
+| SwiftEdge | 04-08-2026 | Final Revisions         |     1.3     |
 
 ## 1. Introduction
 > This document defines the system requirements for SwiftEdge Security, a modular, GUI-based Windows utility designed to improve system performance, enhance security, perform cleanup operations, and check for known vulnerabilities. Developed entirely in PowerShell with a Windows Forms front end, this tool provides users with a streamlined interface and powerful functionality—all packaged as a standalone executable.
@@ -76,7 +77,7 @@ This document aims to define the software requirements for SwiftEdge Security & 
 SwiftEdge Security is a modular utility for Windows designed to streamline system maintenance and protection through four key functions: performance tuning, security hardening, system cleanup, and vulnerability scanning. Each module operates independently, offering users a focused experience through a unified PowerShell-based GUI. 
 This software operates as a self-contained executable that performs real-time system configuration tasks using native Windows features and external vulnerability databases. Its intended use is for enhancing local machine performance and reducing exposure to known vulnerabilities without requiring deep system knowledge or large, third-party frameworks.
 
-Key deliverables for this version (v1.0) include:
+Key deliverables include:
 - Provide a lightweight, portable, and efficient tool for optimizing and securing Windows systems.
 - Replace the need for multiple standalone scripts or tools by consolidating core administrative tasks into a unified interface.
 - Offer open-source vulnerability checking through the National Vulnerability Database (NVD) feed.
@@ -135,7 +136,7 @@ This product is designed to consolidate multiple commonly used administrative an
 - The Windows Registry (for performance and privacy tweaks),
 - The Windows Service Controller (to manage and disable services),
 - The NVD feed (to retrieve vulnerability data based on installed software),
-- Local system components like Power Plans, Disk Cleanup, and Temp File Directories.
+- Local system components like Power Plans, Disk Cleanup, Defragmentation, and Temp File Directories.
 
 ### 2.2 Product Functions
 > SwiftEdge Security provides a modular interface that enables users to perform common system maintenance, optimization, and security tasks on Windows 11 systems. Each function is encapsulated within its own script and is accessible via a centralized GUI.
@@ -321,6 +322,7 @@ The application will run only on Windows 11 (64-bit) systems and does not suppor
 * **PM4:** System should disable all background apps through user Regedit.
 * **PM5:** System should disable Windows tips and hibernation.
 * **PM6:** System should remove startup delay via Registry
+* **PM7:** System should run defrag and optimize and enable monthly optimizations for peak performance. 
 
 #### 3.2.3 Security Module
 > Security module is separate from the Vulnerability Scanner and changes local settings without internet access. Hardening operations will be lightweight and non-invasive. 
