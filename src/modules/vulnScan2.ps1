@@ -1,68 +1,64 @@
-# NVD Vulnerability Scanner (Yearly Feed)
-# Uses local NVD JSON feed from NIST
-# Downloads at most once per day (per year)
+# vulnScan2.ps1
+# SwiftEdge Security - Vulnerability Scanner Module
+# Uses NVD CVE JSON Cache (Updated Dailiy) Contains Yearly CVEs
+# Downloads local cache at most once per day (per year)
 # Matches installed applications vs CVE version ranges in the NVD data
 
+#Vulnerability Scanner 
+# Single instance run instead of modular functions 
 function Run-VulnScan {
-    # StringBuilder used to collect all output text (for GUI/log display)
+	# StringBuilder used to collect all output text (for GUI/log display)
 	$output = New-Object System.Text.StringBuilder
+	$versionCache = @{}
 
-    # Helper function to append a line of text to the StringBuilder
-    function Out-GUI {
+	# Helper function to append a line of text to the StringBuilder
+	function Out-GUI {
 		param($m)
-        $null = $output.AppendLine($m)
+		$null = $output.AppendLine($m)
 	}
 
 	# Stop on errors so we can catch failures cleanly
 	$ErrorActionPreference = 'Stop'
 
-	# =========================
 	# Paths & URLs
-	# =========================
 
-    # Use current year feed from NVD
+	# Use current year feed from NVD
 	$year   = (Get-Date).Year
 	$feedUrl = "https://nvd.nist.gov/feeds/json/cve/2.0/nvdcve-2.0-$year.json.gz"
 
-    # Local cache directory and filenames for compressed and extracted JSON
+	# Local cache directory and filenames for compressed and extracted JSON
 	$localRoot = "$env:LOCALAPPDATA\SwiftEdge\NVD"
 	$gzPath    = Join-Path $localRoot "nvdcve-$year.json.gz"
 	$jsonPath  = Join-Path $localRoot "nvdcve-$year.json"
 
-    # Create cache folder if it doesn't exist
+	# Create cache folder if it doesn't exist
 	if (-not (Test-Path $localRoot)) {
 		New-Item -ItemType Directory -Path $localRoot | Out-Null
 	}
 
-	# =========================
-	# Local Cache Check
-	# =========================
-
+	# Local Cache Check (Default no)
 	$needDownload = $false
 
-    # If no JSON exists for this year, we must download
+	# If no JSON exists for this year, we must download
 	if (-not (Test-Path $jsonPath)) {
 		Out-GUI "No local NVD JSON for $year. Download needed."
 		$needDownload = $true
 	}
-    # If existing JSON is older than 1 day, refresh it
+	# If existing JSON is older than 1 day, refresh it
 	elseif ((Get-Item $jsonPath).LastWriteTime -lt (Get-Date).AddDays(-1)) {
 		Out-GUI "Local JSON older than 1 day. Refreshing."
 		$needDownload = $true
 	}
-    # Otherwise, reuse local cached file
+	# Otherwise, reuse local cached file
 	else {
 		Out-GUI " Using local NVD JSON for $year."
 	}
 
-	# =========================
 	# Download + Extract if Needed
-	# =========================
-
 	if ($needDownload) {
 		Out-GUI "`n Downloading NVD feed: $feedUrl"
 
-        # Download the yearly NVD JSON.gz file
+		# Download the yearly NVD JSON.gz file
 		Invoke-WebRequest `
 			-Uri $feedUrl `
 			-Headers @{ "User-Agent" = "Mozilla/5.0" } `
@@ -70,37 +66,31 @@ function Run-VulnScan {
 
 		Out-GUI "Download complete. Extracting..."
 
-        # Decompress the .gz file into plain JSON
+		# Decompress the .gz file into plain JSON
 		$gzStream  = [System.IO.File]::OpenRead($gzPath)
 		$gzip   = New-Object System.IO.Compression.GzipStream($gzStream, [IO.Compression.CompressionMode]::Decompress)
 
-        # NOTE: here $output is a FileStream used for writing the JSON file
-        # (not the StringBuilder defined at the top of the function)
-		$output = [System.IO.File]::Create($jsonPath)
-		$gzip.CopyTo($output)
+		# NOTE: here $output is a FileStream used for writing the JSON file
+		# (not the StringBuilder defined at the top of the function)
+			$fileOutStream = [System.IO.File]::Create($jsonPath)
+			$gzip.CopyTo($fileOutStream)
 
-		$gzip.Close()
-		$output.Close()
-		$gzStream.Close()
+			$gzip.Close()
+			$fileOutStream.Close()
+			$gzStream.Close()
 
 		Out-GUI "Extracted JSON to $jsonPath"
 	}
 
-	# =========================
 	# Load JSON into memory
-	# =========================
-
 	Out-GUI "`n Loading CVE JSON..."
-    # Read JSON file and convert to a PowerShell object
+	# Read JSON file and convert to a PowerShell object
 	$cveData = Get-Content $jsonPath -Raw | ConvertFrom-Json
 	$vulns   = $cveData.vulnerabilities
 	Out-GUI "Loaded $($vulns.Count) CVEs for $year`n"
 
-	# =========================
 	# Installed Applications
-	# =========================
-
-    # Function to pull installed apps (name + version) from common registry locations
+	# Function to pull installed apps (name + version) from common registry locations
 	function Get-InstalledApps {
 		$paths = @(
 			'HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*',
@@ -108,36 +98,43 @@ function Run-VulnScan {
 			'HKCU:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*'
 		)
 
-        # Filter entries that have both DisplayName and DisplayVersion
+		# Filter entries that have both DisplayName and DisplayVersion
 		Get-ItemProperty -Path $paths -ErrorAction SilentlyContinue |
 			Where-Object { $_.DisplayName -and $_.DisplayVersion } |
 			Select-Object @{n='Name';e={$_.DisplayName}}, @{n='Version';e={$_.DisplayVersion}} -Unique
 	}
 
-	$apps = Get-InstalledApps
-	Out-GUI "Found $($apps.Count) installed apps.`n"
+		$apps = Get-InstalledApps | ForEach-Object {
+			[pscustomobject]@{
+				Name    = $_.Name
+				Version = $_.Version
+				NameLc  = $_.Name.ToLower()
+			}
+		}
+		Out-GUI "Found $($apps.Count) installed apps.`n"
+		$appMatchCache = @{}
 
-	# =========================
 	# Version Handling Helpers
-	# =========================
-
-    # Normalize-Version: parse version string into an integer array (major.minor.build...)
-	function Normalize-Version {
-		param([string]$Version)
+	# Normalize-Version: parse version string into an integer array (major.minor.build...)
+		function Normalize-Version {
+			param([string]$Version)
 
 		# Ignore blank or meaningless version strings
 		if ([string]::IsNullOrWhiteSpace($Version) -or $Version -in @('*','-')) {
 			return $null
 		}
 
-		$v = $Version.Trim()
+			$v = $Version.Trim()
+			if ($versionCache.ContainsKey($v)) {
+				return $versionCache[$v]
+			}
 
 		# Drop build metadata (e.g., 1.2.3+build45 -> 1.2.3)
 		if ($v -like '*+*') { $v = $v.Split('+')[0] }
 
 		$parts = New-Object System.Collections.Generic.List[int]
 
-        # Split on dots and keep numeric components
+		# Split on dots and keep numeric components
 		foreach ($p in $v.Split('.')) {
 			if ($p -match '^\d+$') {
 				[void]$parts.Add([int]$p)
@@ -151,16 +148,19 @@ function Run-VulnScan {
 			}
 		}
 
-		if ($parts.Count -eq 0) {
-			return $null
+			if ($parts.Count -eq 0) {
+				$versionCache[$v] = $null
+				return $null
+			}
+
+			# Return as an array of integers
+			$normalized = ,$parts.ToArray()
+			$versionCache[$v] = $normalized
+			$normalized
 		}
 
-        # Return as an array of integers
-		,$parts.ToArray()
-	}
-
-    # Compare-Version: compare two version strings
-    # Returns -1 if V1 < V2, 0 if equal/unknown, 1 if V1 > V2
+	# Compare-Version: compare two version strings
+	# Returns -1 if V1 < V2, 0 if equal/unknown, 1 if V1 > V2
 	function Compare-Version {
 		param(
 			[string]$V1,
@@ -170,18 +170,18 @@ function Run-VulnScan {
 		$a = Normalize-Version $V1
 		$b = Normalize-Version $V2
 
-        # If either can't be parsed, treat as equal (no strict ordering)
+		# If either can't be parsed, treat as equal (no strict ordering)
 		if ($null -eq $a -and $null -eq $b) { return 0 }
 		if ($null -eq $a) { return 0 }
 		if ($null -eq $b) { return 0 }
 
 		$max = [Math]::Max($a.Length, $b.Length)
 
-        # Pad shorter version arrays with zeros (e.g., 1.2 vs 1.2.0)
+		# Pad shorter version arrays with zeros (e.g., 1.2 vs 1.2.0)
 		while ($a.Length -lt $max) { $a += 0 }
 		while ($b.Length -lt $max) { $b += 0 }
 
-        # Compare component by component
+		# Compare component by component
 		for ($i=0; $i -lt $max; $i++) {
 			if ($a[$i] -lt $b[$i]) { return -1 }
 			if ($a[$i] -gt $b[$i]) { return 1 }
@@ -189,7 +189,7 @@ function Run-VulnScan {
 		return 0
 	}
 
-    # Test-VersionInRange: checks if Target version falls inside a vulnerable range
+	# Test-VersionInRange: checks if Target version falls inside a vulnerable range
 	function Test-VersionInRange {
 		param(
 			[string]$Target,
@@ -232,30 +232,28 @@ function Run-VulnScan {
 		return $true
 	}
 
-	# =========================
 	# Vulnerability Matching
-	# =========================
-
-    # This will store all matched vulnerabilities per app
-	$findings = @()
+	# This will store all matched vulnerabilities per app
+	$findings = New-Object System.Collections.Generic.List[object]
 
 	# Progress bar for scanning CVEs
 	$progress = 0
 	$totalVulns = $vulns.Count
 	Out-GUI "Scanning CVEs against installed apps..."
 
-    # Loop through every CVE entry in the NVD feed
+	# Loop through every CVE entry in the NVD feed
 	foreach ($v in $vulns) {
 		$progress++
-        # Show progress every 1000 CVEs
+		# Show progress every 1000 CVEs
 		if ($progress % 1000 -eq 0) {
 			Write-Progress -Activity "Scanning CVEs" -Status "$progress / $totalVulns" -PercentComplete ($progress / $totalVulns * 100)
 		}
 
-        # Each CVE has configurations with CPE matches (affected products)
+		# Each CVE has configurations with CPE matches (affected products)
 		foreach ($config in $v.cve.configurations) {
 			foreach ($node in $config.nodes) {
 				foreach ($m in $node.cpeMatch) {
+
 					# Only consider entries marked vulnerable
 					if (-not $m.vulnerable) { continue }
 
@@ -271,23 +269,50 @@ function Run-VulnScan {
 					$vendorLc = $vendor.ToLower()
 					$productLc = $product.ToLower()
 
-                    # Vulnerable version boundaries from NVD
+					# Vulnerable version boundaries from NVD
 					$startInc = $m.versionStartIncluding
 					$startExc = $m.versionStartExcluding
 					$endInc   = $m.versionEndIncluding
 					$endExc   = $m.versionEndExcluding
 
-					# Now check against each installed app
-					foreach ($app in $apps) {
-						$name    = $app.Name
-						$version = $app.Version
-						$nameLc  = $name.ToLower()
+						$cacheKey = "$vendorLc|$productLc"
+						if (-not $appMatchCache.ContainsKey($cacheKey)) {
+							$appMatchCache[$cacheKey] = @(
+								$apps | Where-Object {
+									$_.NameLc -like "*$vendorLc*" -and $_.NameLc -like "*$productLc*"
+								}
+							)
+						}
 
-						# Stricter name match:
-                        # require both vendor AND product strings to appear in the app name
-						if ($nameLc -notlike "*$vendorLc*" -or $nameLc -notlike "*$productLc*") { continue }
+						$candidateApps = $appMatchCache[$cacheKey]
+						if (-not $candidateApps -or $candidateApps.Count -eq 0) { continue }
 
-                        # If app version not in vulnerable range, skip
+						# Get English description for the CVE
+						$desc = ($v.cve.descriptions | Where-Object { $_.lang -eq 'en' } | Select-Object -First 1).value
+
+						# Get CVSS v3.1 or v3.0 metrics if available
+						$cvss = $null
+						if ($v.cve.metrics.cvssMetricV31) {
+							$cvss = $v.cve.metrics.cvssMetricV31[0].cvssData
+						}
+						elseif ($v.cve.metrics.cvssMetricV30) {
+							$cvss = $v.cve.metrics.cvssMetricV30[0].cvssData
+						}
+
+						# Extract severity and base score
+						$severity = if ($cvss) { $cvss.baseSeverity } else { 'UNKNOWN' }
+						$score    = if ($cvss) { $cvss.baseScore } else { 0.0 }
+
+						# Now check against each matching installed app
+						foreach ($app in $candidateApps) {
+							$name    = $app.Name
+							$version = $app.Version
+
+							# Stricter name match:
+							# require both vendor AND product strings to appear in the app name
+							if ($app.NameLc -notlike "*$vendorLc*" -or $app.NameLc -notlike "*$productLc*") { continue }
+
+						# If app version not in vulnerable range, skip
 						if (-not (Test-VersionInRange -Target $version `
 									-StartIncluding $startInc `
 									-StartExcluding $startExc `
@@ -298,36 +323,20 @@ function Run-VulnScan {
 
 						# At this point: app name roughly matches CPE and its version is vulnerable
 
-                        # Get English description for the CVE
-						$desc = ($v.cve.descriptions | Where-Object { $_.lang -eq 'en' } | Select-Object -First 1).value
-
-                        # Get CVSS v3.1 or v3.0 metrics if available
-						$cvss = $null
-						if ($v.cve.metrics.cvssMetricV31) {
-							$cvss = $v.cve.metrics.cvssMetricV31[0].cvssData
-						}
-						elseif ($v.cve.metrics.cvssMetricV30) {
-							$cvss = $v.cve.metrics.cvssMetricV30[0].cvssData
-						}
-
-                        # Extract severity and base score
-						$severity = if ($cvss) { $cvss.baseSeverity } else { 'UNKNOWN' }
-						$score    = if ($cvss) { $cvss.baseScore } else { 0.0 }
-
-                        # Record a finding object with app + CVE details
-						$findings += [pscustomobject]@{
-							AppName       = $name
-							Installed     = $version
-							CveId         = $v.cve.id
-							Severity      = $severity
-							Score         = $score
+							# Record a finding object with app + CVE details
+							$null = $findings.Add([pscustomobject]@{
+							AppName = $name
+							Installed = $version
+							CveId = $v.cve.id
+							Severity = $severity
+							Score = $score
 							VersionStartI = $startInc
 							VersionStartE = $startExc
-							VersionEndI   = $endInc
-							VersionEndE   = $endExc
-							Description   = $desc
+							VersionEndI = $endInc
+							VersionEndE = $endExc
+							Description = $desc
+							})
 						}
-					}
 				}
 			}
 		}
@@ -336,9 +345,7 @@ function Run-VulnScan {
 	# Complete the progress bar
 	Write-Progress -Activity "Scanning CVEs" -Completed
 
-	# =========================
 	# Summarize & Display Top 5 Most Vulnerable Apps
-	# =========================
 
 	if (-not $findings -or $findings.Count -eq 0) {
 		Out-GUI "`n==========================="
@@ -347,7 +354,7 @@ function Run-VulnScan {
 		Out-GUI "No vulnerabilities detected based on $year NVD feed!"
 	}
 	else {
-        # Map text severity to numeric rank for easier sorting
+		# Map text severity to numeric rank for easier sorting
 		$severityRank = @{
 			'CRITICAL' = 4
 			'HIGH'     = 3
@@ -360,12 +367,12 @@ function Run-VulnScan {
 		$appSummaries = foreach ($group in ($findings | Group-Object AppName)) {
 
 			$appName = $group.Name
-            # Installed version (same across all findings for this app)
+			# Installed version (same across all findings for this app)
 			$installedVersion = ($group.Group | Select-Object -First 1).Installed
 
 			# Sort all vulnerabilities for this app:
-            # 1) by severity rank DESC
-            # 2) by CVSS score DESC
+			# 1) by severity rank DESC
+			# 2) by CVSS score DESC
 			$sortedVulns = $group.Group |
 				Sort-Object `
 					@{Expression = { $severityRank[$_.Severity] }; Descending = $true}, `
@@ -404,7 +411,7 @@ function Run-VulnScan {
 		Out-GUI "==========================="
 		Out-GUI "Ranked by: severity rank CVSS score"
 		
-        # Print a short report for each of the top 5 apps
+		# Print a short report for each of the top 5 apps
 		foreach ($app in $top5Apps) {
 			Out-GUI ""
 			Out-GUI "$($app.AppName)  (Version: $($app.Version))"
@@ -415,14 +422,12 @@ function Run-VulnScan {
 			}
 		}
 
-		# =========================
-		# Simple Recommended Actions Section
-		# =========================
+		# Generic Recommended Actions Section
 		Out-GUI "`n==========================="
 		Out-GUI " Recommended Actions"
 		Out-GUI "==========================="
 
-        # Check whether any top-5 app has HIGH or CRITICAL vulns
+		# Check whether any top-5 app has HIGH or CRITICAL vulns
 		$hasHigh = $top5Apps | Where-Object { $_.HighestSeverity -in @('CRITICAL','HIGH') }
 
 		if ($hasHigh) {
@@ -433,6 +438,6 @@ function Run-VulnScan {
 		Out-GUI "- After applying updates, rerun this scanner to confirm the vulnerabilities are reduced."
 	}
 
-    # Return all accumulated output text as a single string (useful for GUI/log window)
-	return $output.ToString()
+	# Return all accumulated output text as a single string (useful for GUI/log window)
+		return $output.ToString()
 }
