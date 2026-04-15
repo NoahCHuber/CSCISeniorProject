@@ -1,5 +1,4 @@
-# main3.ps1 - SwiftEdge Security & Optimizer TEST
-# - - - - - - - - - - - - - - - - - - - - - - 
+# mainFinal.ps1 - SwiftEdge Security & Optimizer
 
 # Description: Provides a simple Windows Forms GUI in a dark theme
 # with CSU Navy & Gold accent colors. Four main functional tabs:
@@ -11,17 +10,11 @@
 
 # - - - - - - - - - - - - - - - - - - - - - - 
 
-# Import Modules
-. ".\performance2.ps1"
-. ".\cleanup2.ps1"
-. ".\security2.ps1"
-. ".\scannerTest.ps1"
-
-# # Import Modules
-# . "$PSScriptRoot\performance2.ps1"
-# . "$PSScriptRoot\cleanup2.ps1"
-# . "$PSScriptRoot\security2.ps1"
-# . "$PSScriptRoot\scannerTest.ps1"
+# Import modules from script directory so PS2EXE builds can resolve files consistently.
+. "$PSScriptRoot\performance2.ps1"
+. "$PSScriptRoot\cleanup2.ps1"
+. "$PSScriptRoot\security2.ps1"
+. "$PSScriptRoot\vulnScan2.ps1"
 
 # Logging Setup 
 $logTime = Get-Date -Format "yyyyMMdd_HHmmss"
@@ -410,7 +403,7 @@ $btnCont.Add_Click({
 					$createdRP = $true
 				}
 			} catch {
-				# surface the error, but continue to UI
+				# Display error, continue;
 				[System.Windows.Forms.MessageBox]::Show(
 					"Failed to create a System Restore Point:`n$($_.Exception.Message)",
 					"SwiftEdge",
@@ -482,6 +475,7 @@ $startY = 60
 $verticalSpacing = 32
 $itemsPerColumn = 6
 
+# Builder and position for tweaks & checkboxes
 for ($i = 0; $i -lt $PerfTweaks.Count; $i++) {
 
 	# Determine which column and row
@@ -513,6 +507,10 @@ for ($i = 0; $i -lt $PerfTweaks.Count; $i++) {
 $btnRunPerf = New-AccentButton -Text "Run Selected Performance Tweaks" -W 325 -H 60
 $btnRunPerf.Location = New-Object System.Drawing.Point(775, 225)
 $perfCard.Controls.Add($btnRunPerf)
+
+$btnResetPerf = New-AccentButton -Text "Reset Performance to Defaults" -W 325 -H 50
+$btnResetPerf.Location = New-Object System.Drawing.Point(775, 165)
+$perfCard.Controls.Add($btnResetPerf)
 
 # Button Click Functionality
 $btnRunPerf.Add_Click({
@@ -552,6 +550,30 @@ $btnRunPerf.Add_Click({
 
 })
 
+$btnResetPerf.Add_Click({
+	$r = [System.Windows.Forms.MessageBox]::Show(
+		"Reset Performance module settings to defaults?",
+		"SwiftEdge Performance",
+		[System.Windows.Forms.MessageBoxButtons]::YesNo,
+		[System.Windows.Forms.MessageBoxIcon]::Question
+	)
+	if ($r -ne [System.Windows.Forms.DialogResult]::Yes) { return }
+
+	foreach ($line in (Invoke-PerformanceDefaultsReset)) {
+		Log $line
+	}
+	Log "[Performance Module] Defaults Reset Complete."
+
+	[System.Windows.Forms.MessageBox]::Show(
+		"Performance defaults have been restored.",
+		"SwiftEdge",
+		[System.Windows.Forms.MessageBoxButtons]::OK,
+		[System.Windows.Forms.MessageBoxIcon]::Information
+	) | Out-Null
+
+	$checkboxes | ForEach-Object { $_.Checked = $false }
+})
+
 # Other Tabs Default
 $cleanHeader  = New-HeaderLabel -Text "System Cleanup Module" -X 16 -Y 12 
 $cleanDivider = New-Divider -W 1120 -X 16 -Y 48
@@ -580,6 +602,7 @@ $startY = 60
 $verticalSpacing = 32
 $itemsPerColumn = 6
 
+# Builder and position for tweaks & checkboxes
 for ($i = 0; $i -lt $CleanTweaks.Count; $i++) {
 
 	# Determine position
@@ -606,7 +629,7 @@ for ($i = 0; $i -lt $CleanTweaks.Count; $i++) {
 	$cleanCheckboxes += $cb
 }
 
-# RUN CLEANUP BUTTON
+# Run Cleanup
 $btnRunClean = New-AccentButton -Text "Run Selected Cleanup Tweaks" -W 320 -H 60
 $btnRunClean.Location = New-Object System.Drawing.Point(780, 225)
 $cleanCard.Controls.Add($btnRunClean)
@@ -614,7 +637,7 @@ $cleanCard.Controls.Add($btnRunClean)
 # Button Click Logic
 $btnRunClean.Add_Click({
 
-	# Switch the log to CLEANUP file instead of Performance
+	# Switch the log to Cleanup file instead of Performance
 	$logTime = Get-Date -Format "yyyyMMdd_HHmmss"
 	$moduleName = "Cleanup"
 	$logFolder = Join-Path $env:USERPROFILE "Documents\SwiftEdgeLogs"
@@ -626,6 +649,7 @@ $btnRunClean.Add_Click({
 
 	$selected = $cleanCheckboxes | Where-Object { $_.Checked }
 
+	# null selection
 	if (-not $selected) {
 		[System.Windows.Forms.MessageBox]::Show(
 			"Please select at least one task.",
@@ -688,7 +712,7 @@ $secStartY = 60
 $secSpacing = 32
 $secItemsPerColumn = 8   # more items than performance module
 
-# For loop to iterate through the tweaks/checkbox(s)
+# Builder and position for tweaks & checkboxes
 for ($i = 0; $i -lt $SecurityTweaks.Count; $i++) {
 
 	if ($i -lt $secItemsPerColumn) {
@@ -719,8 +743,23 @@ $btnRunSec = New-AccentButton -Text "Run Security Hardening Tweaks" -W 330 -H 60
 $btnRunSec.Location = New-Object System.Drawing.Point(770, 225)
 $secCard.Controls.Add($btnRunSec)
 
+$btnResetSec = New-AccentButton -Text "Reset Security to Defaults" -W 330 -H 50
+$btnResetSec.Location = New-Object System.Drawing.Point(770, 165)
+$secCard.Controls.Add($btnResetSec)
+
 # Button logic
 $btnRunSec.Add_Click({
+
+	# Switch the log to Security file instead of Cleanup
+	$logTime = Get-Date -Format "yyyyMMdd_HHmmss"
+	$moduleName = "Security"
+	$logFolder = Join-Path $env:USERPROFILE "Documents\SwiftEdgeLogs"
+	$script:logPath = Join-Path $logFolder "SwiftEdgeLog_${logTime}_${moduleName}.txt"
+
+	if (-not (Test-Path $logFolder)) {
+		New-Item -ItemType Directory -Path $logFolder -Force | Out-Null
+	}
+
 	$selected = $secCheckboxes | Where-Object { $_.Checked }
 
 	# If none are selected to run. 
@@ -757,6 +796,41 @@ $btnRunSec.Add_Click({
 	$secCheckboxes | ForEach-Object { $_.Checked = $false }
 })
 
+$btnResetSec.Add_Click({
+
+	# Switch the log to Security file instead of Cleanup
+	$logTime = Get-Date -Format "yyyyMMdd_HHmmss"
+	$moduleName = "Security"
+	$logFolder = Join-Path $env:USERPROFILE "Documents\SwiftEdgeLogs"
+	$script:logPath = Join-Path $logFolder "SwiftEdgeLog_${logTime}_${moduleName}.txt"
+
+	if (-not (Test-Path $logFolder)) {
+		New-Item -ItemType Directory -Path $logFolder -Force | Out-Null
+	}
+
+	$r = [System.Windows.Forms.MessageBox]::Show(
+		"Reset Security module settings to safe defaults?",
+		"SwiftEdge Security",
+		[System.Windows.Forms.MessageBoxButtons]::YesNo,
+		[System.Windows.Forms.MessageBoxIcon]::Question
+	)
+	if ($r -ne [System.Windows.Forms.DialogResult]::Yes) { return }
+
+	foreach ($line in (Invoke-SecurityDefaultsReset)) {
+		Log $line
+	}
+	Log "[Security Module] Defaults Reset Complete."
+
+	[System.Windows.Forms.MessageBox]::Show(
+		"Security defaults have been restored.",
+		"SwiftEdge",
+		[System.Windows.Forms.MessageBoxButtons]::OK,
+		[System.Windows.Forms.MessageBoxIcon]::Information
+	) | Out-Null
+
+	$secCheckboxes | ForEach-Object { $_.Checked = $false }
+})
+
 # Vulnerability Module Header
 $vulnHeader  = New-HeaderLabel -Text "Vulnerability Module" -X 16 -Y 12 
 $vulnDivider = New-Divider -W 1120 -X 16 -Y 48
@@ -777,14 +851,14 @@ $vulnCard.Controls.Add($vulnDesc)
 
 # Scrollable output (terminal box)
 $txtVulnOutput = New-Object System.Windows.Forms.TextBox
-$txtVulnOutput.Multiline  = $true
+$txtVulnOutput.Multiline = $true
 $txtVulnOutput.ScrollBars = "Vertical"
-$txtVulnOutput.ReadOnly   = $true
-$txtVulnOutput.BackColor  = "Black"
-$txtVulnOutput.ForeColor  = "White"
-$txtVulnOutput.Font       = "Consolas, 10"
-$txtVulnOutput.Location   = New-Object System.Drawing.Point(16, 60)
-$txtVulnOutput.Size       = New-Object System.Drawing.Size(830, 350)
+$txtVulnOutput.ReadOnly = $true
+$txtVulnOutput.BackColor = "Black"
+$txtVulnOutput.ForeColor = "White"
+$txtVulnOutput.Font = "Consolas, 10"
+$txtVulnOutput.Location = New-Object System.Drawing.Point(16, 60)
+$txtVulnOutput.Size = New-Object System.Drawing.Size(830, 350)
 $vulnCard.Controls.Add($txtVulnOutput)
 
 # Run Scanner Button
@@ -796,14 +870,21 @@ $btnRunVuln.Add_Click({
 	$txtVulnOutput.Text = "Running vulnerability scan... please wait.`r`n"
 	$form.Refresh()
 
+	# Change log path for Vulnerability module
+	$logTime = Get-Date -Format "yyyyMMdd_HHmmss"
+	$moduleName = "Vulnerability"
+	$logFolder = Join-Path $env:USERPROFILE "Documents\SwiftEdgeLogs"
+	$script:logPath = Join-Path $logFolder "SwiftEdgeLog_${logTime}_Vulnerability.txt"
+	
 	try {
-		$outputText = Run-VulnScan   # Call your wrapped scanner
+		$outputText = Run-VulnScan
 		$txtVulnOutput.Text = $outputText
+		Log $outputText
 	}
 	catch {
 		$txtVulnOutput.Text = "Error running vulnerability scan:`r`n$($_.Exception.Message)"
+		Log $_.Exception.Message
 	}
 })
-
 
 [void]$form.ShowDialog()
