@@ -1,14 +1,14 @@
 # security2.ps1
-# SwiftEdge Security - Security Hardening Module (Functions Only)
-# NO automatic execution. Safe for GUI + PS2EXE.
+# SwiftEdge Security - Security Hardening Module
 
+# Security Enhancements
 # SM2 - Disable SMBv1
 function Disable-SMBv1 {
 	try {
 		# Disable SMB1 Windows feature
 		Disable-WindowsOptionalFeature -Online -FeatureName "SMB1Protocol" -NoRestart -ErrorAction Stop
 
-		# Best-effort: also harden server config if cmdlet exists
+		# Harden server config if cmdlet exists
 		if (Get-Command Set-SmbServerConfiguration -ErrorAction SilentlyContinue) {
 			Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force -ErrorAction SilentlyContinue
 		}
@@ -27,9 +27,12 @@ function Disable-SMBGuestAccess {
 		if (-not (Test-Path $wkPath)) { New-Item -Path $wkPath -Force | Out-Null }
 		New-ItemProperty -Path $wkPath -Name "AllowInsecureGuestAuth" -Value 0 -PropertyType DWord -Force | Out-Null
 
-		# Server side (if available)
+		# Server side (if available and supported)
 		if (Get-Command Set-SmbServerConfiguration -ErrorAction SilentlyContinue) {
-			Set-SmbServerConfiguration -EnableInsecureGuestLogons $false -Force -ErrorAction SilentlyContinue
+			$cmd = Get-Command Set-SmbServerConfiguration
+			if ($cmd.Parameters.ContainsKey("EnableInsecureGuestLogons")) {
+				Set-SmbServerConfiguration -EnableInsecureGuestLogons $false -Force -ErrorAction SilentlyContinue
+			}
 		}
 
 		return "SM2: Insecure SMB guest access disabled."
@@ -118,15 +121,40 @@ function Enable-WindowsFirewallAllProfiles {
 	}
 }
 
-# EXPORTED ARRAY: This is what main3.ps1 will loop through
+# Security reset uses a safe baseline.
+function Set-RemoteRegistryManual {
+	try {
+		Stop-Service -Name RemoteRegistry -ErrorAction SilentlyContinue
+		Set-Service -Name RemoteRegistry -StartupType Manual
+		return "SR1: Remote Registry restored to Manual (stopped)."
+	} catch {
+		return "SR1 ERROR (Remote Registry): $($_.Exception.Message)"
+	}
+}
+
+# Reset for security module call
+function Invoke-SecurityDefaultsReset {
+	$results = @()
+	$results += Disable-SMBv1
+	$results += Disable-SMBGuestAccess
+	$results += Disable-RemoteAssistance
+	$results += Set-RemoteRegistryManual
+	$results += Enable-DefenderRealtime
+	$results += Enable-DefenderBehavior
+	$results += Enable-DefenderIOAV
+	$results += Enable-WindowsFirewallAllProfiles
+	return $results
+}
+
+# Array for main UI buidler (checkbox list)
 $SecurityTweaks = @(
-	@{ Text = "Disable SMBv1";                             Script = { Disable-SMBv1 } }
-	@{ Text = "Disable SMB Guest Access";                  Script = { Disable-SMBGuestAccess } }
-	@{ Text = "Disable Remote Assistance";                 Script = { Disable-RemoteAssistance } }
-	@{ Text = "Disable Remote Registry";                   Script = { Disable-RemoteRegistry } }
-	@{ Text = "Enable Defender Real-Time Protection";      Script = { Enable-DefenderRealtime } }
-	@{ Text = "Enable Defender Behavior Monitoring";       Script = { Enable-DefenderBehavior } }
-	@{ Text = "Enable Defender IOAV Protection";           Script = { Enable-DefenderIOAV } }
-	@{ Text = "Enable Memory Integrity (HVCI)";            Script = { Enable-MemoryIntegrity } }
-	@{ Text = "Enable Windows Firewall (All Profiles)";    Script = { Enable-WindowsFirewallAllProfiles } }
+	@{ Text = "Disable SMBv1"; Script = { Disable-SMBv1 } }
+	@{ Text = "Disable SMB Guest Access"; Script = { Disable-SMBGuestAccess } }
+	@{ Text = "Disable Remote Assistance"; Script = { Disable-RemoteAssistance } }
+	@{ Text = "Disable Remote Registry"; Script = { Disable-RemoteRegistry } }
+	@{ Text = "Enable Defender Real-Time Protection"; Script = { Enable-DefenderRealtime } }
+	@{ Text = "Enable Defender Behavior Monitoring"; Script = { Enable-DefenderBehavior } }
+	@{ Text = "Enable Defender IOAV Protection"; Script = { Enable-DefenderIOAV } }
+	@{ Text = "Enable Memory Integrity (HVCI)"; Script = { Enable-MemoryIntegrity } }
+	@{ Text = "Enable Windows Firewall (All Profiles)"; Script = { Enable-WindowsFirewallAllProfiles } }
 )
